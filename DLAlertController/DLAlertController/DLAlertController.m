@@ -44,6 +44,9 @@
 -(instancetype)init{
     self = [super init];
     if(self != nil){
+        _actionHeight = 40.0f;
+        CGFloat titleInset = 5.0f;
+        _titleInsets = UIEdgeInsetsMake(titleInset, titleInset, titleInset, titleInset);
         _actions = [[NSMutableArray alloc] initWithCapacity:0];
         _visualStyles = [@{@(DLAlertActionStyleDefault) : [DLAlertActionVisualStyle defaultStyle],
                            @(DLAlertActionStyleCancel) : [DLAlertActionVisualStyle cancelStyle],
@@ -51,6 +54,8 @@
         _transitionController = [[DLAlertTransitionController alloc] init];
         [self setModalPresentationStyle:UIModalPresentationCustom];
         [self setTransitioningDelegate:_transitionController];
+        _titleFont = [UIFont systemFontOfSize:17.0f];
+        _titleTextColor = [UIColor darkTextColor];
     }
     return self;
 }
@@ -73,11 +78,21 @@
 -(void)loadView{
     UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
     DLAlertView *alertView = [DLAlertView alertWithContentView:[self alertContentView]];
-    [[alertView titleLabel] setText:_title];
+    UILabel *alertTitleLabel = [alertView titleLabel];
+    
+    [alertTitleLabel setText:_title];
+    [alertTitleLabel setFont:_titleFont];
+    [alertTitleLabel setTextColor:_titleTextColor];
+    [alertView setTitleLabelInsets:_titleInsets];
+    
     DLActionsCollectionView *actionView = [alertView actionsCollectionView];
     [actionView setActionDelegate:self];
     [actionView setActionDataSource:self];
-    [[actionView collectionViewLayout] setItemLayout:[_actions count] > 2 ? DLAlertActionItemLayoutVertical : DLAlertActionItemLayoutHorizontal];
+    
+    DLAlertActionCollectionViewLayout *actionViewLayout = [actionView collectionViewLayout];
+    
+    [actionViewLayout setItemLayout:[_actions count] > 2 ? DLAlertActionItemLayoutVertical : DLAlertActionItemLayoutHorizontal];
+    [actionViewLayout setItemHeight:_actionHeight];
     [alertView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [view addSubview:alertView];
     

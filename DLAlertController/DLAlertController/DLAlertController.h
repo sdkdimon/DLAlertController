@@ -27,6 +27,10 @@
 @interface DLAlertController : UIViewController
 
 @property(copy,nonatomic,readwrite) NSString *title;
+@property(strong,nonatomic,readwrite) UIColor *titleTextColor;
+@property(strong,nonatomic,readwrite) UIFont *titleFont;
+@property(assign,nonatomic,readwrite) UIEdgeInsets titleInsets;
+@property(assign,nonatomic,readwrite) CGFloat actionHeight;
 
 -(void)addAction:(DLAlertAction *)action;
 //Override to initialize a custom content view

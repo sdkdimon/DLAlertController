@@ -44,10 +44,10 @@
     DLAlertController *alert = [[DLAlertController alloc] init];
     
     [alert addAction:[DLAlertAction actionWithTitle:@"Cancel" style:DLAlertActionStyleCancel handler:^{
-        NSLog(@"%@ tapped ",@"Hello");
+        NSLog(@"%@ tapped ",@"Cancel");
     }]];
     [alert addAction:[DLAlertAction actionWithTitle:@"Ok" style:DLAlertActionStyleDefault handler:^{
-        NSLog(@"%@ tapped ",@"Cancel");
+        NSLog(@"%@ tapped ",@"Ok");
     }]];
     
     [alert addAction:[DLAlertAction actionWithTitle:@"Delete" style:DLAlertActionStyleDestructive handler:^{

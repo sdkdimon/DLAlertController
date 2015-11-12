@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger,DLAlertSeparatorType) {
 @property(strong,nonatomic,readonly) UILabel *titleLabel;
 @property(strong,nonatomic,readonly) UIView *contentView;
 @property(strong,nonatomic,readonly) DLActionsCollectionView *actionsCollectionView;
-
+@property(assign,nonatomic,readwrite) UIEdgeInsets titleLabelInsets;
 
 -(void)prepareLayout;
 

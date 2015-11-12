@@ -27,6 +27,9 @@
 
 @interface DLAlertView ()
 @property(strong,nonatomic,readwrite) NSMutableDictionary *separatorStyles;
+
+@property(strong,nonatomic,readwrite) NSDictionary<NSNumber *,NSMutableArray<NSLayoutConstraint *> *> *titleLabelInsetsConstraints;
+
 @end
 
 
@@ -39,6 +42,12 @@
 -(instancetype)initWithContentView:(UIView *)contentView{
     self = [super initWithFrame:CGRectZero];
     if(self != nil){
+        _titleLabelInsets = UIEdgeInsetsZero;
+        
+        _titleLabelInsetsConstraints = @{@(NSLayoutAttributeTop) : [[NSMutableArray alloc] init],
+                                         @(NSLayoutAttributeBottom) : [[NSMutableArray alloc] init],
+                                         @(NSLayoutAttributeLeading) : [[NSMutableArray alloc] init],
+                                         @(NSLayoutAttributeTrailing) : [[NSMutableArray alloc] init],};
         _contentView = contentView;
         [self createUI];
     }
@@ -66,23 +75,34 @@
 -(void)layoutTitleLabel{
     [_titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self addSubview:_titleLabel];
-    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0f constant:0.0f];
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0f constant:_titleLabelInsets.top];
+    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0f constant:_titleLabelInsets.left];
+    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationLessThanOrEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0f constant: - _titleLabelInsets.right];
+    
     NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
-    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0f constant:0.0f];
-    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationLessThanOrEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:0.0f];
+    
+   
     [self addConstraints:@[top,leading,trailing,centerX]];
+    
+    [_titleLabelInsetsConstraints[@(NSLayoutAttributeTop)] addObject:top];
+    [_titleLabelInsetsConstraints[@(NSLayoutAttributeLeading)] addObject:leading];
+    [_titleLabelInsetsConstraints[@(NSLayoutAttributeTrailing)] addObject:trailing];
+    
+    
 }
 
 -(void)layoutActionView{
     [_actionsCollectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self addSubview:_actionsCollectionView];
     
-    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_actionsCollectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:_titleLabel attribute:NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationLessThanOrEqual toItem:_actionsCollectionView attribute:NSLayoutAttributeTop multiplier:1.0f constant: - _titleLabelInsets.bottom];
     NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:_actionsCollectionView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
     NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:_actionsCollectionView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0f constant:0.0f];
     NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:_actionsCollectionView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:0.0f];
     
     [self addConstraints:@[top,bottom,leading,trailing]];
+    
+    [_titleLabelInsetsConstraints[@(NSLayoutAttributeBottom)] addObject:top];
 }
 
 -(void)layoutContentView{
@@ -90,14 +110,22 @@
         [_contentView setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self addSubview:_contentView];
         
-        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_titleLabel attribute:NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
+        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationLessThanOrEqual toItem:_contentView attribute:NSLayoutAttributeTop multiplier:1.0f constant: - _titleLabelInsets.bottom];
         NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_actionsCollectionView attribute:NSLayoutAttributeTop multiplier:1.0f constant:0.0f];
         NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0f constant:0.0f];
         NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:0.0f];
         
         [self addConstraints:@[top,bottom,leading,trailing]];
-        
+        [_titleLabelInsetsConstraints[@(NSLayoutAttributeBottom)] addObject:top];
     }
+}
+
+-(void)setTitleLabelInsets:(UIEdgeInsets)titleLabelInsets{
+    _titleLabelInsets = titleLabelInsets;
+    [_titleLabelInsetsConstraints[@(NSLayoutAttributeTop)] makeObjectsPerformSelector:@selector(setConstant:) withObject:@(titleLabelInsets.top)];
+    [_titleLabelInsetsConstraints[@(NSLayoutAttributeBottom)] makeObjectsPerformSelector:@selector(setConstant:) withObject:@(-titleLabelInsets.bottom)];
+    [_titleLabelInsetsConstraints[@(NSLayoutAttributeLeading)] makeObjectsPerformSelector:@selector(setConstant:) withObject:@(titleLabelInsets.left)];
+    [_titleLabelInsetsConstraints[@(NSLayoutAttributeTrailing)] makeObjectsPerformSelector:@selector(setConstant:) withObject:@(-titleLabelInsets.right)];
 }
 
 @end
