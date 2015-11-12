@@ -36,7 +36,6 @@
 /* Begin PBXFileReference section */
 		8A227F3E1BF49C6A0093C215 /* DLAlertController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DLAlertController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A227F411BF49C6A0093C215 /* DLAlertController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLAlertController.h; sourceTree = "<group>"; };
-		8A227F431BF49C6A0093C215 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A227F4A1BF49D230093C215 /* DLAlertAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertAction.h; sourceTree = "<group>"; };
 		8A227F4B1BF49D230093C215 /* DLAlertAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertAction.m; sourceTree = "<group>"; };
 		8A227F4C1BF49D230093C215 /* DLAlertActionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertActionCell.h; sourceTree = "<group>"; };
@@ -60,6 +59,7 @@
 		8A227F741BF49DCA0093C215 /* DLActionsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLActionsCollectionView.m; sourceTree = "<group>"; };
 		8A227F771BF49DF80093C215 /* DLAlertLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertLabel.h; sourceTree = "<group>"; };
 		8A227F781BF49DF80093C215 /* DLAlertLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertLabel.m; sourceTree = "<group>"; };
+		8AC01E241BF4B64C009FF122 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +92,7 @@
 		8A227F401BF49C6A0093C215 /* DLAlertController */ = {
 			isa = PBXGroup;
 			children = (
+				8AC01E231BF4B64C009FF122 /* SupportingFiles */,
 				8A227F771BF49DF80093C215 /* DLAlertLabel.h */,
 				8A227F781BF49DF80093C215 /* DLAlertLabel.m */,
 				8A227F6E1BF49D6C0093C215 /* Types */,
@@ -101,7 +102,6 @@
 				8A227F541BF49D230093C215 /* DLAlertView.h */,
 				8A227F551BF49D230093C215 /* DLAlertView.m */,
 				8A227F561BF49D230093C215 /* Presentation */,
-				8A227F431BF49C6A0093C215 /* Info.plist */,
 			);
 			path = DLAlertController;
 			sourceTree = "<group>";
@@ -143,6 +143,14 @@
 				8A227F701BF49D6C0093C215 /* DLAlertActionStyle.h */,
 			);
 			path = Types;
+			sourceTree = "<group>";
+		};
+		8AC01E231BF4B64C009FF122 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				8AC01E241BF4B64C009FF122 /* Info.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,7 +355,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DLAlertController/Info.plist;
+				INFOPLIST_FILE = DLAlertController/SupportingFiles/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sdkdimon.DLAlertController;
@@ -363,7 +371,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DLAlertController/Info.plist;
+				INFOPLIST_FILE = DLAlertController/SupportingFiles/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sdkdimon.DLAlertController;
