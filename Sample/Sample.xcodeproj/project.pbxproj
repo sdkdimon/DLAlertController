@@ -13,6 +13,7 @@
 		8A227F921BF49E5E0093C215 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A227F901BF49E5E0093C215 /* Main.storyboard */; };
 		8A227F941BF49E5E0093C215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A227F931BF49E5E0093C215 /* Assets.xcassets */; };
 		8A227F971BF49E5E0093C215 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A227F951BF49E5E0093C215 /* LaunchScreen.storyboard */; };
+		8A269EC81BF4D7190037A2C8 /* DLAlertController.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AF8ACD21BF4A15100FBAC59 /* DLAlertController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8AF8ACD61BF4AD3400FBAC59 /* DLAlertController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AF8ACD21BF4A15100FBAC59 /* DLAlertController.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,19 @@
 			remoteInfo = DLAlertController;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8A269EC71BF4D7110037A2C8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8A269EC81BF4D7190037A2C8 /* DLAlertController.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8A227F841BF49E5E0093C215 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +156,7 @@
 				8A227F801BF49E5E0093C215 /* Sources */,
 				8A227F811BF49E5E0093C215 /* Frameworks */,
 				8A227F821BF49E5E0093C215 /* Resources */,
+				8A269EC71BF4D7110037A2C8 /* CopyFiles */,
 			);
 			buildRules = (
 			);

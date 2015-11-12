@@ -24,6 +24,11 @@
 #import "DLAlertView.h"
 #import "DLAlertTransitionController.h"
 
+
+
+
+
+
 @interface DLAlertController () <DLActionsCollectionViewDataSource,DLActionsCollectionViewDelegate>
 @property(weak,nonatomic,readonly) DLAlertView *alertView;
 
@@ -40,7 +45,9 @@
     self = [super init];
     if(self != nil){
         _actions = [[NSMutableArray alloc] initWithCapacity:0];
-        _visualStyles = [@{@(DLAlertActionStyleDefault) : [[DLAlertActionVisualStyle alloc] init]} mutableCopy];
+        _visualStyles = [@{@(DLAlertActionStyleDefault) : [DLAlertActionVisualStyle defaultStyle],
+                           @(DLAlertActionStyleCancel) : [DLAlertActionVisualStyle cancelStyle],
+                           @(DLAlertActionStyleDestructive) : [DLAlertActionVisualStyle destructiveStyle]} mutableCopy];
         _transitionController = [[DLAlertTransitionController alloc] init];
         [self setModalPresentationStyle:UIModalPresentationCustom];
         [self setTransitioningDelegate:_transitionController];

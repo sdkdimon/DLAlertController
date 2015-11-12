@@ -22,7 +22,7 @@
 
 #import "DLAlertActionVisualStyle.h"
 
-@interface DLAlertActionVisualStyleItem : NSObject
+@interface DLAlertActionVisualStyleItem : NSObject <NSCopying>
 
 @property(strong,nonatomic,readwrite) UIColor *backgroundColor;
 @property(strong,nonatomic,readwrite) UIColor *textColor;
@@ -31,60 +31,106 @@
 
 @implementation DLAlertActionVisualStyleItem
 
+-(id)copyWithZone:(NSZone *)zone{
+    DLAlertActionVisualStyleItem *copy = [[DLAlertActionVisualStyleItem alloc] init];
+    [copy setBackgroundColor:[_backgroundColor copy]];
+    [copy setTextColor:[_textColor copy]];
+    return copy;
+}
+
+@end
+
+@interface DLAlertActionVisualStyle ()
+
+@property(strong,nonatomic,readwrite)  NSDictionary<NSNumber *,DLAlertActionVisualStyleItem *> *styleItems;
+
 @end
 
 
-@implementation DLAlertActionVisualStyle{
-    NSDictionary<NSNumber *,DLAlertActionVisualStyleItem *> *styleItems;
-}
-
-
--(instancetype)init{
-    self = [super init];
-    if(self != nil){
-        
-        _font = [UIFont systemFontOfSize:17.0f];
-        
-        
-        DLAlertActionVisualStyleItem *normalStyleItem = [[DLAlertActionVisualStyleItem alloc] init];
-        [normalStyleItem setBackgroundColor:[UIColor lightGrayColor]];
-        [normalStyleItem setTextColor:[UIColor whiteColor]];
-       
-        
-        
-        DLAlertActionVisualStyleItem *highlightedStyleItem = [[DLAlertActionVisualStyleItem alloc] init];
-        [highlightedStyleItem setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:.5]];
-        [highlightedStyleItem setTextColor:[[UIColor darkTextColor] colorWithAlphaComponent:.5]];
-       
-        
-        DLAlertActionVisualStyleItem *disabledStyleItem = [[DLAlertActionVisualStyleItem alloc] init];
-        [disabledStyleItem setBackgroundColor:[UIColor darkGrayColor]];
-        [disabledStyleItem setTextColor:[UIColor whiteColor]];
-        
-        styleItems = @{@(DLAlertActionStateNormal) : normalStyleItem,
-                       @(DLAlertActionStateHighlighted) : highlightedStyleItem,
-                       @(DLAlertActionStateDisabled) : disabledStyleItem};
-    }
-    return self;
-}
-
+@implementation DLAlertActionVisualStyle
 
 -(void)setBackgroundColor:(UIColor *)color forActionState:(DLAlertActionState)state{
-    [styleItems[@(state)] setBackgroundColor:color];
+    [_styleItems[@(state)] setBackgroundColor:color];
 }
 
 -(UIColor *)backgroundColorForActionState:(DLAlertActionState)state{
     
-    return [styleItems[@(state)] backgroundColor];
+    return [_styleItems[@(state)] backgroundColor];
 }
 
 -(void)setTextColor:(UIColor *)color forActionState:(DLAlertActionState)state{
-    [styleItems[@(state)] setTextColor:color];
+    [_styleItems[@(state)] setTextColor:color];
 }
 
 -(UIColor *)textColorForActionState:(DLAlertActionState)state{
-    return [styleItems[@(state)] textColor];
+    return [_styleItems[@(state)] textColor];
 }
 
 
 @end
+
+
+@implementation DLAlertActionVisualStyle (Factory)
+
++(instancetype)defaultStyle{
+    
+    UIColor *backgroundMainColor = [UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f];
+    UIColor *textMainColor = [UIColor colorWithRed:68.0f/255.0f green:69.0f/255.0f blue:81.0f/255.0f alpha:1.0f];
+    
+    DLAlertActionVisualStyle *defaultStyle = [[DLAlertActionVisualStyle alloc] init];
+    [defaultStyle setFont:[UIFont systemFontOfSize:17.0f]];
+    
+    DLAlertActionVisualStyleItem *normalStyleItem = [[DLAlertActionVisualStyleItem alloc] init];
+    [normalStyleItem setBackgroundColor:backgroundMainColor];
+    [normalStyleItem setTextColor:textMainColor];
+    
+    DLAlertActionVisualStyleItem *highlightedStyleItem = [[DLAlertActionVisualStyleItem alloc] init];
+    [highlightedStyleItem setBackgroundColor:[backgroundMainColor colorWithAlphaComponent:.5]];
+    [highlightedStyleItem setTextColor:[textMainColor colorWithAlphaComponent:.5]];
+    
+    DLAlertActionVisualStyleItem *disabledStyleItem = [highlightedStyleItem copy];
+    
+    [defaultStyle setStyleItems:@{@(DLAlertActionStateNormal) : normalStyleItem,
+                                 @(DLAlertActionStateHighlighted) : highlightedStyleItem,
+                                 @(DLAlertActionStateDisabled) : disabledStyleItem}];
+
+    return defaultStyle;
+}
+
++(instancetype)cancelStyle{
+    return [self defaultStyle];
+}
+
++(instancetype)destructiveStyle{
+    
+    UIColor *backgroundMainColor = [UIColor colorWithRed:254.0f/255.0f green:67.0f/255.0f blue:40.0f/255.0f alpha:1.0f];
+    UIColor *textMainColor = [UIColor colorWithRed:240.0f/255.0f green:240.0f/255.0f blue:240.0f/255.0f alpha:1.0f];
+    
+    DLAlertActionVisualStyle *destructiveStyle = [[DLAlertActionVisualStyle alloc] init];
+    [destructiveStyle setFont:[UIFont systemFontOfSize:17.0f]];
+    
+    DLAlertActionVisualStyleItem *normalStyleItem = [[DLAlertActionVisualStyleItem alloc] init];
+    [normalStyleItem setBackgroundColor:backgroundMainColor];
+    [normalStyleItem setTextColor:textMainColor];
+    
+    DLAlertActionVisualStyleItem *highlightedStyleItem = [[DLAlertActionVisualStyleItem alloc] init];
+    [highlightedStyleItem setBackgroundColor:[backgroundMainColor colorWithAlphaComponent:.5]];
+    [highlightedStyleItem setTextColor:[textMainColor colorWithAlphaComponent:.5]];
+    
+    DLAlertActionVisualStyleItem *disabledStyleItem = [highlightedStyleItem copy];
+    
+    [destructiveStyle setStyleItems:@{@(DLAlertActionStateNormal) : normalStyleItem,
+                                  @(DLAlertActionStateHighlighted) : highlightedStyleItem,
+                                  @(DLAlertActionStateDisabled) : disabledStyleItem}];
+    
+    return destructiveStyle;
+}
+
+
+
+
+
+@end
+
+
+

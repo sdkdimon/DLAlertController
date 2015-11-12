@@ -21,7 +21,6 @@
 // THE SOFTWARE.
 
 #import "ViewController.h"
-//#import "DLAlertController.h"
 #import <DLAlertController/DLAlertController.h>
 
 
@@ -44,12 +43,17 @@
 - (IBAction)showAlertController:(UIButton *)sender {
     DLAlertController *alert = [[DLAlertController alloc] init];
     
-    [alert addAction:[DLAlertAction actionWithTitle:@"Cancel" style:DLAlertActionStyleDefault handler:^{
+    [alert addAction:[DLAlertAction actionWithTitle:@"Cancel" style:DLAlertActionStyleCancel handler:^{
         NSLog(@"%@ tapped ",@"Hello");
     }]];
     [alert addAction:[DLAlertAction actionWithTitle:@"Ok" style:DLAlertActionStyleDefault handler:^{
         NSLog(@"%@ tapped ",@"Cancel");
     }]];
+    
+    [alert addAction:[DLAlertAction actionWithTitle:@"Delete" style:DLAlertActionStyleDestructive handler:^{
+        NSLog(@"%@ tapped ",@"Delete");
+    }]];
+    
     [alert setTitle:@"Hello this is alert"];
     
     [self presentViewController:alert animated:YES completion:nil];
