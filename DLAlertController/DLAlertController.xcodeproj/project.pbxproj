@@ -25,12 +25,12 @@
 		8A227F6B1BF49D230093C215 /* DLAlertPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F5A1BF49D230093C215 /* DLAlertPresentationController.m */; };
 		8A227F6C1BF49D230093C215 /* DLAlertTransitionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F5B1BF49D230093C215 /* DLAlertTransitionController.h */; };
 		8A227F6D1BF49D230093C215 /* DLAlertTransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F5C1BF49D230093C215 /* DLAlertTransitionController.m */; };
-		8A227F711BF49D6C0093C215 /* DLAlertActionState.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F6F1BF49D6C0093C215 /* DLAlertActionState.h */; };
-		8A227F721BF49D6C0093C215 /* DLAlertActionStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F701BF49D6C0093C215 /* DLAlertActionStyle.h */; };
 		8A227F751BF49DCA0093C215 /* DLActionsCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F731BF49DCA0093C215 /* DLActionsCollectionView.h */; };
 		8A227F761BF49DCA0093C215 /* DLActionsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F741BF49DCA0093C215 /* DLActionsCollectionView.m */; };
 		8A227F791BF49DF80093C215 /* DLAlertLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F771BF49DF80093C215 /* DLAlertLabel.h */; };
 		8A227F7A1BF49DF80093C215 /* DLAlertLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F781BF49DF80093C215 /* DLAlertLabel.m */; };
+		8AC01E291BF4C538009FF122 /* DLAlertActionState.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AC01E271BF4C538009FF122 /* DLAlertActionState.h */; };
+		8AC01E2A1BF4C538009FF122 /* DLAlertActionStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AC01E281BF4C538009FF122 /* DLAlertActionStyle.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,13 +53,13 @@
 		8A227F5A1BF49D230093C215 /* DLAlertPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertPresentationController.m; sourceTree = "<group>"; };
 		8A227F5B1BF49D230093C215 /* DLAlertTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertTransitionController.h; sourceTree = "<group>"; };
 		8A227F5C1BF49D230093C215 /* DLAlertTransitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertTransitionController.m; sourceTree = "<group>"; };
-		8A227F6F1BF49D6C0093C215 /* DLAlertActionState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertActionState.h; sourceTree = "<group>"; };
-		8A227F701BF49D6C0093C215 /* DLAlertActionStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertActionStyle.h; sourceTree = "<group>"; };
 		8A227F731BF49DCA0093C215 /* DLActionsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLActionsCollectionView.h; sourceTree = "<group>"; };
 		8A227F741BF49DCA0093C215 /* DLActionsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLActionsCollectionView.m; sourceTree = "<group>"; };
 		8A227F771BF49DF80093C215 /* DLAlertLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertLabel.h; sourceTree = "<group>"; };
 		8A227F781BF49DF80093C215 /* DLAlertLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertLabel.m; sourceTree = "<group>"; };
 		8AC01E241BF4B64C009FF122 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AC01E271BF4C538009FF122 /* DLAlertActionState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertActionState.h; sourceTree = "<group>"; };
+		8AC01E281BF4C538009FF122 /* DLAlertActionStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertActionStyle.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +95,6 @@
 				8AC01E231BF4B64C009FF122 /* SupportingFiles */,
 				8A227F771BF49DF80093C215 /* DLAlertLabel.h */,
 				8A227F781BF49DF80093C215 /* DLAlertLabel.m */,
-				8A227F6E1BF49D6C0093C215 /* Types */,
 				8A227F491BF49D230093C215 /* Actions */,
 				8A227F411BF49C6A0093C215 /* DLAlertController.h */,
 				8A227F531BF49D230093C215 /* DLAlertController.m */,
@@ -109,6 +108,8 @@
 		8A227F491BF49D230093C215 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				8AC01E271BF4C538009FF122 /* DLAlertActionState.h */,
+				8AC01E281BF4C538009FF122 /* DLAlertActionStyle.h */,
 				8A227F731BF49DCA0093C215 /* DLActionsCollectionView.h */,
 				8A227F741BF49DCA0093C215 /* DLActionsCollectionView.m */,
 				8A227F4A1BF49D230093C215 /* DLAlertAction.h */,
@@ -136,15 +137,6 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		8A227F6E1BF49D6C0093C215 /* Types */ = {
-			isa = PBXGroup;
-			children = (
-				8A227F6F1BF49D6C0093C215 /* DLAlertActionState.h */,
-				8A227F701BF49D6C0093C215 /* DLAlertActionStyle.h */,
-			);
-			path = Types;
-			sourceTree = "<group>";
-		};
 		8AC01E231BF4B64C009FF122 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,7 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A227F681BF49D230093C215 /* DLAlertAnimationController.h in Headers */,
-				8A227F721BF49D6C0093C215 /* DLAlertActionStyle.h in Headers */,
+				8AC01E291BF4C538009FF122 /* DLAlertActionState.h in Headers */,
 				8A227F661BF49D230093C215 /* DLAlertView.h in Headers */,
 				8A227F611BF49D230093C215 /* DLAlertActionCollectionViewLayout.h in Headers */,
 				8A227F5F1BF49D230093C215 /* DLAlertActionCell.h in Headers */,
@@ -169,9 +161,9 @@
 				8A227F421BF49C6A0093C215 /* DLAlertController.h in Headers */,
 				8A227F751BF49DCA0093C215 /* DLActionsCollectionView.h in Headers */,
 				8A227F6A1BF49D230093C215 /* DLAlertPresentationController.h in Headers */,
-				8A227F711BF49D6C0093C215 /* DLAlertActionState.h in Headers */,
 				8A227F791BF49DF80093C215 /* DLAlertLabel.h in Headers */,
 				8A227F5D1BF49D230093C215 /* DLAlertAction.h in Headers */,
+				8AC01E2A1BF4C538009FF122 /* DLAlertActionStyle.h in Headers */,
 				8A227F631BF49D230093C215 /* DLAlertActionVisualStyle.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

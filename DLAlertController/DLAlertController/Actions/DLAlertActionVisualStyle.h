@@ -22,7 +22,6 @@
 
 #import <UIKit/UIKit.h>
 #import "DLAlertActionState.h"
-#import "DLAlertActionStyle.h"
 
 @interface DLAlertActionVisualStyle : NSObject
 
