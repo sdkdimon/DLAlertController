@@ -40,12 +40,20 @@
     self = [super init];
     if(self != nil){
         _actions = [[NSMutableArray alloc] initWithCapacity:0];
-        _visualStyles = [@{@(DLAlertActionVisualStyleDefault) : [[DLAlertActionVisualStyle alloc] init]} mutableCopy];
+        _visualStyles = [@{@(DLAlertActionStyleDefault) : [[DLAlertActionVisualStyle alloc] init]} mutableCopy];
         _transitionController = [[DLAlertTransitionController alloc] init];
         [self setModalPresentationStyle:UIModalPresentationCustom];
         [self setTransitioningDelegate:_transitionController];
     }
     return self;
+}
+
+-(void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle{
+    [_visualStyles setObject:visualStyle forKey:@(actionStyle)];
+}
+
+-(DLAlertActionVisualStyle *)actionVisualStyleForActionStyle:(DLAlertActionStyle)actionStyle{
+    return [_visualStyles objectForKey:@(actionStyle)];
 }
 
 - (void)viewDidLoad {

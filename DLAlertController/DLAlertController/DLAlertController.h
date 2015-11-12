@@ -22,6 +22,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DLAlertAction.h"
+#import "DLAlertActionVisualStyle.h"
 
 @interface DLAlertController : UIViewController
 
@@ -30,6 +31,9 @@
 -(void)addAction:(DLAlertAction *)action;
 //Override to initialize a custom content view
 -(UIView *)alertContentView;
+
+-(void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle;
+-(DLAlertActionVisualStyle *)actionVisualStyleForActionStyle:(DLAlertActionStyle)actionStyle;
 
 @end
 

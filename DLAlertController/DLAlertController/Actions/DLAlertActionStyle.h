@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 typedef NS_ENUM(NSInteger,DLAlertActionStyle){
-    DLAlertActionVisualStyleDefault = 0,
-    DLAlertActionVisualStyleCancel,
-    DLAlertActionVisualStyleDestructive
+    DLAlertActionStyleDefault = 0,
+    DLAlertActionStyleCancel,
+    DLAlertActionStyleDestructive
 };

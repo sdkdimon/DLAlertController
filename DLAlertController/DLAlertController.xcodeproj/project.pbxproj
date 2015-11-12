@@ -42,24 +42,24 @@
 		8A227F4D1BF49D230093C215 /* DLAlertActionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertActionCell.m; sourceTree = "<group>"; };
 		8A227F4E1BF49D230093C215 /* DLAlertActionCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertActionCollectionViewLayout.h; sourceTree = "<group>"; };
 		8A227F4F1BF49D230093C215 /* DLAlertActionCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertActionCollectionViewLayout.m; sourceTree = "<group>"; };
-		8A227F501BF49D230093C215 /* DLAlertActionVisualStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertActionVisualStyle.h; sourceTree = "<group>"; };
-		8A227F511BF49D230093C215 /* DLAlertActionVisualStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertActionVisualStyle.m; sourceTree = "<group>"; };
-		8A227F531BF49D230093C215 /* DLAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertController.m; sourceTree = "<group>"; };
-		8A227F541BF49D230093C215 /* DLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertView.h; sourceTree = "<group>"; };
-		8A227F551BF49D230093C215 /* DLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertView.m; sourceTree = "<group>"; };
+		8A227F501BF49D230093C215 /* DLAlertActionVisualStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DLAlertActionVisualStyle.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8A227F511BF49D230093C215 /* DLAlertActionVisualStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DLAlertActionVisualStyle.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		8A227F531BF49D230093C215 /* DLAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DLAlertController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		8A227F541BF49D230093C215 /* DLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DLAlertView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8A227F551BF49D230093C215 /* DLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DLAlertView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8A227F571BF49D230093C215 /* DLAlertAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertAnimationController.h; sourceTree = "<group>"; };
 		8A227F581BF49D230093C215 /* DLAlertAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertAnimationController.m; sourceTree = "<group>"; };
 		8A227F591BF49D230093C215 /* DLAlertPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertPresentationController.h; sourceTree = "<group>"; };
 		8A227F5A1BF49D230093C215 /* DLAlertPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertPresentationController.m; sourceTree = "<group>"; };
 		8A227F5B1BF49D230093C215 /* DLAlertTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertTransitionController.h; sourceTree = "<group>"; };
 		8A227F5C1BF49D230093C215 /* DLAlertTransitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertTransitionController.m; sourceTree = "<group>"; };
-		8A227F731BF49DCA0093C215 /* DLActionsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLActionsCollectionView.h; sourceTree = "<group>"; };
-		8A227F741BF49DCA0093C215 /* DLActionsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLActionsCollectionView.m; sourceTree = "<group>"; };
+		8A227F731BF49DCA0093C215 /* DLActionsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DLActionsCollectionView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8A227F741BF49DCA0093C215 /* DLActionsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DLActionsCollectionView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8A227F771BF49DF80093C215 /* DLAlertLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertLabel.h; sourceTree = "<group>"; };
 		8A227F781BF49DF80093C215 /* DLAlertLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertLabel.m; sourceTree = "<group>"; };
 		8AC01E241BF4B64C009FF122 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AC01E271BF4C538009FF122 /* DLAlertActionState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertActionState.h; sourceTree = "<group>"; };
-		8AC01E281BF4C538009FF122 /* DLAlertActionStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertActionStyle.h; sourceTree = "<group>"; };
+		8AC01E281BF4C538009FF122 /* DLAlertActionStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DLAlertActionStyle.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

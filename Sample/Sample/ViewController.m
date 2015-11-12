@@ -44,10 +44,10 @@
 - (IBAction)showAlertController:(UIButton *)sender {
     DLAlertController *alert = [[DLAlertController alloc] init];
     
-    [alert addAction:[DLAlertAction actionWithTitle:@"Cancel" style:DLAlertActionVisualStyleDefault handler:^{
+    [alert addAction:[DLAlertAction actionWithTitle:@"Cancel" style:DLAlertActionStyleDefault handler:^{
         NSLog(@"%@ tapped ",@"Hello");
     }]];
-    [alert addAction:[DLAlertAction actionWithTitle:@"Ok" style:DLAlertActionVisualStyleDefault handler:^{
+    [alert addAction:[DLAlertAction actionWithTitle:@"Ok" style:DLAlertActionStyleDefault handler:^{
         NSLog(@"%@ tapped ",@"Cancel");
     }]];
     [alert setTitle:@"Hello this is alert"];
