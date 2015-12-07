@@ -13,11 +13,17 @@
 		8A227F921BF49E5E0093C215 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A227F901BF49E5E0093C215 /* Main.storyboard */; };
 		8A227F941BF49E5E0093C215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A227F931BF49E5E0093C215 /* Assets.xcassets */; };
 		8A227F971BF49E5E0093C215 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A227F951BF49E5E0093C215 /* LaunchScreen.storyboard */; };
-		8A269EC81BF4D7190037A2C8 /* DLAlertController.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AF8ACD21BF4A15100FBAC59 /* DLAlertController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8AF8ACD61BF4AD3400FBAC59 /* DLAlertController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AF8ACD21BF4A15100FBAC59 /* DLAlertController.framework */; };
+		8A5558A71C15A83B00CC6BF4 /* DLAlertController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AF8ACD21BF4A15100FBAC59 /* DLAlertController.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8A5558A51C15A82E00CC6BF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AF8ACCD1BF4A15100FBAC59 /* DLAlertController.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A227F3D1BF49C6A0093C215;
+			remoteInfo = DLAlertController;
+		};
 		8AF8ACD11BF4A15100FBAC59 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8AF8ACCD1BF4A15100FBAC59 /* DLAlertController.xcodeproj */;
@@ -25,27 +31,7 @@
 			remoteGlobalIDString = 8A227F3E1BF49C6A0093C215;
 			remoteInfo = DLAlertController;
 		};
-		8AF8ACD31BF4A17600FBAC59 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8AF8ACCD1BF4A15100FBAC59 /* DLAlertController.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8A227F3D1BF49C6A0093C215;
-			remoteInfo = DLAlertController;
-		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		8A269EC71BF4D7110037A2C8 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				8A269EC81BF4D7190037A2C8 /* DLAlertController.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8A227F841BF49E5E0093C215 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AF8ACD61BF4AD3400FBAC59 /* DLAlertController.framework in Frameworks */,
+				8A5558A71C15A83B00CC6BF4 /* DLAlertController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,12 +142,11 @@
 				8A227F801BF49E5E0093C215 /* Sources */,
 				8A227F811BF49E5E0093C215 /* Frameworks */,
 				8A227F821BF49E5E0093C215 /* Resources */,
-				8A269EC71BF4D7110037A2C8 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8AF8ACD41BF4A17600FBAC59 /* PBXTargetDependency */,
+				8A5558A61C15A82E00CC6BF4 /* PBXTargetDependency */,
 			);
 			name = Sample;
 			productName = Sample;
@@ -243,10 +228,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8AF8ACD41BF4A17600FBAC59 /* PBXTargetDependency */ = {
+		8A5558A61C15A82E00CC6BF4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = DLAlertController;
-			targetProxy = 8AF8ACD31BF4A17600FBAC59 /* PBXContainerItemProxy */;
+			targetProxy = 8A5558A51C15A82E00CC6BF4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -307,7 +292,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "../**";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -346,7 +331,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "../**";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -358,6 +343,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = Sample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sdkdimon.Sample;
@@ -369,6 +355,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = Sample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sdkdimon.Sample;
