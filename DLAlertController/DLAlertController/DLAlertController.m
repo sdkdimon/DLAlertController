@@ -24,17 +24,14 @@
 #import "DLAlertView.h"
 #import "DLAlertTransitionController.h"
 
-
-
-
-
-
 @interface DLAlertController () <DLActionsCollectionViewDataSource,DLActionsCollectionViewDelegate>
 @property(weak,nonatomic,readonly) DLAlertView *alertView;
 
 @property(strong,nonatomic,readwrite) NSMutableArray<DLAlertAction *> *actions;
 @property(strong,nonatomic,readwrite) NSMutableDictionary<NSNumber *,DLAlertActionVisualStyle *> *visualStyles;
 @property(strong,nonatomic,readwrite) DLAlertTransitionController *transitionController;
+
+@property(assign,nonatomic,readwrite,getter=isViewAppear) BOOL viewAppear;
 
 @end
 
@@ -145,8 +142,10 @@
         DLActionsCollectionView *actionView = [_alertView actionsCollectionView];
         DLAlertActionItemLayout itemLayout =  itemCount > 2 ? DLAlertActionItemLayoutVertical : DLAlertActionItemLayoutHorizontal;
         [[actionView collectionViewLayout] setItemLayout:itemLayout];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:itemCount - 2 inSection:0];
-        [actionView insertItemsAtIndexPaths:@[indexPath]];
+        if([self isViewAppear]){
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:(itemCount - 1) inSection:0];
+            [actionView insertItemsAtIndexPaths:@[indexPath]];
+        }
     }
 }
 
@@ -188,6 +187,18 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+#pragma mark ViewAppearance
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self setViewAppear:YES];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self setViewAppear:NO];
+}
 
 -(void)dealloc{
     for(DLAlertAction *action in _actions){

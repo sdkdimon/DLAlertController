@@ -31,6 +31,7 @@
 @property(strong,nonatomic,readwrite) UIFont *titleFont;
 @property(assign,nonatomic,readwrite) UIEdgeInsets titleInsets;
 @property(assign,nonatomic,readwrite) CGFloat actionHeight;
+@property(assign,nonatomic,readonly,getter=isViewAppear) BOOL viewAppear;
 
 -(void)addAction:(DLAlertAction *)action;
 //Override to initialize a custom content view
