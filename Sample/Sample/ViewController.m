@@ -42,7 +42,7 @@
 
 - (IBAction)showAlertController:(UIButton *)sender {
     DLAlertController *alert = [[DLAlertController alloc] init];
-    
+    [alert setTitleTextColor:[UIColor purpleColor]];
     [alert addAction:[DLAlertAction actionWithTitle:@"Cancel" style:DLAlertActionStyleCancel handler:^{
         NSLog(@"%@ tapped ",@"Cancel");
     }]];

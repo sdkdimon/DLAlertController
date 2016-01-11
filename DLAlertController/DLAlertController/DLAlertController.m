@@ -156,6 +156,13 @@
     }
 }
 
+-(void)setTitleTextColor:(UIColor *)titleTextColor{
+    _titleTextColor = titleTextColor;
+    if(_alertView != nil){
+        [[_alertView titleLabel] setTextColor:titleTextColor];
+    }
+}
+
 
 -(UIView *)alertContentView{
     return nil;
