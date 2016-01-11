@@ -163,6 +163,13 @@
     }
 }
 
+-(void)setTitleFont:(UIFont *)titleFont{
+    _titleFont = titleFont;
+    if(_alertView != nil){
+        [[_alertView titleLabel] setFont:titleFont];
+    }
+}
+
 
 -(UIView *)alertContentView{
     return nil;
