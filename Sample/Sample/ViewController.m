@@ -42,7 +42,14 @@
 
 - (IBAction)showAlertController:(UIButton *)sender {
     DLAlertController *alert = [[DLAlertController alloc] init];
-    [alert setTitleTextColor:[UIColor purpleColor]];
+    //[alert setTitleInsets:UIEdgeInsetsMake(20, 10, 20, 10)];
+   // [alert setTitleTextColor:[UIColor purpleColor]];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [alert setTitleTextColor:[UIColor purpleColor]];
+        [alert setTitleInsets:UIEdgeInsetsMake(20, 10, 20, 10)];
+    });
+    
+    
     [alert addAction:[DLAlertAction actionWithTitle:@"Cancel" style:DLAlertActionStyleCancel handler:^{
         NSLog(@"%@ tapped ",@"Cancel");
     }]];

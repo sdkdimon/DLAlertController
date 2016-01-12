@@ -122,10 +122,26 @@
 
 -(void)setTitleLabelInsets:(UIEdgeInsets)titleLabelInsets{
     _titleLabelInsets = titleLabelInsets;
-    [_titleLabelInsetsConstraints[@(NSLayoutAttributeTop)] makeObjectsPerformSelector:@selector(setConstant:) withObject:@(titleLabelInsets.top)];
-    [_titleLabelInsetsConstraints[@(NSLayoutAttributeBottom)] makeObjectsPerformSelector:@selector(setConstant:) withObject:@(-titleLabelInsets.bottom)];
-    [_titleLabelInsetsConstraints[@(NSLayoutAttributeLeading)] makeObjectsPerformSelector:@selector(setConstant:) withObject:@(titleLabelInsets.left)];
-    [_titleLabelInsetsConstraints[@(NSLayoutAttributeTrailing)] makeObjectsPerformSelector:@selector(setConstant:) withObject:@(-titleLabelInsets.right)];
+    
+    NSArray *topConstraints = _titleLabelInsetsConstraints[@(NSLayoutAttributeTop)];
+    [[topConstraints firstObject] setConstant:titleLabelInsets.top];
+    
+    [self performSetConstantSelectorConstraints:_titleLabelInsetsConstraints[@(NSLayoutAttributeTop)] withValue:titleLabelInsets.top];
+    [self performSetConstantSelectorConstraints:_titleLabelInsetsConstraints[@(NSLayoutAttributeBottom)] withValue:-titleLabelInsets.bottom];
+    [self performSetConstantSelectorConstraints:_titleLabelInsetsConstraints[@(NSLayoutAttributeLeading)] withValue:titleLabelInsets.left];
+    [self performSetConstantSelectorConstraints:_titleLabelInsetsConstraints[@(NSLayoutAttributeTrailing)] withValue:-titleLabelInsets.right];
+    
+   // [_titleLabelInsetsConstraints[@(NSLayoutAttributeTop)] makeObjectsPerformSelector:@selector(setConstant:) withObject:@(titleLabelInsets.top)];
+//    [_titleLabelInsetsConstraints[@(NSLayoutAttributeBottom)] makeObjectsPerformSelector:@selector(setConstant:) withObject:@(-titleLabelInsets.bottom)];
+//    [_titleLabelInsetsConstraints[@(NSLayoutAttributeLeading)] makeObjectsPerformSelector:@selector(setConstant:) withObject:@(titleLabelInsets.left)];
+//    [_titleLabelInsetsConstraints[@(NSLayoutAttributeTrailing)] makeObjectsPerformSelector:@selector(setConstant:) withObject:@(-titleLabelInsets.right)];
+    //[self setNeedsUpdateConstraints];
+}
+
+-(void)performSetConstantSelectorConstraints:(NSArray<NSLayoutConstraint *> *)constraints withValue:(CGFloat)value{
+    for(NSUInteger idx = 0; idx < [constraints count]; idx++){
+        [[constraints objectAtIndex:idx] setConstant:value];
+    }
 }
 
 @end

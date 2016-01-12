@@ -170,6 +170,13 @@
     }
 }
 
+-(void)setTitleInsets:(UIEdgeInsets)titleInsets{
+    _titleInsets = titleInsets;
+    if(_alertView != nil){
+        [_alertView setTitleLabelInsets:titleInsets];
+    }
+}
+
 
 -(UIView *)alertContentView{
     return nil;
