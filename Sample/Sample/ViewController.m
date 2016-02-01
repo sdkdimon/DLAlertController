@@ -21,7 +21,9 @@
 // THE SOFTWARE.
 
 #import "ViewController.h"
-#import <DLAlertController/DLAlertController.h>
+#import <DLAlertController/DLAlertActionController.h>
+
+
 
 
 @interface ViewController ()
@@ -41,12 +43,14 @@
 }
 
 - (IBAction)showAlertController:(UIButton *)sender {
-    DLAlertController *alert = [[DLAlertController alloc] init];
+    DLAlertActionController *alert = [[DLAlertActionController alloc] init];
+    [alert setActionHeight:36];
     //[alert setTitleInsets:UIEdgeInsetsMake(20, 10, 20, 10)];
    // [alert setTitleTextColor:[UIColor purpleColor]];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [alert setTitleTextColor:[UIColor purpleColor]];
         [alert setTitleInsets:UIEdgeInsetsMake(20, 10, 20, 10)];
+        [alert setActionHeight:360];
     });
     
     
@@ -56,13 +60,13 @@
     [alert addAction:[DLAlertAction actionWithTitle:@"Ok" style:DLAlertActionStyleDefault handler:^{
         NSLog(@"%@ tapped ",@"Ok");
     }]];
-    
-    [alert addAction:[DLAlertAction actionWithTitle:@"Delete" style:DLAlertActionStyleDestructive handler:^{
-        NSLog(@"%@ tapped ",@"Delete");
-    }]];
+//    
+//    [alert addAction:[DLAlertAction actionWithTitle:@"Delete" style:DLAlertActionStyleDestructive handler:^{
+//        NSLog(@"%@ tapped ",@"Delete");
+//    }]];
     
     [alert setTitle:@"Hello this is alert"];
     
-    [self presentViewController:alert animated:YES completion:nil];
+    [alert presentAnimated:YES completion:nil];
 }
 @end

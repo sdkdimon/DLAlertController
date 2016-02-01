@@ -1,5 +1,5 @@
 //
-// DLActionsCollectionView.h
+// UIViewController+TopViewController.h
 // Copyright (c) 2015 Dmitry Lizin (sdkdimon@gmail.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,34 +21,9 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DLAlertAction.h"
-#import "DLAlertActionCollectionViewLayout.h"
-#import "DLAlertActionVisualStyle.h"
 
-@class DLActionsCollectionView;
+@interface UIViewController (TopViewController)
 
-
-@protocol DLActionsCollectionViewDelegate <NSObject>
-
--(void)actionCollectionView:(DLActionsCollectionView *)collectionView didExecuteActionAtIndex:(NSUInteger)index;
-
-@end
-
-
-@protocol DLActionsCollectionViewDataSource <NSObject>
-
--(NSInteger)nubberOfActionsInActionCollectionView:(DLActionsCollectionView *)collectionView;
--(DLAlertAction *)actionCollectionView:(DLActionsCollectionView *)collectionView actionAtIndex:(NSUInteger)index;
--(DLAlertActionVisualStyle *)actionCollectionView:(DLActionsCollectionView *)collectionView actionVisualStyle:(DLAlertActionStyle)style;
-
-@end
-
-
-@interface DLActionsCollectionView : UICollectionView
-
-@property(weak,nonatomic,readwrite) id <DLActionsCollectionViewDataSource> actionDataSource;
-@property(weak,nonatomic,readwrite) id <DLActionsCollectionViewDelegate> actionDelegate;
-
-@property(strong,nonatomic,readwrite) DLAlertActionCollectionViewLayout *collectionViewLayout;
++(UIViewController *)topViewController:(UIViewController *)viewController;
 
 @end

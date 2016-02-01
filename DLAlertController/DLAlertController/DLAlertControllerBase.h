@@ -1,5 +1,5 @@
 //
-// DLActionsCollectionView.h
+// DLAlertControllerTest.h
 // Copyright (c) 2015 Dmitry Lizin (sdkdimon@gmail.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,34 +21,19 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DLAlertAction.h"
-#import "DLAlertActionCollectionViewLayout.h"
-#import "DLAlertActionVisualStyle.h"
-
-@class DLActionsCollectionView;
 
 
-@protocol DLActionsCollectionViewDelegate <NSObject>
+@interface DLAlertControllerBase : UIViewController <UIGestureRecognizerDelegate>
 
--(void)actionCollectionView:(DLActionsCollectionView *)collectionView didExecuteActionAtIndex:(NSUInteger)index;
+@property(strong,nonatomic,readonly) UITapGestureRecognizer *rootViewTapGesture;
 
-@end
+-(void)rootViewGestureTap:(UITapGestureRecognizer *)sender;
 
-
-@protocol DLActionsCollectionViewDataSource <NSObject>
-
--(NSInteger)nubberOfActionsInActionCollectionView:(DLActionsCollectionView *)collectionView;
--(DLAlertAction *)actionCollectionView:(DLActionsCollectionView *)collectionView actionAtIndex:(NSUInteger)index;
--(DLAlertActionVisualStyle *)actionCollectionView:(DLActionsCollectionView *)collectionView actionVisualStyle:(DLAlertActionStyle)style;
+-(void)setup;
 
 @end
 
-
-@interface DLActionsCollectionView : UICollectionView
-
-@property(weak,nonatomic,readwrite) id <DLActionsCollectionViewDataSource> actionDataSource;
-@property(weak,nonatomic,readwrite) id <DLActionsCollectionViewDelegate> actionDelegate;
-
-@property(strong,nonatomic,readwrite) DLAlertActionCollectionViewLayout *collectionViewLayout;
-
+@interface DLAlertControllerBase (Presentation)
+-(void)presentAnimated:(BOOL)animated completion:(void(^)())completion;
+-(void)dismissAnimated:(BOOL)animated completion:(void(^)())completion;
 @end

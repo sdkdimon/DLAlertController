@@ -1,5 +1,5 @@
 //
-// DLAlertView.h
+// DLAlertViewTest.h
 // Copyright (c) 2015 Dmitry Lizin (sdkdimon@gmail.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,26 +21,19 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DLAlertAction.h"
-#import "DLAlertActionVisualStyle.h"
-#import "DLActionsCollectionView.h"
-
-
-typedef NS_ENUM(NSInteger,DLAlertSeparatorType) {
-    DLAlertSeparatorTypeTitle = 0,
-    DLAlertSeparatorTypeAction
-};
 
 @interface DLAlertView : UIView
 
-+(instancetype)alertWithContentView:(UIView *)contentView;
-
-@property(strong,nonatomic,readonly) UILabel *titleLabel;
+@property(strong,nonatomic,readonly) UIScrollView *scrollView;
 @property(strong,nonatomic,readonly) UIView *contentView;
-@property(strong,nonatomic,readonly) DLActionsCollectionView *actionsCollectionView;
-@property(assign,nonatomic,readwrite) UIEdgeInsets titleLabelInsets;
+@property(strong,nonatomic,readonly) UIView *actionContentView;
+@property(assign,nonatomic,readonly) UIEdgeInsets contentViewInsets;
+@property(strong,nonatomic,readonly) NSLayoutConstraint *widthConstraint;
+@property(strong,nonatomic,readonly) NSLayoutConstraint *heightConstraint;
 
--(void)prepareLayout;
+-(void)setup;
 
+-(void)createUI;
+-(void)setupLayoutConstraints;
 
 @end

@@ -1,5 +1,5 @@
 //
-// DLActionsCollectionView.h
+// DLAlertTitleController.h
 // Copyright (c) 2015 Dmitry Lizin (sdkdimon@gmail.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,35 +20,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
-#import "DLAlertAction.h"
-#import "DLAlertActionCollectionViewLayout.h"
-#import "DLAlertActionVisualStyle.h"
+#import "DLAlertLoaderController.h"
 
-@class DLActionsCollectionView;
+@interface DLAlertTitleController : DLAlertLoaderController
 
+@property(strong,nonatomic,readonly) UIView *contentView;
 
-@protocol DLActionsCollectionViewDelegate <NSObject>
+@property(copy,nonatomic,readwrite) NSString *title;
+@property(strong,nonatomic,readwrite) UIColor *titleTextColor;
+@property(strong,nonatomic,readwrite) UIFont *titleFont;
+@property(assign,nonatomic,readwrite) UIEdgeInsets titleInsets;
 
--(void)actionCollectionView:(DLActionsCollectionView *)collectionView didExecuteActionAtIndex:(NSUInteger)index;
-
-@end
-
-
-@protocol DLActionsCollectionViewDataSource <NSObject>
-
--(NSInteger)nubberOfActionsInActionCollectionView:(DLActionsCollectionView *)collectionView;
--(DLAlertAction *)actionCollectionView:(DLActionsCollectionView *)collectionView actionAtIndex:(NSUInteger)index;
--(DLAlertActionVisualStyle *)actionCollectionView:(DLActionsCollectionView *)collectionView actionVisualStyle:(DLAlertActionStyle)style;
-
-@end
-
-
-@interface DLActionsCollectionView : UICollectionView
-
-@property(weak,nonatomic,readwrite) id <DLActionsCollectionViewDataSource> actionDataSource;
-@property(weak,nonatomic,readwrite) id <DLActionsCollectionViewDelegate> actionDelegate;
-
-@property(strong,nonatomic,readwrite) DLAlertActionCollectionViewLayout *collectionViewLayout;
 
 @end

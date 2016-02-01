@@ -1,5 +1,5 @@
 //
-// DLAlertView.m
+// DLAlertViewTest.m
 // Copyright (c) 2015 Dmitry Lizin (sdkdimon@gmail.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,127 +21,329 @@
 // THE SOFTWARE.
 
 #import "DLAlertView.h"
-#import "DLActionsCollectionView.h"
-#import "DLAlertLabel.h"
-#import "DLAlertActionVisualStyle.h"
 
 @interface DLAlertView ()
-@property(strong,nonatomic,readwrite) NSMutableDictionary *separatorStyles;
 
-@property(strong,nonatomic,readwrite) NSDictionary<NSNumber *,NSMutableArray<NSLayoutConstraint *> *> *titleLabelInsetsConstraints;
+@property(strong,nonatomic,readwrite) UIView *contentView;
+@property(strong,nonatomic,readwrite) NSLayoutConstraint *widthConstraint;
+@property(strong,nonatomic,readwrite) NSLayoutConstraint *heightConstraint;
+
+@property(strong,nonatomic,readwrite) NSDictionary <NSNumber *, NSLayoutConstraint *> *contentViewConstraints;
 
 @end
 
 
 @implementation DLAlertView
 
-+(instancetype)alertWithContentView:(UIView *)contentView{
-    return [[self alloc] initWithContentView:contentView];
-}
+#pragma mark Initializers
 
--(instancetype)initWithContentView:(UIView *)contentView{
-    self = [super initWithFrame:CGRectZero];
-    if(self != nil){
-        _titleLabelInsets = UIEdgeInsetsZero;
-        
-        _titleLabelInsetsConstraints = @{@(NSLayoutAttributeTop) : [[NSMutableArray alloc] init],
-                                         @(NSLayoutAttributeBottom) : [[NSMutableArray alloc] init],
-                                         @(NSLayoutAttributeLeading) : [[NSMutableArray alloc] init],
-                                         @(NSLayoutAttributeTrailing) : [[NSMutableArray alloc] init],};
-        _contentView = contentView;
-        [self createUI];
+-(instancetype)init{
+    self = [super init];
+    if(self != nil) {
     }
     return self;
 }
 
+-(instancetype)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if(self != nil){
+        [self setup];
+    }
+    return self;
+}
+
+
+-(instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if(self != nil){
+        [self setup];
+    }
+    return self;
+}
+
+#pragma mark Setup and initialize subviews
+
+-(void)setup{
+    _contentViewInsets = UIEdgeInsetsZero;
+    [self setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self createUI];
+    [self setupLayoutConstraints];
+}
+
 -(void)createUI{
-   _actionsCollectionView = [[DLActionsCollectionView alloc] init];
-   _titleLabel = [[DLAlertLabel alloc] init];
-   
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
+    [_scrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self addSubview:_scrollView];
+    _contentView = [[UIView alloc] initWithFrame:CGRectZero];
+    [_contentView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_scrollView addSubview:_contentView];
+    _actionContentView = [[UIView alloc] initWithFrame:CGRectZero];
+    [_actionContentView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self addSubview:_actionContentView];
+}
+
+#pragma mark Setup layout constraint
+
+-(void)setupLayoutConstraints{
+    [self setupSelfLayoutConstraints];
+    [self setupScrollViewConstraints];
+    [self setupContentViewConstraints];
+    [self setupActionContentViewConstraints];
 }
 
 
 -(void)prepareLayout{
-    [self layoutUI];
+    [self setupLayoutConstraints];
 }
 
--(void)layoutUI{
-    [self layoutTitleLabel];
-    [self layoutActionView];
-    [self layoutContentView];
+#pragma mark Self constraints
+
+-(void)setupSelfLayoutConstraints{
+    _widthConstraint = [NSLayoutConstraint constraintWithItem:self
+                                                    attribute:NSLayoutAttributeWidth
+                                                    relatedBy:NSLayoutRelationEqual
+                                                       toItem:nil
+                                                    attribute:NSLayoutAttributeNotAnAttribute
+                                                   multiplier:1.0f
+                                                     constant:0.0f];
+    [_widthConstraint setPriority:UILayoutPriorityDefaultLow];
+    
+    _heightConstraint = [NSLayoutConstraint constraintWithItem:self
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1.0f
+                                                      constant:0.0f];
+    
+    [_heightConstraint setPriority:UILayoutPriorityDefaultLow];
+    [self addConstraints:@[_widthConstraint,_heightConstraint]];
+}
+
+#pragma mark ScrollView constraints
+
+-(void)setupScrollViewConstraints{
+    
+    NSLayoutConstraint *leading = [NSLayoutConstraint
+                                   constraintWithItem:_scrollView
+                                   attribute:NSLayoutAttributeLeading
+                                   relatedBy:NSLayoutRelationEqual
+                                   toItem:self
+                                   attribute:NSLayoutAttributeLeading
+                                   multiplier:1.0f
+                                   constant:0.0f];
+    
+    NSLayoutConstraint *top = [NSLayoutConstraint
+                               constraintWithItem:_scrollView
+                               attribute:NSLayoutAttributeTop
+                               relatedBy:NSLayoutRelationEqual
+                               toItem:self
+                               attribute:NSLayoutAttributeTop
+                               multiplier:1.0f
+                               constant:0.0f];
+    
+    NSLayoutConstraint *trailing = [NSLayoutConstraint
+                                    constraintWithItem:_scrollView
+                                    attribute:NSLayoutAttributeTrailing
+                                    relatedBy:NSLayoutRelationEqual
+                                    toItem:self
+                                    attribute:NSLayoutAttributeTrailing
+                                    multiplier:1.0f
+                                    constant:0.0f];
+    
+    NSLayoutConstraint *bottom =    [NSLayoutConstraint
+                                     constraintWithItem:_scrollView
+                                     attribute:NSLayoutAttributeBottom
+                                     relatedBy:NSLayoutRelationLessThanOrEqual
+                                     toItem:self
+                                     attribute:NSLayoutAttributeBottom
+                                     multiplier:1.0f
+                                     constant:0.0f];
+    [self addConstraints:@[leading,
+                           top,
+                           trailing,
+                           bottom]];
+    
+    _contentViewConstraints = @{@(NSLayoutAttributeLeading) : leading,
+                                @(NSLayoutAttributeTop) : top,
+                                @(NSLayoutAttributeTrailing) : trailing,
+                                @(NSLayoutAttributeBottom) : bottom};
     
 }
 
--(void)layoutTitleLabel{
-    [_titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self addSubview:_titleLabel];
-    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0f constant:_titleLabelInsets.top];
-    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0f constant:_titleLabelInsets.left];
-    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationLessThanOrEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0f constant: - _titleLabelInsets.right];
+
+#pragma mark ContentView constraints
+
+-(void)setupContentViewConstraints{
     
-    NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
+    NSLayoutConstraint *leading = [NSLayoutConstraint
+                                   constraintWithItem:_contentView
+                                   attribute:NSLayoutAttributeLeading
+                                   relatedBy:NSLayoutRelationEqual
+                                   toItem:_scrollView
+                                   attribute:NSLayoutAttributeLeading
+                                   multiplier:1.0f
+                                   constant:_contentViewInsets.left];
     
-   
-    [self addConstraints:@[top,leading,trailing,centerX]];
+    NSLayoutConstraint *top = [NSLayoutConstraint
+                                   constraintWithItem:_contentView
+                                   attribute:NSLayoutAttributeTop
+                                   relatedBy:NSLayoutRelationEqual
+                                   toItem:_scrollView
+                                   attribute:NSLayoutAttributeTop
+                                   multiplier:1.0f
+                                   constant:_contentViewInsets.top];
     
-    [_titleLabelInsetsConstraints[@(NSLayoutAttributeTop)] addObject:top];
-    [_titleLabelInsetsConstraints[@(NSLayoutAttributeLeading)] addObject:leading];
-    [_titleLabelInsetsConstraints[@(NSLayoutAttributeTrailing)] addObject:trailing];
+    NSLayoutConstraint *trailing = [NSLayoutConstraint
+                                   constraintWithItem:_contentView
+                                   attribute:NSLayoutAttributeTrailing
+                                   relatedBy:NSLayoutRelationEqual
+                                   toItem:_scrollView
+                                   attribute:NSLayoutAttributeTrailing
+                                   multiplier:1.0f
+                                   constant:_contentViewInsets.right];
     
+    NSLayoutConstraint *bottom =   [NSLayoutConstraint
+                                   constraintWithItem:_contentView
+                                   attribute:NSLayoutAttributeBottom
+                                   relatedBy:NSLayoutRelationEqual
+                                   toItem:_scrollView
+                                   attribute:NSLayoutAttributeBottom
+                                   multiplier:1.0f
+                                   constant:_contentViewInsets.bottom];
+    
+    NSLayoutConstraint *equalHeight = [NSLayoutConstraint
+                                        constraintWithItem:_contentView
+                                        attribute:NSLayoutAttributeHeight
+                                        relatedBy:NSLayoutRelationEqual
+                                        toItem:_scrollView
+                                        attribute:NSLayoutAttributeHeight
+                                        multiplier:1.0f
+                                        constant:0.0f];
+    [equalHeight setPriority:UILayoutPriorityDefaultHigh];
+    
+    NSLayoutConstraint *equalWidth = [NSLayoutConstraint
+                                       constraintWithItem:_contentView
+                                       attribute:NSLayoutAttributeWidth
+                                       relatedBy:NSLayoutRelationEqual
+                                       toItem:_scrollView
+                                       attribute:NSLayoutAttributeWidth
+                                       multiplier:1.0f
+                                       constant:0.0f];
+    
+    
+    [_scrollView addConstraints:@[leading,
+                                  top,
+                                  trailing,
+                                  bottom,
+                                  equalHeight,
+                                  equalWidth]];
     
 }
 
--(void)layoutActionView{
-    [_actionsCollectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self addSubview:_actionsCollectionView];
+
+-(void)setupActionContentViewConstraints{
     
-    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationLessThanOrEqual toItem:_actionsCollectionView attribute:NSLayoutAttributeTop multiplier:1.0f constant: - _titleLabelInsets.bottom];
-    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:_actionsCollectionView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
-    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:_actionsCollectionView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0f constant:0.0f];
-    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:_actionsCollectionView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:0.0f];
+    NSLayoutConstraint *leading = [NSLayoutConstraint
+                                   constraintWithItem:_actionContentView
+                                   attribute:NSLayoutAttributeLeading
+                                   relatedBy:NSLayoutRelationEqual
+                                   toItem:self
+                                   attribute:NSLayoutAttributeLeading
+                                   multiplier:1.0f
+                                   constant:0.0f];
     
-    [self addConstraints:@[top,bottom,leading,trailing]];
+    NSLayoutConstraint *top = [NSLayoutConstraint
+                               constraintWithItem:_actionContentView
+                               attribute:NSLayoutAttributeTop
+                               relatedBy:NSLayoutRelationEqual
+                               toItem:_scrollView
+                               attribute:NSLayoutAttributeBottom
+                               multiplier:1.0f
+                               constant:0.0f];
     
-    [_titleLabelInsetsConstraints[@(NSLayoutAttributeBottom)] addObject:top];
+    NSLayoutConstraint *trailing = [NSLayoutConstraint
+                                    constraintWithItem:_actionContentView
+                                    attribute:NSLayoutAttributeTrailing
+                                    relatedBy:NSLayoutRelationEqual
+                                    toItem:self
+                                    attribute:NSLayoutAttributeTrailing
+                                    multiplier:1.0f
+                                    constant:0.0f];
+    
+    NSLayoutConstraint *bottom =   [NSLayoutConstraint
+                                    constraintWithItem:_actionContentView
+                                    attribute:NSLayoutAttributeBottom
+                                    relatedBy:NSLayoutRelationEqual
+                                    toItem:self
+                                    attribute:NSLayoutAttributeBottom
+                                    multiplier:1.0f
+                                    constant:0.0f];
+    [self addConstraints:@[leading,trailing,top,bottom]];
 }
 
--(void)layoutContentView{
-    if(_contentView != nil){
-        [_contentView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [self addSubview:_contentView];
-        
-        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationLessThanOrEqual toItem:_contentView attribute:NSLayoutAttributeTop multiplier:1.0f constant: - _titleLabelInsets.bottom];
-        NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_actionsCollectionView attribute:NSLayoutAttributeTop multiplier:1.0f constant:0.0f];
-        NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0f constant:0.0f];
-        NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:0.0f];
-        
-        [self addConstraints:@[top,bottom,leading,trailing]];
-        [_titleLabelInsetsConstraints[@(NSLayoutAttributeBottom)] addObject:top];
-    }
-}
+#pragma mark Update ContentView insets and constraints
 
--(void)setTitleLabelInsets:(UIEdgeInsets)titleLabelInsets{
-    _titleLabelInsets = titleLabelInsets;
-    
-    NSArray *topConstraints = _titleLabelInsetsConstraints[@(NSLayoutAttributeTop)];
-    [[topConstraints firstObject] setConstant:titleLabelInsets.top];
-    
-    [self performSetConstantSelectorConstraints:_titleLabelInsetsConstraints[@(NSLayoutAttributeTop)] withValue:titleLabelInsets.top];
-    [self performSetConstantSelectorConstraints:_titleLabelInsetsConstraints[@(NSLayoutAttributeBottom)] withValue:-titleLabelInsets.bottom];
-    [self performSetConstantSelectorConstraints:_titleLabelInsetsConstraints[@(NSLayoutAttributeLeading)] withValue:titleLabelInsets.left];
-    [self performSetConstantSelectorConstraints:_titleLabelInsetsConstraints[@(NSLayoutAttributeTrailing)] withValue:-titleLabelInsets.right];
-    
-   // [_titleLabelInsetsConstraints[@(NSLayoutAttributeTop)] makeObjectsPerformSelector:@selector(setConstant:) withObject:@(titleLabelInsets.top)];
-//    [_titleLabelInsetsConstraints[@(NSLayoutAttributeBottom)] makeObjectsPerformSelector:@selector(setConstant:) withObject:@(-titleLabelInsets.bottom)];
-//    [_titleLabelInsetsConstraints[@(NSLayoutAttributeLeading)] makeObjectsPerformSelector:@selector(setConstant:) withObject:@(titleLabelInsets.left)];
-//    [_titleLabelInsetsConstraints[@(NSLayoutAttributeTrailing)] makeObjectsPerformSelector:@selector(setConstant:) withObject:@(-titleLabelInsets.right)];
-    //[self setNeedsUpdateConstraints];
-}
+//-(void)setContentViewInsets:(UIEdgeInsets)contentViewInsets{
+//    _contentViewInsets = contentViewInsets;
+//    
+//    NSLayoutConstraint *leading = [_contentViewConstraints objectForKey:@(NSLayoutAttributeLeading)];
+//    [leading setConstant:contentViewInsets.left];
+//    
+//    NSLayoutConstraint *top = [_contentViewConstraints objectForKey:@(NSLayoutAttributeTop)];
+//    [top setConstant:contentViewInsets.top];
+//    
+//    NSLayoutConstraint *trailing = [_contentViewConstraints objectForKey:@(NSLayoutAttributeTrailing)];
+//    [trailing setConstant:- contentViewInsets.right];
+//    
+//    NSLayoutConstraint *bottom = [_contentViewConstraints objectForKey:@(NSLayoutAttributeBottom)];
+//    [bottom setConstant:- contentViewInsets.bottom];
+//}
 
--(void)performSetConstantSelectorConstraints:(NSArray<NSLayoutConstraint *> *)constraints withValue:(CGFloat)value{
-    for(NSUInteger idx = 0; idx < [constraints count]; idx++){
-        [[constraints objectAtIndex:idx] setConstant:value];
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A227F421BF49C6A0093C215 /* DLAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F411BF49C6A0093C215 /* DLAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A227F421BF49C6A0093C215 /* DLAlertActionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F411BF49C6A0093C215 /* DLAlertActionController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A227F5D1BF49D230093C215 /* DLAlertAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F4A1BF49D230093C215 /* DLAlertAction.h */; };
 		8A227F5E1BF49D230093C215 /* DLAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F4B1BF49D230093C215 /* DLAlertAction.m */; };
 		8A227F5F1BF49D230093C215 /* DLAlertActionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F4C1BF49D230093C215 /* DLAlertActionCell.h */; };
@@ -16,9 +16,7 @@
 		8A227F621BF49D230093C215 /* DLAlertActionCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F4F1BF49D230093C215 /* DLAlertActionCollectionViewLayout.m */; };
 		8A227F631BF49D230093C215 /* DLAlertActionVisualStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F501BF49D230093C215 /* DLAlertActionVisualStyle.h */; };
 		8A227F641BF49D230093C215 /* DLAlertActionVisualStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F511BF49D230093C215 /* DLAlertActionVisualStyle.m */; };
-		8A227F651BF49D230093C215 /* DLAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F531BF49D230093C215 /* DLAlertController.m */; };
-		8A227F661BF49D230093C215 /* DLAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F541BF49D230093C215 /* DLAlertView.h */; };
-		8A227F671BF49D230093C215 /* DLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F551BF49D230093C215 /* DLAlertView.m */; };
+		8A227F651BF49D230093C215 /* DLAlertActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F531BF49D230093C215 /* DLAlertActionController.m */; };
 		8A227F681BF49D230093C215 /* DLAlertAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F571BF49D230093C215 /* DLAlertAnimationController.h */; };
 		8A227F691BF49D230093C215 /* DLAlertAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F581BF49D230093C215 /* DLAlertAnimationController.m */; };
 		8A227F6A1BF49D230093C215 /* DLAlertPresentationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F591BF49D230093C215 /* DLAlertPresentationController.h */; };
@@ -29,13 +27,23 @@
 		8A227F761BF49DCA0093C215 /* DLActionsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F741BF49DCA0093C215 /* DLActionsCollectionView.m */; };
 		8A227F791BF49DF80093C215 /* DLAlertLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F771BF49DF80093C215 /* DLAlertLabel.h */; };
 		8A227F7A1BF49DF80093C215 /* DLAlertLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F781BF49DF80093C215 /* DLAlertLabel.m */; };
+		8A24ED541C5F6A09003A15A6 /* DLAlertTitleController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A24ED521C5F6A09003A15A6 /* DLAlertTitleController.h */; };
+		8A24ED551C5F6A09003A15A6 /* DLAlertTitleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A24ED531C5F6A09003A15A6 /* DLAlertTitleController.m */; };
+		8AA5FE651C5B7DF70060CA5A /* DLAlertControllerBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA5FE631C5B7DF70060CA5A /* DLAlertControllerBase.h */; };
+		8AA5FE661C5B7DF70060CA5A /* DLAlertControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5FE641C5B7DF70060CA5A /* DLAlertControllerBase.m */; };
+		8AA5FE6A1C5B81180060CA5A /* UIViewController+TopViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA5FE681C5B81180060CA5A /* UIViewController+TopViewController.h */; };
+		8AA5FE7B1C5B83500060CA5A /* UIViewController+TopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5FE691C5B81180060CA5A /* UIViewController+TopViewController.m */; };
+		8AA5FE851C5BAE940060CA5A /* DLAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA5FE831C5BAE940060CA5A /* DLAlertView.h */; };
+		8AA5FE861C5BAE940060CA5A /* DLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5FE841C5BAE940060CA5A /* DLAlertView.m */; };
+		8AA5FE891C5BB4290060CA5A /* DLAlertLoaderController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA5FE871C5BB4290060CA5A /* DLAlertLoaderController.h */; };
+		8AA5FE8A1C5BB4290060CA5A /* DLAlertLoaderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5FE881C5BB4290060CA5A /* DLAlertLoaderController.m */; };
 		8AC01E291BF4C538009FF122 /* DLAlertActionState.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AC01E271BF4C538009FF122 /* DLAlertActionState.h */; };
 		8AC01E2A1BF4C538009FF122 /* DLAlertActionStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AC01E281BF4C538009FF122 /* DLAlertActionStyle.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8A227F3E1BF49C6A0093C215 /* DLAlertController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DLAlertController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A227F411BF49C6A0093C215 /* DLAlertController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLAlertController.h; sourceTree = "<group>"; };
+		8A227F411BF49C6A0093C215 /* DLAlertActionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLAlertActionController.h; sourceTree = "<group>"; };
 		8A227F4A1BF49D230093C215 /* DLAlertAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertAction.h; sourceTree = "<group>"; };
 		8A227F4B1BF49D230093C215 /* DLAlertAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertAction.m; sourceTree = "<group>"; };
 		8A227F4C1BF49D230093C215 /* DLAlertActionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertActionCell.h; sourceTree = "<group>"; };
@@ -44,9 +52,7 @@
 		8A227F4F1BF49D230093C215 /* DLAlertActionCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertActionCollectionViewLayout.m; sourceTree = "<group>"; };
 		8A227F501BF49D230093C215 /* DLAlertActionVisualStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DLAlertActionVisualStyle.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		8A227F511BF49D230093C215 /* DLAlertActionVisualStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DLAlertActionVisualStyle.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		8A227F531BF49D230093C215 /* DLAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DLAlertController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		8A227F541BF49D230093C215 /* DLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DLAlertView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		8A227F551BF49D230093C215 /* DLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DLAlertView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		8A227F531BF49D230093C215 /* DLAlertActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DLAlertActionController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8A227F571BF49D230093C215 /* DLAlertAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertAnimationController.h; sourceTree = "<group>"; };
 		8A227F581BF49D230093C215 /* DLAlertAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertAnimationController.m; sourceTree = "<group>"; };
 		8A227F591BF49D230093C215 /* DLAlertPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertPresentationController.h; sourceTree = "<group>"; };
@@ -57,6 +63,16 @@
 		8A227F741BF49DCA0093C215 /* DLActionsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DLActionsCollectionView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8A227F771BF49DF80093C215 /* DLAlertLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertLabel.h; sourceTree = "<group>"; };
 		8A227F781BF49DF80093C215 /* DLAlertLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertLabel.m; sourceTree = "<group>"; };
+		8A24ED521C5F6A09003A15A6 /* DLAlertTitleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertTitleController.h; sourceTree = "<group>"; };
+		8A24ED531C5F6A09003A15A6 /* DLAlertTitleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertTitleController.m; sourceTree = "<group>"; };
+		8AA5FE631C5B7DF70060CA5A /* DLAlertControllerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertControllerBase.h; sourceTree = "<group>"; };
+		8AA5FE641C5B7DF70060CA5A /* DLAlertControllerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertControllerBase.m; sourceTree = "<group>"; };
+		8AA5FE681C5B81180060CA5A /* UIViewController+TopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TopViewController.h"; sourceTree = "<group>"; };
+		8AA5FE691C5B81180060CA5A /* UIViewController+TopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TopViewController.m"; sourceTree = "<group>"; };
+		8AA5FE831C5BAE940060CA5A /* DLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertView.h; sourceTree = "<group>"; };
+		8AA5FE841C5BAE940060CA5A /* DLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertView.m; sourceTree = "<group>"; };
+		8AA5FE871C5BB4290060CA5A /* DLAlertLoaderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertLoaderController.h; sourceTree = "<group>"; };
+		8AA5FE881C5BB4290060CA5A /* DLAlertLoaderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertLoaderController.m; sourceTree = "<group>"; };
 		8AC01E241BF4B64C009FF122 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AC01E271BF4C538009FF122 /* DLAlertActionState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertActionState.h; sourceTree = "<group>"; };
 		8AC01E281BF4C538009FF122 /* DLAlertActionStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DLAlertActionStyle.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -92,15 +108,16 @@
 		8A227F401BF49C6A0093C215 /* DLAlertController */ = {
 			isa = PBXGroup;
 			children = (
-				8AC01E231BF4B64C009FF122 /* SupportingFiles */,
+				8AA5FE831C5BAE940060CA5A /* DLAlertView.h */,
+				8AA5FE841C5BAE940060CA5A /* DLAlertView.m */,
+				8AA5FE801C5BAE5C0060CA5A /* Controllers */,
+				8A227F491BF49D230093C215 /* Actions */,
+				8AA5FE681C5B81180060CA5A /* UIViewController+TopViewController.h */,
+				8AA5FE691C5B81180060CA5A /* UIViewController+TopViewController.m */,
 				8A227F771BF49DF80093C215 /* DLAlertLabel.h */,
 				8A227F781BF49DF80093C215 /* DLAlertLabel.m */,
-				8A227F491BF49D230093C215 /* Actions */,
-				8A227F411BF49C6A0093C215 /* DLAlertController.h */,
-				8A227F531BF49D230093C215 /* DLAlertController.m */,
-				8A227F541BF49D230093C215 /* DLAlertView.h */,
-				8A227F551BF49D230093C215 /* DLAlertView.m */,
 				8A227F561BF49D230093C215 /* Presentation */,
+				8AC01E231BF4B64C009FF122 /* SupportingFiles */,
 			);
 			path = DLAlertController;
 			sourceTree = "<group>";
@@ -137,6 +154,53 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
+		8A24ED501C5F6841003A15A6 /* ActionConroller */ = {
+			isa = PBXGroup;
+			children = (
+				8A227F411BF49C6A0093C215 /* DLAlertActionController.h */,
+				8A227F531BF49D230093C215 /* DLAlertActionController.m */,
+			);
+			name = ActionConroller;
+			sourceTree = "<group>";
+		};
+		8A24ED511C5F69EE003A15A6 /* Title */ = {
+			isa = PBXGroup;
+			children = (
+				8A24ED521C5F6A09003A15A6 /* DLAlertTitleController.h */,
+				8A24ED531C5F6A09003A15A6 /* DLAlertTitleController.m */,
+			);
+			name = Title;
+			sourceTree = "<group>";
+		};
+		8AA5FE801C5BAE5C0060CA5A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8A24ED511C5F69EE003A15A6 /* Title */,
+				8A24ED501C5F6841003A15A6 /* ActionConroller */,
+				8AA5FE821C5BAE7A0060CA5A /* AlertLoader */,
+				8AA5FE811C5BAE6B0060CA5A /* Base */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		8AA5FE811C5BAE6B0060CA5A /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				8AA5FE631C5B7DF70060CA5A /* DLAlertControllerBase.h */,
+				8AA5FE641C5B7DF70060CA5A /* DLAlertControllerBase.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		8AA5FE821C5BAE7A0060CA5A /* AlertLoader */ = {
+			isa = PBXGroup;
+			children = (
+				8AA5FE871C5BB4290060CA5A /* DLAlertLoaderController.h */,
+				8AA5FE881C5BB4290060CA5A /* DLAlertLoaderController.m */,
+			);
+			name = AlertLoader;
+			sourceTree = "<group>";
+		};
 		8AC01E231BF4B64C009FF122 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,12 +218,16 @@
 			files = (
 				8A227F681BF49D230093C215 /* DLAlertAnimationController.h in Headers */,
 				8AC01E291BF4C538009FF122 /* DLAlertActionState.h in Headers */,
-				8A227F661BF49D230093C215 /* DLAlertView.h in Headers */,
+				8AA5FE651C5B7DF70060CA5A /* DLAlertControllerBase.h in Headers */,
+				8AA5FE891C5BB4290060CA5A /* DLAlertLoaderController.h in Headers */,
+				8AA5FE6A1C5B81180060CA5A /* UIViewController+TopViewController.h in Headers */,
 				8A227F611BF49D230093C215 /* DLAlertActionCollectionViewLayout.h in Headers */,
 				8A227F5F1BF49D230093C215 /* DLAlertActionCell.h in Headers */,
+				8A24ED541C5F6A09003A15A6 /* DLAlertTitleController.h in Headers */,
 				8A227F6C1BF49D230093C215 /* DLAlertTransitionController.h in Headers */,
-				8A227F421BF49C6A0093C215 /* DLAlertController.h in Headers */,
+				8A227F421BF49C6A0093C215 /* DLAlertActionController.h in Headers */,
 				8A227F751BF49DCA0093C215 /* DLActionsCollectionView.h in Headers */,
+				8AA5FE851C5BAE940060CA5A /* DLAlertView.h in Headers */,
 				8A227F6A1BF49D230093C215 /* DLAlertPresentationController.h in Headers */,
 				8A227F791BF49DF80093C215 /* DLAlertLabel.h in Headers */,
 				8A227F5D1BF49D230093C215 /* DLAlertAction.h in Headers */,
@@ -235,15 +303,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AA5FE8A1C5BB4290060CA5A /* DLAlertLoaderController.m in Sources */,
+				8A24ED551C5F6A09003A15A6 /* DLAlertTitleController.m in Sources */,
+				8AA5FE7B1C5B83500060CA5A /* UIViewController+TopViewController.m in Sources */,
 				8A227F641BF49D230093C215 /* DLAlertActionVisualStyle.m in Sources */,
+				8AA5FE661C5B7DF70060CA5A /* DLAlertControllerBase.m in Sources */,
 				8A227F691BF49D230093C215 /* DLAlertAnimationController.m in Sources */,
 				8A227F7A1BF49DF80093C215 /* DLAlertLabel.m in Sources */,
 				8A227F761BF49DCA0093C215 /* DLActionsCollectionView.m in Sources */,
 				8A227F6B1BF49D230093C215 /* DLAlertPresentationController.m in Sources */,
-				8A227F651BF49D230093C215 /* DLAlertController.m in Sources */,
+				8A227F651BF49D230093C215 /* DLAlertActionController.m in Sources */,
 				8A227F601BF49D230093C215 /* DLAlertActionCell.m in Sources */,
-				8A227F671BF49D230093C215 /* DLAlertView.m in Sources */,
 				8A227F5E1BF49D230093C215 /* DLAlertAction.m in Sources */,
+				8AA5FE861C5BAE940060CA5A /* DLAlertView.m in Sources */,
 				8A227F6D1BF49D230093C215 /* DLAlertTransitionController.m in Sources */,
 				8A227F621BF49D230093C215 /* DLAlertActionCollectionViewLayout.m in Sources */,
 			);

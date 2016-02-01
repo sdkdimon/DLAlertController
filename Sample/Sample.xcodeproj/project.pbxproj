@@ -10,25 +10,25 @@
 		8A227F891BF49E5E0093C215 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F881BF49E5E0093C215 /* main.m */; };
 		8A227F8C1BF49E5E0093C215 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F8B1BF49E5E0093C215 /* AppDelegate.m */; };
 		8A227F8F1BF49E5E0093C215 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F8E1BF49E5E0093C215 /* ViewController.m */; };
-		8A227F921BF49E5E0093C215 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A227F901BF49E5E0093C215 /* Main.storyboard */; };
 		8A227F941BF49E5E0093C215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A227F931BF49E5E0093C215 /* Assets.xcassets */; };
-		8A227F971BF49E5E0093C215 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A227F951BF49E5E0093C215 /* LaunchScreen.storyboard */; };
-		8A5558A71C15A83B00CC6BF4 /* DLAlertController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AF8ACD21BF4A15100FBAC59 /* DLAlertController.framework */; };
+		8A24ED581C5F7CAE003A15A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A24ED561C5F7CAE003A15A6 /* LaunchScreen.storyboard */; };
+		8A24ED591C5F7CAE003A15A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A24ED571C5F7CAE003A15A6 /* Main.storyboard */; };
+		8AA5FE781C5B828A0060CA5A /* DLAlertController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA5FE711C5B81470060CA5A /* DLAlertController.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8A5558A51C15A82E00CC6BF4 /* PBXContainerItemProxy */ = {
+		8AA5FE701C5B81470060CA5A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 8AF8ACCD1BF4A15100FBAC59 /* DLAlertController.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8A227F3D1BF49C6A0093C215;
-			remoteInfo = DLAlertController;
-		};
-		8AF8ACD11BF4A15100FBAC59 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8AF8ACCD1BF4A15100FBAC59 /* DLAlertController.xcodeproj */;
+			containerPortal = 8AA5FE6C1C5B81470060CA5A /* DLAlertController.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 8A227F3E1BF49C6A0093C215;
+			remoteInfo = DLAlertController;
+		};
+		8AA5FE791C5B83280060CA5A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AA5FE6C1C5B81470060CA5A /* DLAlertController.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A227F3D1BF49C6A0093C215;
 			remoteInfo = DLAlertController;
 		};
 /* End PBXContainerItemProxy section */
@@ -40,11 +40,11 @@
 		8A227F8B1BF49E5E0093C215 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8A227F8D1BF49E5E0093C215 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		8A227F8E1BF49E5E0093C215 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		8A227F911BF49E5E0093C215 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8A227F931BF49E5E0093C215 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8A227F961BF49E5E0093C215 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A227F981BF49E5E0093C215 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8AF8ACCD1BF4A15100FBAC59 /* DLAlertController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DLAlertController.xcodeproj; path = ../DLAlertController/DLAlertController.xcodeproj; sourceTree = "<group>"; };
+		8A24ED561C5F7CAE003A15A6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Sample/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8A24ED571C5F7CAE003A15A6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Sample/Main.storyboard; sourceTree = "<group>"; };
+		8AA5FE6C1C5B81470060CA5A /* DLAlertController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DLAlertController.xcodeproj; path = ../DLAlertController/DLAlertController.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A5558A71C15A83B00CC6BF4 /* DLAlertController.framework in Frameworks */,
+				8AA5FE781C5B828A0060CA5A /* DLAlertController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +62,9 @@
 		8A227F7B1BF49E5E0093C215 = {
 			isa = PBXGroup;
 			children = (
-				8AF8ACCD1BF4A15100FBAC59 /* DLAlertController.xcodeproj */,
+				8A24ED561C5F7CAE003A15A6 /* LaunchScreen.storyboard */,
+				8A24ED571C5F7CAE003A15A6 /* Main.storyboard */,
+				8AA5FE6C1C5B81470060CA5A /* DLAlertController.xcodeproj */,
 				8A227F861BF49E5E0093C215 /* Sample */,
 				8A227F851BF49E5E0093C215 /* Products */,
 			);
@@ -79,7 +81,6 @@
 		8A227F861BF49E5E0093C215 /* Sample */ = {
 			isa = PBXGroup;
 			children = (
-				8AF8ACD51BF4AC0A00FBAC59 /* Views */,
 				8AF8ACC61BF49F4A00FBAC59 /* ViewController */,
 				8AF8ACC51BF49F4200FBAC59 /* AppDelegate */,
 				8A227F931BF49E5E0093C215 /* Assets.xcassets */,
@@ -95,6 +96,14 @@
 				8A227F881BF49E5E0093C215 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8AA5FE6D1C5B81470060CA5A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8AA5FE711C5B81470060CA5A /* DLAlertController.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		8AF8ACC51BF49F4200FBAC59 /* AppDelegate */ = {
@@ -115,23 +124,6 @@
 			name = ViewController;
 			sourceTree = "<group>";
 		};
-		8AF8ACCE1BF4A15100FBAC59 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8AF8ACD21BF4A15100FBAC59 /* DLAlertController.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		8AF8ACD51BF4AC0A00FBAC59 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				8A227F951BF49E5E0093C215 /* LaunchScreen.storyboard */,
-				8A227F901BF49E5E0093C215 /* Main.storyboard */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,7 +138,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				8A5558A61C15A82E00CC6BF4 /* PBXTargetDependency */,
+				8AA5FE7A1C5B83280060CA5A /* PBXTargetDependency */,
 			);
 			name = Sample;
 			productName = Sample;
@@ -180,8 +172,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 8AF8ACCE1BF4A15100FBAC59 /* Products */;
-					ProjectRef = 8AF8ACCD1BF4A15100FBAC59 /* DLAlertController.xcodeproj */;
+					ProductGroup = 8AA5FE6D1C5B81470060CA5A /* Products */;
+					ProjectRef = 8AA5FE6C1C5B81470060CA5A /* DLAlertController.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -192,11 +184,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		8AF8ACD21BF4A15100FBAC59 /* DLAlertController.framework */ = {
+		8AA5FE711C5B81470060CA5A /* DLAlertController.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = DLAlertController.framework;
-			remoteRef = 8AF8ACD11BF4A15100FBAC59 /* PBXContainerItemProxy */;
+			remoteRef = 8AA5FE701C5B81470060CA5A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -206,9 +198,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A227F971BF49E5E0093C215 /* LaunchScreen.storyboard in Resources */,
+				8A24ED591C5F7CAE003A15A6 /* Main.storyboard in Resources */,
 				8A227F941BF49E5E0093C215 /* Assets.xcassets in Resources */,
-				8A227F921BF49E5E0093C215 /* Main.storyboard in Resources */,
+				8A24ED581C5F7CAE003A15A6 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,31 +220,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8A5558A61C15A82E00CC6BF4 /* PBXTargetDependency */ = {
+		8AA5FE7A1C5B83280060CA5A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = DLAlertController;
-			targetProxy = 8A5558A51C15A82E00CC6BF4 /* PBXContainerItemProxy */;
+			targetProxy = 8AA5FE791C5B83280060CA5A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		8A227F901BF49E5E0093C215 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8A227F911BF49E5E0093C215 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		8A227F951BF49E5E0093C215 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8A227F961BF49E5E0093C215 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8A227F991BF49E5E0093C215 /* Debug */ = {
@@ -295,6 +268,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -333,6 +307,7 @@
 				HEADER_SEARCH_PATHS = "../**";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

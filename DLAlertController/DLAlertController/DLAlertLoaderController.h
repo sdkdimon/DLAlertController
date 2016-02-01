@@ -1,5 +1,5 @@
 //
-// DLAlertViewController.h
+// DLAlertLoaderController.h
 // Copyright (c) 2015 Dmitry Lizin (sdkdimon@gmail.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,28 +20,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
-#import "DLAlertAction.h"
-#import "DLAlertActionVisualStyle.h"
+#import "DLAlertControllerBase.h"
+@class DLAlertView;
 
-@interface DLAlertController : UIViewController
 
-@property(copy,nonatomic,readwrite) NSString *title;
-@property(strong,nonatomic,readwrite) UIColor *titleTextColor;
-@property(strong,nonatomic,readwrite) UIFont *titleFont;
-@property(assign,nonatomic,readwrite) UIEdgeInsets titleInsets;
-@property(assign,nonatomic,readwrite) CGFloat actionHeight;
-@property(assign,nonatomic,readonly,getter=isViewAppear) BOOL viewAppear;
 
--(void)addAction:(DLAlertAction *)action;
-//Override to initialize a custom content view
--(UIView *)alertContentView;
+@interface DLAlertLoaderController : DLAlertControllerBase
 
--(void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle;
--(DLAlertActionVisualStyle *)actionVisualStyleForActionStyle:(DLAlertActionStyle)actionStyle;
+@property(strong,nonatomic,readonly) DLAlertView *alert;
 
 @end
-
-
-
-

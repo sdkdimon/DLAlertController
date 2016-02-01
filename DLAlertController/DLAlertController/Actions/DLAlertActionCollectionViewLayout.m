@@ -128,5 +128,10 @@
     return YES;
 }
 
+-(void)setItemHeight:(CGFloat)itemHeight{
+    _itemHeight = itemHeight;
+    [self invalidateLayout];
+}
+
 
 @end

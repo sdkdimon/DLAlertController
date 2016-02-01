@@ -1,5 +1,5 @@
 //
-// DLActionsCollectionView.h
+// DLAlertViewController.h
 // Copyright (c) 2015 Dmitry Lizin (sdkdimon@gmail.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,35 +20,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#import "DLAlertTitleController.h"
 #import "DLAlertAction.h"
-#import "DLAlertActionCollectionViewLayout.h"
 #import "DLAlertActionVisualStyle.h"
 
-@class DLActionsCollectionView;
 
+@interface DLAlertActionController : DLAlertTitleController
 
-@protocol DLActionsCollectionViewDelegate <NSObject>
+@property(assign,nonatomic,readonly,getter=isViewAppear) BOOL viewAppear;
 
--(void)actionCollectionView:(DLActionsCollectionView *)collectionView didExecuteActionAtIndex:(NSUInteger)index;
+@property(assign,nonatomic,readwrite) CGFloat actionHeight;
 
-@end
-
-
-@protocol DLActionsCollectionViewDataSource <NSObject>
-
--(NSInteger)nubberOfActionsInActionCollectionView:(DLActionsCollectionView *)collectionView;
--(DLAlertAction *)actionCollectionView:(DLActionsCollectionView *)collectionView actionAtIndex:(NSUInteger)index;
--(DLAlertActionVisualStyle *)actionCollectionView:(DLActionsCollectionView *)collectionView actionVisualStyle:(DLAlertActionStyle)style;
+-(void)addAction:(DLAlertAction *)action;
+-(void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle;
+-(DLAlertActionVisualStyle *)actionVisualStyleForActionStyle:(DLAlertActionStyle)actionStyle;
 
 @end
 
 
-@interface DLActionsCollectionView : UICollectionView
 
-@property(weak,nonatomic,readwrite) id <DLActionsCollectionViewDataSource> actionDataSource;
-@property(weak,nonatomic,readwrite) id <DLActionsCollectionViewDelegate> actionDelegate;
 
-@property(strong,nonatomic,readwrite) DLAlertActionCollectionViewLayout *collectionViewLayout;
-
-@end
