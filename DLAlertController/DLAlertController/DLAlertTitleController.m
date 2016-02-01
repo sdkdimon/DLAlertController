@@ -38,6 +38,18 @@
 @implementation DLAlertTitleController
 @synthesize title = _title;
 
++(instancetype)controllerWithTitle:(NSString *)title{
+    return [[self alloc] initWithTitle:title];
+}
+
+-(instancetype)initWithTitle:(NSString *)title{
+    self = [super init];
+    if(self != nil){
+        _title = title;
+    }
+    return self;
+}
+
 -(void)setup{
     [super setup];
      CGFloat titleInset = 5.0f;
