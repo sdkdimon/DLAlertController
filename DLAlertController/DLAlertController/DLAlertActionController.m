@@ -187,6 +187,7 @@
 }
 
 -(void)actionTap:(NSUInteger)actionIdx{
+
 }
 
 #pragma mark ViewAppearance
@@ -202,12 +203,7 @@
 }
 
 -(void)rootViewGestureTap:(UITapGestureRecognizer *)sender{
-    [self dismissAnimated:YES completion:nil];
-    NSLog(@"TOUCH OUTSIDE");
-}
 
--(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
-    return [[touch view] isEqual:[self view]];
 }
 
 -(void)dealloc{

@@ -123,12 +123,12 @@ static NSString *const ACTION_CELL_REUSE_ID = @"ActionCell";
     [collectionView deselectItemAtIndexPath:indexPath animated:NO];
     NSInteger index = [indexPath item];
     DLAlertAction *action = [_actionDataSource actionCollectionView:self actionAtIndex:index];
+    if(_actionDelegate != nil && [_actionDelegate respondsToSelector:@selector(actionCollectionView:didExecuteActionAtIndex:)]){
+        [_actionDelegate actionCollectionView:self didExecuteActionAtIndex:index];
+    }
     void(^actionHandler)() = [action handler];
     if(actionHandler != nil){
         actionHandler();
-    }
-    if(_actionDelegate != nil && [_actionDelegate respondsToSelector:@selector(actionCollectionView:didExecuteActionAtIndex:)]){
-        [_actionDelegate actionCollectionView:self didExecuteActionAtIndex:index];
     }
 }
 

@@ -69,6 +69,10 @@
 
 }
 
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    return [[touch view] isEqual:[self view]];
+}
+
 @end
 
 @implementation DLAlertControllerBase (Presentation)
