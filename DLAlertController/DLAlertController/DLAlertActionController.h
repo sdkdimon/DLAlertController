@@ -34,6 +34,7 @@
 -(void)addAction:(DLAlertAction *)action;
 -(void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle;
 -(DLAlertActionVisualStyle *)actionVisualStyleForActionStyle:(DLAlertActionStyle)actionStyle;
+-(void)actionTap:(NSUInteger)actionIdx;
 
 @end
 

@@ -183,9 +183,11 @@
 #pragma mark DLActionsCollectionViewDelegate
 
 -(void)actionCollectionView:(DLActionsCollectionView *)collectionView didExecuteActionAtIndex:(NSUInteger)index{
-    [self dismissAnimated:YES completion:nil];
+    [self actionTap:index];
 }
 
+-(void)actionTap:(NSUInteger)actionIdx{
+}
 
 #pragma mark ViewAppearance
 
