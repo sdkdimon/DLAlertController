@@ -162,7 +162,10 @@
         [[_actionView collectionViewLayout] setItemLayout:itemLayout];
         if([self isViewAppear]){
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:(itemCount - 1) inSection:0];
-            [_actionView insertItemsAtIndexPaths:@[indexPath]];
+            [UIView performWithoutAnimation:^{
+                [[self actionView] insertItemsAtIndexPaths:@[indexPath]];
+            }];
+            
         }
     }
 }
@@ -186,7 +189,9 @@
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
     NSUInteger actionIdx = [_actions indexOfObject:object];
-    [_actionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:actionIdx inSection:0]]];
+    [UIView performWithoutAnimation:^{
+        [[self actionView] reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:actionIdx inSection:0]]];
+    }];
 }
 
 #pragma mark DLActionsCollectionViewDelegate

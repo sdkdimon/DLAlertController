@@ -47,13 +47,6 @@ static NSString *const ACTION_CELL_REUSE_ID = @"ActionCell";
     return self;
 }
 
--(void)insertItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths{
-    [CATransaction begin];
-    [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
-    [super insertItemsAtIndexPaths:indexPaths];
-    [CATransaction commit];
-}
-
 -(void)layoutSubviews{
     [super layoutSubviews];
     [self setNeedsUpdateConstraints];
