@@ -30,6 +30,7 @@
 @property(assign,nonatomic,readonly,getter=isViewAppear) BOOL viewAppear;
 
 @property(assign,nonatomic,readwrite) CGFloat actionHeight;
+@property(assign,nonatomic,readwrite) CGFloat interActionSpacing;
 
 -(void)addAction:(DLAlertAction *)action;
 -(void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle;

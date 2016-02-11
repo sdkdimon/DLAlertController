@@ -1,5 +1,5 @@
 //
-// DLAlertLabel.m
+// DLAlertMessageController.h
 // Copyright (c) 2015 Dmitry Lizin (sdkdimon@gmail.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,26 +20,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "DLAlertLabel.h"
+#import "DLAlertActionController.h"
 
-@implementation DLAlertLabel
+@interface DLAlertMessageController : DLAlertActionController
 
--(instancetype)init{
-    self = [super initWithFrame:CGRectZero];
-    if(self != nil){
-        [self setTextAlignment:NSTextAlignmentCenter];
-        [self setNumberOfLines:0];
-    }
-    
-    return self;
-}
++(instancetype)controllerWithTitle:(NSString *)title message:(NSString *)message;
+-(instancetype)initWithTitle:(NSString *)title message:(NSString *)message;
 
--(void)layoutSubviews{
-    [self setPreferredMaxLayoutWidth:[self bounds].size.width];
-    [super layoutSubviews];
-}
+@property(copy,nonatomic,readwrite) NSString *message;
+@property(strong,nonatomic,readwrite) UIFont *messageFont;
+@property(strong,nonatomic,readwrite) UIColor *messageTextColor;
 
-
-
+@property(assign,nonatomic,readwrite) UIEdgeInsets messageInsets;
 
 @end

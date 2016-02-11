@@ -25,9 +25,7 @@
 @interface DLAlertView ()
 
 @property(strong,nonatomic,readwrite) UIView *contentView;
-@property(strong,nonatomic,readwrite) NSLayoutConstraint *widthConstraint;
-@property(strong,nonatomic,readwrite) NSLayoutConstraint *heightConstraint;
-
+@property(strong,nonatomic,readwrite) NSLayoutConstraint *contentMinHeightConstraint;
 @property(strong,nonatomic,readwrite) NSDictionary <NSNumber *, NSLayoutConstraint *> *contentViewConstraints;
 
 @end
@@ -36,13 +34,6 @@
 @implementation DLAlertView
 
 #pragma mark Initializers
-
--(instancetype)init{
-    self = [super init];
-    if(self != nil) {
-    }
-    return self;
-}
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
@@ -64,8 +55,7 @@
 #pragma mark Setup and initialize subviews
 
 -(void)setup{
-    _contentViewInsets = UIEdgeInsetsZero;
-    [self setTranslatesAutoresizingMaskIntoConstraints:NO];
+    _contentMinHeight = .0f;
     [self createUI];
     [self setupLayoutConstraints];
 }
@@ -85,7 +75,6 @@
 #pragma mark Setup layout constraint
 
 -(void)setupLayoutConstraints{
-    [self setupSelfLayoutConstraints];
     [self setupScrollViewConstraints];
     [self setupContentViewConstraints];
     [self setupActionContentViewConstraints];
@@ -96,62 +85,38 @@
     [self setupLayoutConstraints];
 }
 
-#pragma mark Self constraints
-
--(void)setupSelfLayoutConstraints{
-    _widthConstraint = [NSLayoutConstraint constraintWithItem:self
-                                                    attribute:NSLayoutAttributeWidth
-                                                    relatedBy:NSLayoutRelationEqual
-                                                       toItem:nil
-                                                    attribute:NSLayoutAttributeNotAnAttribute
-                                                   multiplier:1.0f
-                                                     constant:0.0f];
-    [_widthConstraint setPriority:UILayoutPriorityDefaultLow];
-    
-    _heightConstraint = [NSLayoutConstraint constraintWithItem:self
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute
-                                                    multiplier:1.0f
-                                                      constant:0.0f];
-    
-    [_heightConstraint setPriority:UILayoutPriorityDefaultLow];
-    [self addConstraints:@[_widthConstraint,_heightConstraint]];
-}
-
 #pragma mark ScrollView constraints
 
 -(void)setupScrollViewConstraints{
     
     NSLayoutConstraint *leading = [NSLayoutConstraint
+                                       constraintWithItem:_scrollView
+                                       attribute:NSLayoutAttributeLeading
+                                       relatedBy:NSLayoutRelationEqual
+                                       toItem:self
+                                       attribute:NSLayoutAttributeLeading
+                                       multiplier:1.0f
+                                       constant:0.0f];
+    
+    NSLayoutConstraint *top = [NSLayoutConstraint
                                    constraintWithItem:_scrollView
-                                   attribute:NSLayoutAttributeLeading
+                                   attribute:NSLayoutAttributeTop
                                    relatedBy:NSLayoutRelationEqual
                                    toItem:self
-                                   attribute:NSLayoutAttributeLeading
+                                   attribute:NSLayoutAttributeTop
                                    multiplier:1.0f
                                    constant:0.0f];
     
-    NSLayoutConstraint *top = [NSLayoutConstraint
-                               constraintWithItem:_scrollView
-                               attribute:NSLayoutAttributeTop
-                               relatedBy:NSLayoutRelationEqual
-                               toItem:self
-                               attribute:NSLayoutAttributeTop
-                               multiplier:1.0f
-                               constant:0.0f];
-    
     NSLayoutConstraint *trailing = [NSLayoutConstraint
-                                    constraintWithItem:_scrollView
-                                    attribute:NSLayoutAttributeTrailing
-                                    relatedBy:NSLayoutRelationEqual
-                                    toItem:self
-                                    attribute:NSLayoutAttributeTrailing
-                                    multiplier:1.0f
-                                    constant:0.0f];
+                                        constraintWithItem:_scrollView
+                                        attribute:NSLayoutAttributeTrailing
+                                        relatedBy:NSLayoutRelationEqual
+                                        toItem:self
+                                        attribute:NSLayoutAttributeTrailing
+                                        multiplier:1.0f
+                                        constant:0.0f];
     
-    NSLayoutConstraint *bottom =    [NSLayoutConstraint
+    NSLayoutConstraint *bottom = [NSLayoutConstraint
                                      constraintWithItem:_scrollView
                                      attribute:NSLayoutAttributeBottom
                                      relatedBy:NSLayoutRelationLessThanOrEqual
@@ -176,6 +141,18 @@
 
 -(void)setupContentViewConstraints{
     
+    _contentMinHeightConstraint = [NSLayoutConstraint
+                                   constraintWithItem:_contentView
+                                   attribute:NSLayoutAttributeHeight
+                                   relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                   toItem:nil
+                                   attribute:NSLayoutAttributeNotAnAttribute
+                                   multiplier:1.0f
+                                   constant:_contentMinHeight];
+    
+    [_contentView addConstraint:_contentMinHeightConstraint];
+    
+    
     NSLayoutConstraint *leading = [NSLayoutConstraint
                                    constraintWithItem:_contentView
                                    attribute:NSLayoutAttributeLeading
@@ -183,7 +160,7 @@
                                    toItem:_scrollView
                                    attribute:NSLayoutAttributeLeading
                                    multiplier:1.0f
-                                   constant:_contentViewInsets.left];
+                                   constant:.0f];
     
     NSLayoutConstraint *top = [NSLayoutConstraint
                                    constraintWithItem:_contentView
@@ -192,7 +169,7 @@
                                    toItem:_scrollView
                                    attribute:NSLayoutAttributeTop
                                    multiplier:1.0f
-                                   constant:_contentViewInsets.top];
+                                   constant:.0f];
     
     NSLayoutConstraint *trailing = [NSLayoutConstraint
                                    constraintWithItem:_contentView
@@ -201,7 +178,7 @@
                                    toItem:_scrollView
                                    attribute:NSLayoutAttributeTrailing
                                    multiplier:1.0f
-                                   constant:_contentViewInsets.right];
+                                   constant:.0f];
     
     NSLayoutConstraint *bottom =   [NSLayoutConstraint
                                    constraintWithItem:_contentView
@@ -210,7 +187,7 @@
                                    toItem:_scrollView
                                    attribute:NSLayoutAttributeBottom
                                    multiplier:1.0f
-                                   constant:_contentViewInsets.bottom];
+                                   constant:.0f];
     
     NSLayoutConstraint *equalHeight = [NSLayoutConstraint
                                         constraintWithItem:_contentView
@@ -220,7 +197,8 @@
                                         attribute:NSLayoutAttributeHeight
                                         multiplier:1.0f
                                         constant:0.0f];
-    [equalHeight setPriority:UILayoutPriorityDefaultHigh];
+    
+    [equalHeight setPriority:UILayoutPriorityDefaultLow];
     
     NSLayoutConstraint *equalWidth = [NSLayoutConstraint
                                        constraintWithItem:_contentView
@@ -282,68 +260,10 @@
     [self addConstraints:@[leading,trailing,top,bottom]];
 }
 
-#pragma mark Update ContentView insets and constraints
 
-//-(void)setContentViewInsets:(UIEdgeInsets)contentViewInsets{
-//    _contentViewInsets = contentViewInsets;
-//    
-//    NSLayoutConstraint *leading = [_contentViewConstraints objectForKey:@(NSLayoutAttributeLeading)];
-//    [leading setConstant:contentViewInsets.left];
-//    
-//    NSLayoutConstraint *top = [_contentViewConstraints objectForKey:@(NSLayoutAttributeTop)];
-//    [top setConstant:contentViewInsets.top];
-//    
-//    NSLayoutConstraint *trailing = [_contentViewConstraints objectForKey:@(NSLayoutAttributeTrailing)];
-//    [trailing setConstant:- contentViewInsets.right];
-//    
-//    NSLayoutConstraint *bottom = [_contentViewConstraints objectForKey:@(NSLayoutAttributeBottom)];
-//    [bottom setConstant:- contentViewInsets.bottom];
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- (void)setContentMinHeight:(CGFloat)contentMinHeight{
+    _contentMinHeight = contentMinHeight;
+    [_contentMinHeightConstraint setConstant:contentMinHeight];
+}
 
 @end

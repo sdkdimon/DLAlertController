@@ -27,12 +27,10 @@
 @property(strong,nonatomic,readonly) UIScrollView *scrollView;
 @property(strong,nonatomic,readonly) UIView *contentView;
 @property(strong,nonatomic,readonly) UIView *actionContentView;
-@property(assign,nonatomic,readonly) UIEdgeInsets contentViewInsets;
-@property(strong,nonatomic,readonly) NSLayoutConstraint *widthConstraint;
-@property(strong,nonatomic,readonly) NSLayoutConstraint *heightConstraint;
+
+@property(assign,nonatomic,readwrite) CGFloat contentMinHeight;
 
 -(void)setup;
-
 -(void)createUI;
 -(void)setupLayoutConstraints;
 

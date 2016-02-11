@@ -14,6 +14,7 @@
 		8A24ED581C5F7CAE003A15A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A24ED561C5F7CAE003A15A6 /* LaunchScreen.storyboard */; };
 		8A24ED591C5F7CAE003A15A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A24ED571C5F7CAE003A15A6 /* Main.storyboard */; };
 		8AA5FE781C5B828A0060CA5A /* DLAlertController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA5FE711C5B81470060CA5A /* DLAlertController.framework */; };
+		8AB841861C6BBB5500045A1E /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB841851C6BBB5500045A1E /* View.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		8A24ED561C5F7CAE003A15A6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Sample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A24ED571C5F7CAE003A15A6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Sample/Main.storyboard; sourceTree = "<group>"; };
 		8AA5FE6C1C5B81470060CA5A /* DLAlertController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DLAlertController.xcodeproj; path = ../DLAlertController/DLAlertController.xcodeproj; sourceTree = "<group>"; };
+		8AB841851C6BBB5500045A1E /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				8A227F931BF49E5E0093C215 /* Assets.xcassets */,
 				8A227F981BF49E5E0093C215 /* Info.plist */,
 				8A227F871BF49E5E0093C215 /* Supporting Files */,
+				8AB841851C6BBB5500045A1E /* View.xib */,
 			);
 			path = Sample;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AB841861C6BBB5500045A1E /* View.xib in Resources */,
 				8A24ED591C5F7CAE003A15A6 /* Main.storyboard in Resources */,
 				8A227F941BF49E5E0093C215 /* Assets.xcassets in Resources */,
 				8A24ED581C5F7CAE003A15A6 /* LaunchScreen.storyboard in Resources */,

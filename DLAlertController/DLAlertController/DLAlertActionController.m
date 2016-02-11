@@ -42,6 +42,7 @@
 -(void)setup{
     [super setup];
     _actionHeight = 40.0f;
+    _interActionSpacing = 8.0f;
     _actions = [[NSMutableArray alloc] initWithCapacity:0];
     _visualStyles = [@{@(DLAlertActionStyleDefault) : [DLAlertActionVisualStyle defaultStyle],
                        @(DLAlertActionStyleCancel) : [DLAlertActionVisualStyle cancelStyle],
@@ -59,15 +60,16 @@
 }
 
 
--(void)setupAlertView{
+-(void)setupAlert{
+    [super setupAlert];
     DLAlertView *alert = [self alert];
-    [[alert contentView] setBackgroundColor:[UIColor whiteColor]];
     [[alert actionContentView] setBackgroundColor:[UIColor whiteColor]];
 }
 
 -(void)setupActionView{
     DLAlertActionCollectionViewLayout *layout = [_actionView collectionViewLayout];
     [layout setItemHeight:_actionHeight];
+    [layout setInterItemSpacing:_interActionSpacing];
     [layout setItemLayout:[_actions count] > 2 ? DLAlertActionItemLayoutVertical : DLAlertActionItemLayoutHorizontal];
     
     [_actionView setActionDataSource:self];
@@ -78,7 +80,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupAlertView];
     [self setupActionView];
 
 }
@@ -145,6 +146,13 @@
     }
 }
 
+-(void)setInterActionSpacing:(CGFloat)interActionSpacing{
+    _interActionSpacing = interActionSpacing;
+    if([self isViewLoaded]){
+        [[_actionView collectionViewLayout] setInterItemSpacing:interActionSpacing];
+    }
+}
+
 -(void)addAction:(DLAlertAction *)action{
     [_actions addObject:action];
     [action addObserver:self forKeyPath:@"enabled" options:NSKeyValueObservingOptionNew context:nil];
@@ -177,7 +185,8 @@
 #pragma mark Action Observing
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
-    
+    NSUInteger actionIdx = [_actions indexOfObject:object];
+    [_actionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:actionIdx inSection:0]]];
 }
 
 #pragma mark DLActionsCollectionViewDelegate
@@ -200,10 +209,6 @@
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [self setViewAppear:NO];
-}
-
--(void)rootViewGestureTap:(UITapGestureRecognizer *)sender{
-
 }
 
 -(void)dealloc{

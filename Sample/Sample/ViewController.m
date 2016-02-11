@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import "ViewController.h"
-#import <DLAlertController/DLAlertActionController.h>
+#import "DLAlertMessageController.h"
 
 
 
@@ -43,29 +43,47 @@
 }
 
 - (IBAction)showAlertController:(UIButton *)sender {
-    DLAlertActionController *alert = [[DLAlertActionController alloc] init];
-    [alert setActionHeight:36];
+    DLAlertMessageController *alert = [[DLAlertMessageController alloc] init];
+    
+    [alert setTitle:@"Message"];
+    
+    [alert setMessage:@"Message"];
+    //[alert setTitle:@"Title"];
+    [alert setActionHeight:44];
+    
+
+    
     //[alert setTitleInsets:UIEdgeInsetsMake(20, 10, 20, 10)];
    // [alert setTitleTextColor:[UIColor purpleColor]];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [alert setTitleTextColor:[UIColor purpleColor]];
-        [alert setTitleInsets:UIEdgeInsetsMake(20, 10, 20, 10)];
-        [alert setActionHeight:360];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [alert setTitleTextColor:[UIColor purpleColor]];
+//        [alert setTitleInsets:UIEdgeInsetsMake(20, 10, 20, 10)];
+//        [alert setActionHeight:360];
+//    });
+    
+    
     
     
     [alert addAction:[DLAlertAction actionWithTitle:@"Cancel" style:DLAlertActionStyleCancel handler:^{
         NSLog(@"%@ tapped ",@"Cancel");
     }]];
-    [alert addAction:[DLAlertAction actionWithTitle:@"Ok" style:DLAlertActionStyleDefault handler:^{
+    
+    DLAlertAction *action = [DLAlertAction actionWithTitle:@"Ok" style:DLAlertActionStyleDefault handler:^{
         NSLog(@"%@ tapped ",@"Ok");
-    }]];
-//    
+    }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [action setEnabled:NO];
+    });
+    
+    
+    [alert addAction:action];
+//
 //    [alert addAction:[DLAlertAction actionWithTitle:@"Delete" style:DLAlertActionStyleDestructive handler:^{
 //        NSLog(@"%@ tapped ",@"Delete");
 //    }]];
     
-    [alert setTitle:@"Hello this is alert"];
+//    [alert setTitle:@"Hello this is alert"];
     
     [alert presentAnimated:YES completion:nil];
 }

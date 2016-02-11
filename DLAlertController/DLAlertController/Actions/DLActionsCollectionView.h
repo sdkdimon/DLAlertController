@@ -51,4 +51,7 @@
 
 @property(strong,nonatomic,readwrite) DLAlertActionCollectionViewLayout *collectionViewLayout;
 
+//- (void)setEnabled:(BOOL)enabled actionAtIndex:()
+
+
 @end

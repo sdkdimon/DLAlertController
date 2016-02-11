@@ -34,5 +34,4 @@
 @property(strong,nonatomic,readwrite) UIFont *titleFont;
 @property(assign,nonatomic,readwrite) UIEdgeInsets titleInsets;
 
-
 @end

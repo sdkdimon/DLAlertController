@@ -28,5 +28,10 @@
 @interface DLAlertLoaderController : DLAlertControllerBase
 
 @property(strong,nonatomic,readonly) DLAlertView *alert;
+@property(assign,nonatomic,readwrite) CGFloat alertMinHeight;
+@property(assign,nonatomic,readwrite) UIEdgeInsets alertInsets;
+
+- (void)setupAlert;
+
 
 @end
