@@ -33,7 +33,7 @@
 
 -(void)setup{
     [super setup];
-    _alertMinHeight = 208;
+    _alertMinHeight = .0f;
     _alertInsets = UIEdgeInsetsZero;
 }
 

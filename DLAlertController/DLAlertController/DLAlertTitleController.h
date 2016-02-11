@@ -29,6 +29,8 @@
 
 @property(strong,nonatomic,readonly) UIView *contentView;
 
+@property(strong,nonatomic,readonly) UILabel *titleLabel;
+
 @property(copy,nonatomic,readwrite) NSString *title;
 @property(strong,nonatomic,readwrite) UIColor *titleTextColor;
 @property(strong,nonatomic,readwrite) UIFont *titleFont;
