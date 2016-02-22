@@ -59,11 +59,11 @@
     }else if([viewController isKindOfClass:[UITabBarController class]])
     {
         UITabBarController *tabBarController = (UITabBarController *)viewController;
-        return [tabBarController selectedViewController];
+        return [self topViewController:[tabBarController selectedViewController]];
     } else {
         UIViewController *presentedViewController = [viewController presentedViewController];
         if(presentedViewController != nil){
-            return presentedViewController;
+            return [self topViewController:presentedViewController];
         }
     }
     return viewController;
