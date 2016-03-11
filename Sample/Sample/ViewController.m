@@ -44,7 +44,8 @@
 
 - (IBAction)showAlertController:(UIButton *)sender {
     DLAlertMessageController *alert = [[DLAlertMessageController alloc] init];
-    
+    [alert setDismissableOnActionTap:YES];
+    [alert setDismssAnimationEnabled:YES];
     [alert setTitle:@"Message"];
     
     [alert setMessage:@"Message"];

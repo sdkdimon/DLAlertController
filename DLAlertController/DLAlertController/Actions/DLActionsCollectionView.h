@@ -30,16 +30,16 @@
 
 @protocol DLActionsCollectionViewDelegate <NSObject>
 
--(void)actionCollectionView:(DLActionsCollectionView *)collectionView didExecuteActionAtIndex:(NSUInteger)index;
+- (void)actionCollectionView:(DLActionsCollectionView *)collectionView didExecuteActionAtIndex:(NSUInteger)index;
 
 @end
 
 
 @protocol DLActionsCollectionViewDataSource <NSObject>
 
--(NSInteger)nubberOfActionsInActionCollectionView:(DLActionsCollectionView *)collectionView;
--(DLAlertAction *)actionCollectionView:(DLActionsCollectionView *)collectionView actionAtIndex:(NSUInteger)index;
--(DLAlertActionVisualStyle *)actionCollectionView:(DLActionsCollectionView *)collectionView actionVisualStyle:(DLAlertActionStyle)style;
+- (NSInteger)numberOfActionsInActionCollectionView:(DLActionsCollectionView *)collectionView;
+- (DLAlertAction *)actionCollectionView:(DLActionsCollectionView *)collectionView actionAtIndex:(NSUInteger)index;
+- (DLAlertActionVisualStyle *)actionCollectionView:(DLActionsCollectionView *)collectionView actionVisualStyle:(DLAlertActionStyle)style;
 
 @end
 

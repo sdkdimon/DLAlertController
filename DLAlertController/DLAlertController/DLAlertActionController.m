@@ -41,6 +41,8 @@
 
 -(void)setup{
     [super setup];
+    _dismissableOnActionTap = NO;
+    _dismssAnimationEnabled = NO;
     _actionHeight = 40.0f;
     _interActionSpacing = 8.0f;
     _actions = [[NSMutableArray alloc] initWithCapacity:0];
@@ -173,7 +175,7 @@
 
 #pragma mark DLActionsCollectionViewDataSource
 
--(DLAlertAction *)actionCollectionView:(DLActionsCollectionView *)collectionView actionAtIndex:(NSUInteger)index{
+- (DLAlertAction *)actionCollectionView:(DLActionsCollectionView *)collectionView actionAtIndex:(NSUInteger)index{
     return _actions[index];
 }
 
@@ -181,13 +183,13 @@
     return _visualStyles[@(style)];
 }
 
--(NSInteger)nubberOfActionsInActionCollectionView:(DLActionsCollectionView *)collectionView{
+- (NSInteger)numberOfActionsInActionCollectionView:(DLActionsCollectionView *)collectionView{
     return [_actions count];
 }
 
 #pragma mark Action Observing
 
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
     NSUInteger actionIdx = [_actions indexOfObject:object];
     [UIView performWithoutAnimation:^{
         [[self actionView] reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:actionIdx inSection:0]]];
@@ -196,27 +198,36 @@
 
 #pragma mark DLActionsCollectionViewDelegate
 
--(void)actionCollectionView:(DLActionsCollectionView *)collectionView didExecuteActionAtIndex:(NSUInteger)index{
+- (void)actionCollectionView:(DLActionsCollectionView *)collectionView didExecuteActionAtIndex:(NSUInteger)index{
+    DLAlertAction *action = _actions[index];
+    void(^actionHandler)() = [action handler];
+    if(_dismissableOnActionTap){
+        [self dismissAnimated:_dismssAnimationEnabled completion:actionHandler];
+        return;
+    }
+    if(actionHandler != NULL){
+        actionHandler();
+    }
     [self actionTap:index];
 }
 
--(void)actionTap:(NSUInteger)actionIdx{
+- (void)actionTap:(NSUInteger)actionIdx{
 
 }
 
 #pragma mark ViewAppearance
 
--(void)viewDidAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self setViewAppear:YES];
 }
 
--(void)viewDidDisappear:(BOOL)animated{
+- (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [self setViewAppear:NO];
 }
 
--(void)dealloc{
+- (void)dealloc{
     for(DLAlertAction *action in _actions){
         [action removeObserver:self forKeyPath:@"enabled"];
     }

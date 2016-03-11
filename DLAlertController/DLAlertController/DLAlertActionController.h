@@ -27,6 +27,8 @@
 
 @interface DLAlertActionController : DLAlertTitleController
 
+@property(assign,nonatomic,readwrite,getter=isDismissableOnActionTap) BOOL dismissableOnActionTap;
+@property(assign,nonatomic,readwrite,getter=isDismssAnimationEnabled) BOOL dismssAnimationEnabled;
 @property(assign,nonatomic,readonly,getter=isViewAppear) BOOL viewAppear;
 
 @property(assign,nonatomic,readwrite) CGFloat actionHeight;

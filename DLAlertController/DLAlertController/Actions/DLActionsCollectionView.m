@@ -65,7 +65,7 @@ static NSString *const ACTION_CELL_REUSE_ID = @"ActionCell";
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return _actionDataSource != nil ? [_actionDataSource nubberOfActionsInActionCollectionView:self] : 0;
+    return _actionDataSource != nil ? [_actionDataSource numberOfActionsInActionCollectionView:self] : 0;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -115,15 +115,10 @@ static NSString *const ACTION_CELL_REUSE_ID = @"ActionCell";
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [collectionView deselectItemAtIndexPath:indexPath animated:NO];
     NSInteger index = [indexPath item];
-    DLAlertAction *action = [_actionDataSource actionCollectionView:self actionAtIndex:index];
     if(_actionDelegate != nil && [_actionDelegate respondsToSelector:@selector(actionCollectionView:didExecuteActionAtIndex:)]){
         [_actionDelegate actionCollectionView:self didExecuteActionAtIndex:index];
     }
-    void(^actionHandler)() = [action handler];
-    if(actionHandler != nil){
-        actionHandler();
     }
-}
 
 #pragma mark ActionCell Highlight Animation
 
