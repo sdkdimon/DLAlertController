@@ -49,6 +49,7 @@
     [alert setTitle:@"Message"];
     
     [alert setMessage:@"Message"];
+    [alert setMessageTextAlignment:NSTextAlignmentLeft];
     //[alert setTitle:@"Title"];
     [alert setActionHeight:44];
     

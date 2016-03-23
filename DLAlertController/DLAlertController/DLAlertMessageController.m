@@ -37,7 +37,7 @@
     return [[self alloc] initWithTitle:title message:message];
 }
 
--(instancetype)initWithTitle:(NSString *)title message:(NSString *)message{
+- (instancetype)initWithTitle:(NSString *)title message:(NSString *)message{
     self = [super initWithTitle:title];
     if(self != nil){
         _message = message;
@@ -45,20 +45,21 @@
     return self;
 }
 
--(void)setup{
+- (void)setup{
     [super setup];
     _messageFont  = nil;
     _messageTextColor = nil;
     _messageInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+    _messageTextAlignment = NSTextAlignmentCenter;
 }
 
--(void)loadView{
+- (void)loadView{
     [super loadView];
     [self loadMessageLabel];
 }
 
 
--(void)loadMessageLabel{
+- (void)loadMessageLabel{
     UIView *contentView  = [self contentView];
     
     UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -121,7 +122,7 @@
 }
 
 
--(void)setMessageInsets:(UIEdgeInsets)messageInsets{
+- (void)setMessageInsets:(UIEdgeInsets)messageInsets{
     _messageInsets = messageInsets;
     if([self isViewLoaded]){
         [[_messageLabelInsetsConstraints objectForKey:@(NSLayoutAttributeTop)] setConstant:messageInsets.top];
@@ -131,9 +132,9 @@
     }
 }
 
--(void)setupMessageLabel{
+- (void)setupMessageLabel{
     [_messageLabel setNumberOfLines:0];
-    [_messageLabel setTextAlignment:NSTextAlignmentCenter];
+    [_messageLabel setTextAlignment:_messageTextAlignment];
     [_messageLabel setBackgroundColor:[UIColor clearColor]];
     [_messageLabel setFont:_messageFont];
     [_messageLabel setTextColor:_messageTextColor];
@@ -146,7 +147,7 @@
 }
 
 
--(void)setMessageFont:(UIFont *)messageFont{
+- (void)setMessageFont:(UIFont *)messageFont{
     _messageFont = messageFont;
      if([self isViewLoaded]){
          [_messageLabel setFont:messageFont];
@@ -154,18 +155,25 @@
      }
 }
 
--(void)setMessage:(NSString *)message{
+- (void)setMessage:(NSString *)message{
     _message = message;
     if([self isViewLoaded]){
         [_messageLabel setText:message];
     }
 }
 
--(void)setMessageTextColor:(UIColor *)messageTextColor{
+- (void)setMessageTextColor:(UIColor *)messageTextColor{
     _messageTextColor = messageTextColor;
     if([self isViewLoaded]){
         [_messageLabel setTextColor:messageTextColor];
         
+    }
+}
+
+- (void)setMessageTextAlignment:(NSTextAlignment)messageTextAlignment{
+    _messageTextAlignment = messageTextAlignment;
+    if([self isViewAppear]){
+        [_messageLabel setTextAlignment:messageTextAlignment];
     }
 }
 

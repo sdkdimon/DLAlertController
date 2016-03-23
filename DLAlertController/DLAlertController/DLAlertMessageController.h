@@ -25,13 +25,14 @@
 @interface DLAlertMessageController : DLAlertActionController
 
 +(instancetype)controllerWithTitle:(NSString *)title message:(NSString *)message;
--(instancetype)initWithTitle:(NSString *)title message:(NSString *)message;
+- (instancetype)initWithTitle:(NSString *)title message:(NSString *)message;
 
 @property(strong,nonatomic,readonly) UILabel *messageLabel;
 
 @property(copy,nonatomic,readwrite) NSString *message;
 @property(strong,nonatomic,readwrite) UIFont *messageFont;
 @property(strong,nonatomic,readwrite) UIColor *messageTextColor;
+@property(assign,nonatomic,readwrite) NSTextAlignment messageTextAlignment;
 
 @property(assign,nonatomic,readwrite) UIEdgeInsets messageInsets;
 

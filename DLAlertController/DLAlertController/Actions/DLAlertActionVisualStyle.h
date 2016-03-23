@@ -29,10 +29,10 @@
 
 @property(strong,nonatomic,readwrite) UIFont *font;
 
--(void)setBackgroundColor:(UIColor *)color forActionState:(DLAlertActionState)state;
--(UIColor *)backgroundColorForActionState:(DLAlertActionState)state;
--(void)setTextColor:(UIColor *)color forActionState:(DLAlertActionState)state;
--(UIColor *)textColorForActionState:(DLAlertActionState)state;
+- (void)setBackgroundColor:(UIColor *)color forActionState:(DLAlertActionState)state;
+- (UIColor *)backgroundColorForActionState:(DLAlertActionState)state;
+- (void)setTextColor:(UIColor *)color forActionState:(DLAlertActionState)state;
+- (UIColor *)textColorForActionState:(DLAlertActionState)state;
 @end
 
 

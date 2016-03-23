@@ -30,8 +30,8 @@
 
 @property(assign,nonatomic,readwrite) CGFloat contentMinHeight;
 
--(void)setup;
--(void)createUI;
--(void)setupLayoutConstraints;
+- (void)setup;
+- (void)createUI;
+- (void)setupLayoutConstraints;
 
 @end

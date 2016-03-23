@@ -43,7 +43,7 @@
     return [[self alloc] initWithTitle:title];
 }
 
--(instancetype)initWithTitle:(NSString *)title{
+- (instancetype)initWithTitle:(NSString *)title{
     self = [super init];
     if(self != nil){
         _title = title;
@@ -51,7 +51,7 @@
     return self;
 }
 
--(void)setup{
+- (void)setup{
     [super setup];
      CGFloat titleInset = 5.0f;
      _titleInsets = UIEdgeInsetsMake(titleInset, titleInset, titleInset, titleInset);
@@ -60,14 +60,14 @@
 }
 
 
--(void)loadView{
+- (void)loadView{
     [super loadView];
     [self loadTitleContentView];
     [self loadContentView];
     [self loadTitleLabel];
 }
 
--(void)loadTitleContentView{
+- (void)loadTitleContentView{
     UIView *alertContentView = [[self alert] contentView];
     UIView *titleContentView = [[UIView alloc] initWithFrame:CGRectZero];
     [titleContentView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -115,7 +115,7 @@
     
 }
 
--(void)loadContentView{
+- (void)loadContentView{
     UIView *alertContentView = [[self alert] contentView];
     
     UIView *contentView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -172,7 +172,7 @@
 }
 
 
--(void)loadTitleLabel{
+- (void)loadTitleLabel{
     UIView *titleContentView = [self titleContentView];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -230,12 +230,12 @@
 }
 
 
--(void)viewDidLoad{
+- (void)viewDidLoad{
     [super viewDidLoad];
     [self setupTilteLabel];
 }
 
--(void)setupTilteLabel{
+- (void)setupTilteLabel{
     [_titleLabel setNumberOfLines:0];
     [_titleLabel setTextAlignment:NSTextAlignmentCenter];
     [_titleLabel setBackgroundColor:[UIColor clearColor]];
@@ -244,35 +244,35 @@
     [_titleLabel setTextColor:_titleTextColor];
 }
 
--(void)setupAlert{
+- (void)setupAlert{
     DLAlertView *alertView = [self alert];
     [[alertView contentView] setBackgroundColor:[UIColor whiteColor]];
 }
 
 #pragma mark TitleLabel configuration setters
 
--(void)setTitle:(NSString *)title{
+- (void)setTitle:(NSString *)title{
     _title = title;
     if([self isViewLoaded]){
         [_titleLabel setText:title];
     }
 }
 
--(void)setTitleTextColor:(UIColor *)titleTextColor{
+- (void)setTitleTextColor:(UIColor *)titleTextColor{
     _titleTextColor = titleTextColor;
     if([self isViewLoaded]){
         [_titleLabel setTextColor:titleTextColor];
     }
 }
 
--(void)setTitleFont:(UIFont *)titleFont{
+- (void)setTitleFont:(UIFont *)titleFont{
     _titleFont = titleFont;
     if([self isViewLoaded]){
         [_titleLabel setFont:titleFont];
     }
 }
 
--(void)setTitleInsets:(UIEdgeInsets)titleInsets{
+- (void)setTitleInsets:(UIEdgeInsets)titleInsets{
     _titleInsets = titleInsets;
     if([self isViewLoaded]){
         [[_titleLabelInsetsConstraints objectForKey:@(NSLayoutAttributeTop)] setConstant:titleInsets.top];

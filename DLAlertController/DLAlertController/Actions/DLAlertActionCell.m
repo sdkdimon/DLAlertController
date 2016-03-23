@@ -29,7 +29,7 @@
 
 @implementation DLAlertActionCell
 
--(instancetype)initWithFrame:(CGRect)frame{
+- (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if(self != nil){
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];

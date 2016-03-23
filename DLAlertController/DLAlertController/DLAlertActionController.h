@@ -34,10 +34,10 @@
 @property(assign,nonatomic,readwrite) CGFloat actionHeight;
 @property(assign,nonatomic,readwrite) CGFloat interActionSpacing;
 
--(void)addAction:(DLAlertAction *)action;
--(void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle;
--(DLAlertActionVisualStyle *)actionVisualStyleForActionStyle:(DLAlertActionStyle)actionStyle;
--(void)actionTap:(NSUInteger)actionIdx;
+- (void)addAction:(DLAlertAction *)action;
+- (void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle;
+- (DLAlertActionVisualStyle *)actionVisualStyleForActionStyle:(DLAlertActionStyle)actionStyle;
+- (void)actionTap:(NSUInteger)actionIdx;
 
 @end
 

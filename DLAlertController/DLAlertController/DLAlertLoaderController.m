@@ -31,19 +31,19 @@
 
 @implementation DLAlertLoaderController
 
--(void)setup{
+- (void)setup{
     [super setup];
     _alertMinHeight = .0f;
     _alertInsets = UIEdgeInsetsZero;
 }
 
--(void)loadView{
+- (void)loadView{
     [super loadView];
     [self loadAlert];
     
 }
 
--(void)loadAlert{
+- (void)loadAlert{
     UIView *contentView = [self view];
     
     DLAlertView *alertView = [[DLAlertView alloc] init];
@@ -59,7 +59,7 @@
     
 }
 
--(void)setupAlertLayoutConstraints{
+- (void)setupAlertLayoutConstraints{
 
     UIView *contentView = [self view];
 

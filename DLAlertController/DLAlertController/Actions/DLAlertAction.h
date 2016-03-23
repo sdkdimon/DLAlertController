@@ -26,7 +26,7 @@
 @interface DLAlertAction : NSObject
 
 +(instancetype)actionWithTitle:(NSString *)title style:(DLAlertActionStyle)style handler:(void(^)())handler;
--(instancetype)initWithTitle:(NSString *)title style:(DLAlertActionStyle)style handler:(void(^)())handler;
+- (instancetype)initWithTitle:(NSString *)title style:(DLAlertActionStyle)style handler:(void(^)())handler;
 
 @property(copy,nonatomic,readonly) NSString *title;
 @property(assign,nonatomic,readonly) DLAlertActionStyle style;

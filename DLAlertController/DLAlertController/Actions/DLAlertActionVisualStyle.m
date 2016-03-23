@@ -31,7 +31,7 @@
 
 @implementation DLAlertActionVisualStyleItem
 
--(id)copyWithZone:(NSZone *)zone{
+- (id)copyWithZone:(NSZone *)zone{
     DLAlertActionVisualStyleItem *copy = [[DLAlertActionVisualStyleItem alloc] init];
     [copy setBackgroundColor:[_backgroundColor copy]];
     [copy setTextColor:[_textColor copy]];
@@ -49,20 +49,20 @@
 
 @implementation DLAlertActionVisualStyle
 
--(void)setBackgroundColor:(UIColor *)color forActionState:(DLAlertActionState)state{
+- (void)setBackgroundColor:(UIColor *)color forActionState:(DLAlertActionState)state{
     [_styleItems[@(state)] setBackgroundColor:color];
 }
 
--(UIColor *)backgroundColorForActionState:(DLAlertActionState)state{
+- (UIColor *)backgroundColorForActionState:(DLAlertActionState)state{
     
     return [_styleItems[@(state)] backgroundColor];
 }
 
--(void)setTextColor:(UIColor *)color forActionState:(DLAlertActionState)state{
+- (void)setTextColor:(UIColor *)color forActionState:(DLAlertActionState)state{
     [_styleItems[@(state)] setTextColor:color];
 }
 
--(UIColor *)textColorForActionState:(DLAlertActionState)state{
+- (UIColor *)textColorForActionState:(DLAlertActionState)state{
     return [_styleItems[@(state)] textColor];
 }
 

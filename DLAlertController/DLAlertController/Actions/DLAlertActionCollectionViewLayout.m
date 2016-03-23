@@ -29,7 +29,7 @@
 
 @implementation DLAlertActionCollectionViewLayout
 
--(instancetype)init
+- (instancetype)init
 {
     self = [super init];
     if (self) {
@@ -39,7 +39,7 @@
     return self;
 }
 
--(void)setup{
+- (void)setup{
     _itemLayout = DLAlertActionItemLayoutVertical;
     _interItemSpacing = 2.0f;
     _itemHeight = 50.0f;
@@ -48,11 +48,11 @@
 
 
 
--(void)prepareLayout{
+- (void)prepareLayout{
     [self prepareLayoutForActionItemLayout:_itemLayout];
 }
 
--(void)prepareLayoutForActionItemLayout:(DLAlertActionItemLayout)itemLayout{
+- (void)prepareLayoutForActionItemLayout:(DLAlertActionItemLayout)itemLayout{
     NSInteger itemCount = [self.collectionView numberOfItemsInSection:0];
     if(itemCount == 0) return;
     [_layoutInfo removeAllObjects];
@@ -92,20 +92,20 @@
 }
 
 
--(NSArray *)layoutAttributesForElementsInRect:(CGRect)rect{
+- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect{
    return [_layoutInfo allValues];
     
 }
 
--(UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath{
     return self.layoutInfo[indexPath];
 }
 
--(CGSize)collectionViewContentSize{
+- (CGSize)collectionViewContentSize{
     return [self collectionViewContentSizeForActionItemLayout:_itemLayout];
 }
 
--(CGSize)collectionViewContentSizeForActionItemLayout:(DLAlertActionItemLayout)itemLayout{
+- (CGSize)collectionViewContentSizeForActionItemLayout:(DLAlertActionItemLayout)itemLayout{
     NSInteger itemCount = [self.collectionView numberOfItemsInSection:0];
     CGSize collectionViewSize = [[self collectionView] bounds].size;
     
@@ -124,11 +124,11 @@
     
 }
 
--(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds{
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds{
     return YES;
 }
 
--(void)setItemHeight:(CGFloat)itemHeight{
+- (void)setItemHeight:(CGFloat)itemHeight{
     _itemHeight = itemHeight;
     [self invalidateLayout];
 }

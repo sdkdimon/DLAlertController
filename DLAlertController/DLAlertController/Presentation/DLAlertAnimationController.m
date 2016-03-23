@@ -71,7 +71,7 @@ static CGFloat const SPRING_VELOCITY = 0;
 }
 
 
--(void)animate:(void(^)())animations inContext:(id <UIViewControllerContextTransitioning>)context withCompletion:(void(^)(BOOL finished))completion{
+- (void)animate:(void(^)())animations inContext:(id <UIViewControllerContextTransitioning>)context withCompletion:(void(^)(BOOL finished))completion{
     [UIView animateWithDuration:[self transitionDuration:context] delay:0 usingSpringWithDamping:SPRING_DAMPING initialSpringVelocity:SPRING_VELOCITY options:0 animations:animations completion:completion];
 }
 

@@ -31,7 +31,7 @@
 
 #pragma mark Initialization
 
--(instancetype)init{
+- (instancetype)init{
     self = [super init];
     if(self != nil){
         [self setup];
@@ -41,35 +41,35 @@
 
 #pragma mark Setup
 
--(void)setup{
+- (void)setup{
     [self setModalPresentationStyle:UIModalPresentationCustom];
 }
 
 #pragma mark View load
 
--(void)loadView{
+- (void)loadView{
     UIView *view = [[UIView alloc] init];
     [view setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
     [self setView:view];
 }
 
--(void)setupRootViewTapGesture{
+- (void)setupRootViewTapGesture{
     _rootViewTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rootViewGestureTap:)];
     [_rootViewTapGesture setDelegate:self];
     [[self view] addGestureRecognizer:_rootViewTapGesture];
 }
 
--(void)viewDidLoad{
+- (void)viewDidLoad{
     [super viewDidLoad];
     [self setupRootViewTapGesture];
 }
 
 
--(void)rootViewGestureTap:(UITapGestureRecognizer *)sender{
+- (void)rootViewGestureTap:(UITapGestureRecognizer *)sender{
 
 }
 
--(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
     return [[touch view] isEqual:[self view]];
 }
 
@@ -77,12 +77,12 @@
 
 @implementation DLAlertControllerBase (Presentation)
 
--(void)presentAnimated:(BOOL)animated completion:(void (^)())completion{
+- (void)presentAnimated:(BOOL)animated completion:(void (^)())completion{
     UIViewController *topViewController = [UIViewController topViewController:nil];
     [topViewController presentViewController:self animated:animated completion:completion];
 }
 
--(void)dismissAnimated:(BOOL)animated completion:(void (^)())completion{
+- (void)dismissAnimated:(BOOL)animated completion:(void (^)())completion{
     [[self presentingViewController] dismissViewControllerAnimated:animated completion:completion];
 }
 

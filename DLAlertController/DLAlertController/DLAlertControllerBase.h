@@ -27,13 +27,13 @@
 
 @property(strong,nonatomic,readonly) UITapGestureRecognizer *rootViewTapGesture;
 
--(void)rootViewGestureTap:(UITapGestureRecognizer *)sender;
+- (void)rootViewGestureTap:(UITapGestureRecognizer *)sender;
 
--(void)setup;
+- (void)setup;
 
 @end
 
 @interface DLAlertControllerBase (Presentation)
--(void)presentAnimated:(BOOL)animated completion:(void(^)())completion;
--(void)dismissAnimated:(BOOL)animated completion:(void(^)())completion;
+- (void)presentAnimated:(BOOL)animated completion:(void(^)())completion;
+- (void)dismissAnimated:(BOOL)animated completion:(void(^)())completion;
 @end

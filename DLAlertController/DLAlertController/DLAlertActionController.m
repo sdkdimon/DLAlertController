@@ -39,7 +39,7 @@
 
 @implementation DLAlertActionController
 
--(void)setup{
+- (void)setup{
     [super setup];
     _dismissableOnActionTap = NO;
     _dismssAnimationEnabled = NO;
@@ -53,22 +53,22 @@
     [self setTransitioningDelegate:_transitionController];
 }
 
--(void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle{
+- (void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle{
     [_visualStyles setObject:visualStyle forKey:@(actionStyle)];
 }
 
--(DLAlertActionVisualStyle *)actionVisualStyleForActionStyle:(DLAlertActionStyle)actionStyle{
+- (DLAlertActionVisualStyle *)actionVisualStyleForActionStyle:(DLAlertActionStyle)actionStyle{
     return [_visualStyles objectForKey:@(actionStyle)];
 }
 
 
--(void)setupAlert{
+- (void)setupAlert{
     [super setupAlert];
     DLAlertView *alert = [self alert];
     [[alert actionContentView] setBackgroundColor:[UIColor whiteColor]];
 }
 
--(void)setupActionView{
+- (void)setupActionView{
     DLAlertActionCollectionViewLayout *layout = [_actionView collectionViewLayout];
     [layout setItemHeight:_actionHeight];
     [layout setInterItemSpacing:_interActionSpacing];
@@ -87,12 +87,12 @@
 }
 
 
--(void)loadView{
+- (void)loadView{
     [super loadView];
     [self loadActionView];
 }
 
--(void)loadActionView{
+- (void)loadActionView{
     UIView *alertContentView = [[self alert] actionContentView];
     
     DLActionsCollectionView *actionView = [[DLActionsCollectionView alloc] init];
@@ -141,21 +141,21 @@
     
 }
 
--(void)setActionHeight:(CGFloat)actionHeight{
+- (void)setActionHeight:(CGFloat)actionHeight{
     _actionHeight = actionHeight;
     if([self isViewLoaded]){
         [[_actionView collectionViewLayout] setItemHeight:actionHeight];
     }
 }
 
--(void)setInterActionSpacing:(CGFloat)interActionSpacing{
+- (void)setInterActionSpacing:(CGFloat)interActionSpacing{
     _interActionSpacing = interActionSpacing;
     if([self isViewLoaded]){
         [[_actionView collectionViewLayout] setInterItemSpacing:interActionSpacing];
     }
 }
 
--(void)addAction:(DLAlertAction *)action{
+- (void)addAction:(DLAlertAction *)action{
     [_actions addObject:action];
     [action addObserver:self forKeyPath:@"enabled" options:NSKeyValueObservingOptionNew context:nil];
     if([self isViewLoaded]){
@@ -179,7 +179,7 @@
     return _actions[index];
 }
 
--(DLAlertActionVisualStyle *)actionCollectionView:(DLActionsCollectionView *)collectionView actionVisualStyle:(DLAlertActionStyle)style{
+- (DLAlertActionVisualStyle *)actionCollectionView:(DLActionsCollectionView *)collectionView actionVisualStyle:(DLAlertActionStyle)style{
     return _visualStyles[@(style)];
 }
 
