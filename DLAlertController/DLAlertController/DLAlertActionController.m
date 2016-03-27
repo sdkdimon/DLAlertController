@@ -199,6 +199,7 @@
 #pragma mark DLActionsCollectionViewDelegate
 
 - (void)actionCollectionView:(DLActionsCollectionView *)collectionView didExecuteActionAtIndex:(NSUInteger)index{
+    [self actionTap:index];
     DLAlertAction *action = _actions[index];
     void(^actionHandler)() = [action handler];
     if(_dismissableOnActionTap){
@@ -208,7 +209,6 @@
     if(actionHandler != NULL){
         actionHandler();
     }
-    [self actionTap:index];
 }
 
 - (void)actionTap:(NSUInteger)actionIdx{
