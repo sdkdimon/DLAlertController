@@ -79,11 +79,15 @@
 
 - (void)presentAnimated:(BOOL)animated completion:(void (^)())completion{
     UIViewController *topViewController = [UIViewController topViewController:nil];
-    [topViewController presentViewController:self animated:animated completion:completion];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [topViewController presentViewController:self animated:animated completion:completion];
+    });
 }
 
 - (void)dismissAnimated:(BOOL)animated completion:(void (^)())completion{
-    [[self presentingViewController] dismissViewControllerAnimated:animated completion:completion];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[self presentingViewController] dismissViewControllerAnimated:animated completion:completion];
+    });
 }
 
 @end
