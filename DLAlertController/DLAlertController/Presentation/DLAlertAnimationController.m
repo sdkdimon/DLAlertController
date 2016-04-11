@@ -70,6 +70,11 @@ static CGFloat const SPRING_VELOCITY = 0;
     }
 }
 
+- (void)animationEnded:(BOOL)transitionCompleted{
+    if (_delegate != nil && [_delegate respondsToSelector:@selector(animationConroller:didEndAnimation:)]){
+        [_delegate animationConroller:self didEndAnimation:transitionCompleted];
+    }
+}
 
 - (void)animate:(void(^)())animations inContext:(id <UIViewControllerContextTransitioning>)context withCompletion:(void(^)(BOOL finished))completion{
     [UIView animateWithDuration:[self transitionDuration:context] delay:0 usingSpringWithDamping:SPRING_DAMPING initialSpringVelocity:SPRING_VELOCITY options:0 animations:animations completion:completion];

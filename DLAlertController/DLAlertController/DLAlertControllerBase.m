@@ -22,9 +22,16 @@
 
 #import "DLAlertControllerBase.h"
 #import "UIViewController+TopViewController.h"
+#import "DLAlertTransitionController.h"
 
-@interface DLAlertControllerBase ()
+@interface DLAlertControllerBase () <DLAlertTransitionControllerDelegate>
+
 @property(strong,nonatomic,readwrite) UITapGestureRecognizer *rootViewTapGesture;
+@property(strong,nonatomic,readwrite) DLAlertTransitionController *transitionController;
+
+@property (copy, nonatomic, readwrite) void (^presentationCompletionBlock)();
+@property (copy, nonatomic, readwrite) void (^dismissalCompletionBlock)();
+
 @end
 
 @implementation DLAlertControllerBase
@@ -42,6 +49,9 @@
 #pragma mark Setup
 
 - (void)setup{
+    _transitionController = [[DLAlertTransitionController alloc] init];
+    [_transitionController setDelegate:self];
+    [self setTransitioningDelegate:_transitionController];
     [self setModalPresentationStyle:UIModalPresentationCustom];
 }
 
@@ -73,21 +83,49 @@
     return [[touch view] isEqual:[self view]];
 }
 
+
+- (void)alertTransitionController:(DLAlertTransitionController *)controller didEndDismissalTransition:(BOOL)finished{
+    if (_dismissalCompletionBlock != NULL){
+        _dismissalCompletionBlock();
+        _dismissalCompletionBlock = NULL;
+    }
+    [self didEndDismissalTransition:finished];
+    
+}
+
+- (void)alertTransitionController:(DLAlertTransitionController *)controller didEndPresentationTransition:(BOOL)finished{
+    if (_presentationCompletionBlock != NULL){
+        _presentationCompletionBlock();
+        _presentationCompletionBlock = NULL;
+    }
+    [self didEndPresentationTransition:finished];
+}
+
+
+- (void)didEndDismissalTransition:(BOOL)finished{
+    
+}
+
+- (void)didEndPresentationTransition:(BOOL)finished{
+    
+}
+
 @end
+
 
 @implementation DLAlertControllerBase (Presentation)
 
 - (void)presentAnimated:(BOOL)animated completion:(void (^)())completion{
+    [self setPresentationCompletionBlock:completion];
     UIViewController *topViewController = [UIViewController topViewController:nil];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [topViewController presentViewController:self animated:animated completion:completion];
-    });
+    [topViewController presentViewController:self animated:animated completion:nil];
+    
 }
 
 - (void)dismissAnimated:(BOOL)animated completion:(void (^)())completion{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[self presentingViewController] dismissViewControllerAnimated:animated completion:completion];
-    });
+    [self setDismissalCompletionBlock:completion];
+    [[self presentingViewController] dismissViewControllerAnimated:animated completion:nil];
+
 }
 
 @end

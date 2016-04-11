@@ -31,6 +31,9 @@
 
 - (void)setup;
 
+- (void)didEndDismissalTransition:(BOOL)finished;
+- (void)didEndPresentationTransition:(BOOL)finished;
+
 @end
 
 @interface DLAlertControllerBase (Presentation)

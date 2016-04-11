@@ -22,14 +22,14 @@
 
 #import "DLAlertActionController.h"
 #import "DLActionsCollectionView.h"
-#import "DLAlertTransitionController.h"
+
 #import "DLAlertView.h"
 
 @interface DLAlertActionController () <DLActionsCollectionViewDataSource,DLActionsCollectionViewDelegate>
 
 @property(strong,nonatomic,readwrite) NSMutableArray<DLAlertAction *> *actions;
 @property(strong,nonatomic,readwrite) NSMutableDictionary<NSNumber *,DLAlertActionVisualStyle *> *visualStyles;
-@property(strong,nonatomic,readwrite) DLAlertTransitionController *transitionController;
+
 
 @property(assign,nonatomic,readwrite,getter=isViewAppear) BOOL viewAppear;
 
@@ -49,8 +49,7 @@
     _visualStyles = [@{@(DLAlertActionStyleDefault) : [DLAlertActionVisualStyle defaultStyle],
                        @(DLAlertActionStyleCancel) : [DLAlertActionVisualStyle cancelStyle],
                        @(DLAlertActionStyleDestructive) : [DLAlertActionVisualStyle destructiveStyle]} mutableCopy];
-    _transitionController = [[DLAlertTransitionController alloc] init];
-    [self setTransitioningDelegate:_transitionController];
+    
 }
 
 - (void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle{

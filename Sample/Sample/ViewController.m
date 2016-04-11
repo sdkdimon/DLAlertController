@@ -52,7 +52,7 @@
     [alert setMessageTextAlignment:NSTextAlignmentLeft];
     //[alert setTitle:@"Title"];
     [alert setActionHeight:44];
-    
+    [alert setAlertMinHeight:100];
 
     
     //[alert setTitleInsets:UIEdgeInsetsMake(20, 10, 20, 10)];
@@ -86,7 +86,14 @@
 //    }]];
     
 //    [alert setTitle:@"Hello this is alert"];
+
+    __weak DLAlertMessageController *wAlert = alert;
     
-    [alert presentAnimated:YES completion:nil];
+    [alert presentAnimated:YES completion:^{
+        [wAlert dismissAnimated:YES completion:^{
+            [wAlert presentAnimated:YES completion:nil];
+        }];
+        NSLog(@"");
+    }];
 }
 @end

@@ -24,7 +24,6 @@
 @class DLAlertView;
 
 
-
 @interface DLAlertLoaderController : DLAlertControllerBase
 
 @property(strong,nonatomic,readonly) DLAlertView *alert;
