@@ -59,6 +59,7 @@
 
 - (void)loadView{
     UIView *view = [[UIView alloc] init];
+    [view setBackgroundColor:[UIColor colorWithWhite:0 alpha:.4f]];
     [view setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
     [self setView:view];
 }
@@ -85,29 +86,29 @@
 
 
 - (void)alertTransitionController:(DLAlertTransitionController *)controller didEndDismissalTransition:(BOOL)finished{
-    if (_dismissalCompletionBlock != NULL){
-        _dismissalCompletionBlock();
-        _dismissalCompletionBlock = NULL;
-    }
-    [self didEndDismissalTransition:finished];
+    [self didDismissAnimated:YES];
     
 }
 
 - (void)alertTransitionController:(DLAlertTransitionController *)controller didEndPresentationTransition:(BOOL)finished{
+   [self didPresentAnimated:YES];
+}
+
+
+- (void)didPresentAnimated:(BOOL)animated{
+    
     if (_presentationCompletionBlock != NULL){
         _presentationCompletionBlock();
         _presentationCompletionBlock = NULL;
     }
-    [self didEndPresentationTransition:finished];
 }
 
-
-- (void)didEndDismissalTransition:(BOOL)finished{
+- (void)didDismissAnimated:(BOOL)animated{
     
-}
-
-- (void)didEndPresentationTransition:(BOOL)finished{
-    
+    if (_dismissalCompletionBlock != NULL){
+        _dismissalCompletionBlock();
+        _dismissalCompletionBlock = NULL;
+    }
 }
 
 @end
@@ -116,16 +117,29 @@
 @implementation DLAlertControllerBase (Presentation)
 
 - (void)presentAnimated:(BOOL)animated completion:(void (^)())completion{
-    [self setPresentationCompletionBlock:completion];
     UIViewController *topViewController = [UIViewController topViewController:nil];
-    [topViewController presentViewController:self animated:animated completion:nil];
+    [self setPresentationCompletionBlock:completion];
+    if (animated){
+        [topViewController presentViewController:self animated:animated completion:nil];
+    } else {
+        [topViewController presentViewController:self animated:animated completion:^{
+            [self didPresentAnimated:NO];
+        }];
+    }
+    
+    
     
 }
 
 - (void)dismissAnimated:(BOOL)animated completion:(void (^)())completion{
     [self setDismissalCompletionBlock:completion];
-    [[self presentingViewController] dismissViewControllerAnimated:animated completion:nil];
-
+    if (animated){
+        [[self presentingViewController] dismissViewControllerAnimated:animated completion:nil];
+    } else {
+        [[self presentingViewController] dismissViewControllerAnimated:animated completion:^{
+            [self didDismissAnimated:NO];
+        }];
+    }
 }
 
 @end

@@ -31,8 +31,9 @@
 
 - (void)setup;
 
-- (void)didEndDismissalTransition:(BOOL)finished;
-- (void)didEndPresentationTransition:(BOOL)finished;
+- (void)didPresentAnimated:(BOOL)animated;
+- (void)didDismissAnimated:(BOOL)animated;
+
 
 @end
 

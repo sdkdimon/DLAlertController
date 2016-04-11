@@ -90,8 +90,8 @@
     __weak DLAlertMessageController *wAlert = alert;
     
     [alert presentAnimated:YES completion:^{
-        [wAlert dismissAnimated:YES completion:^{
-            [wAlert presentAnimated:YES completion:nil];
+        [wAlert dismissAnimated:NO completion:^{
+            [wAlert presentAnimated:NO completion:nil];
         }];
         NSLog(@"");
     }];
