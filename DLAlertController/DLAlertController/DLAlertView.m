@@ -257,6 +257,17 @@
                                     attribute:NSLayoutAttributeBottom
                                     multiplier:1.0f
                                     constant:0.0f];
+    
+    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:_actionContentView
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0f
+                                                          constant:.0f];
+    [height setPriority:UILayoutPriorityDefaultLow];
+    [_actionContentView addConstraint:height];
+    
     [self addConstraints:@[leading,trailing,top,bottom]];
 }
 

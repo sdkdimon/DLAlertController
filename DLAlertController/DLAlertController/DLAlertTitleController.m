@@ -121,6 +121,16 @@
     UIView *contentView = [[UIView alloc] initWithFrame:CGRectZero];
     [contentView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
+    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:contentView
+                                                           attribute:NSLayoutAttributeHeight
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:nil
+                                                           attribute:NSLayoutAttributeNotAnAttribute
+                                                          multiplier:1.0f
+                                                            constant:.0f];
+    [height setPriority:UILayoutPriorityDefaultLow];
+    [contentView addConstraint:height];
+    
     [alertContentView addSubview:contentView];
     
     

@@ -29,7 +29,7 @@ static CGFloat const SPRING_VELOCITY = 0;
 @implementation DLAlertAnimationController
 
 - (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext{
-    return .404f;
+    return .202f;
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
