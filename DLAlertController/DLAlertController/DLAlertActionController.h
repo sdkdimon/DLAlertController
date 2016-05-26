@@ -23,6 +23,7 @@
 #import "DLAlertTitleController.h"
 #import "DLAlertAction.h"
 #import "DLAlertActionVisualStyle.h"
+#import "DLActionsCollectionView.h"
 
 
 @interface DLAlertActionController : DLAlertTitleController
@@ -31,8 +32,12 @@
 @property(assign,nonatomic,readwrite,getter=isDismssAnimationEnabled) BOOL dismssAnimationEnabled;
 @property(assign,nonatomic,readonly,getter=isViewAppear) BOOL viewAppear;
 
+@property(strong,nonatomic,readwrite) DLActionsCollectionView *actionView;
+
 @property(assign,nonatomic,readwrite) CGFloat actionHeight;
 @property(assign,nonatomic,readwrite) CGFloat interActionSpacing;
+@property(assign,nonatomic,readwrite) CGFloat bottomSpacing;
+@property(assign,nonatomic,readwrite) DLAlertActionItemLayout actionItemLayout;
 
 - (void)addAction:(DLAlertAction *)action;
 - (void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle;

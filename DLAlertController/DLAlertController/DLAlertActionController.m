@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import "DLAlertActionController.h"
-#import "DLActionsCollectionView.h"
+
 
 #import "DLAlertView.h"
 
@@ -33,7 +33,7 @@
 
 @property(assign,nonatomic,readwrite,getter=isViewAppear) BOOL viewAppear;
 
-@property(strong,nonatomic,readwrite) DLActionsCollectionView *actionView;
+
 
 @end
 
@@ -49,6 +49,8 @@
     _visualStyles = [@{@(DLAlertActionStyleDefault) : [DLAlertActionVisualStyle defaultStyle],
                        @(DLAlertActionStyleCancel) : [DLAlertActionVisualStyle cancelStyle],
                        @(DLAlertActionStyleDestructive) : [DLAlertActionVisualStyle destructiveStyle]} mutableCopy];
+    
+    _actionItemLayout = DLAlertActionItemLayoutHorizontal;
     
 }
 
@@ -71,7 +73,7 @@
     DLAlertActionCollectionViewLayout *layout = [_actionView collectionViewLayout];
     [layout setItemHeight:_actionHeight];
     [layout setInterItemSpacing:_interActionSpacing];
-    [layout setItemLayout:[_actions count] > 2 ? DLAlertActionItemLayoutVertical : DLAlertActionItemLayoutHorizontal];
+    [layout setItemLayout:_actionItemLayout];
     
     [_actionView setActionDataSource:self];
     [_actionView setActionDelegate:self];
@@ -82,7 +84,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupActionView];
-
+    
 }
 
 
@@ -114,7 +116,7 @@
                                                                  toItem:alertContentView
                                                               attribute:NSLayoutAttributeBottom
                                                              multiplier:1.0f
-                                                               constant:0.0f];
+                                                               constant:self.bottomSpacing];
     
     NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:actionView
                                                                attribute:NSLayoutAttributeLeading
@@ -135,7 +137,7 @@
     [alertContentView addConstraints:@[top,bottom,leading,trailing]];
     
     [self setActionView:actionView];
-
+    
     
     
 }
@@ -151,6 +153,13 @@
     _interActionSpacing = interActionSpacing;
     if([self isViewLoaded]){
         [[_actionView collectionViewLayout] setInterItemSpacing:interActionSpacing];
+    }
+}
+
+- (void)setActionItemLayout:(DLAlertActionItemLayout)actionItemLayout{
+    _actionItemLayout = actionItemLayout;
+    if([self isViewLoaded]){
+        [[_actionView collectionViewLayout] setItemLayout:actionItemLayout];
     }
 }
 
@@ -211,7 +220,7 @@
 }
 
 - (void)actionTap:(NSUInteger)actionIdx{
-
+    
 }
 
 #pragma mark ViewAppearance
