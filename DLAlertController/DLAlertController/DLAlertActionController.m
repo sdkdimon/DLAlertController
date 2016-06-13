@@ -29,6 +29,7 @@
 
 @property(strong,nonatomic,readwrite) NSMutableArray<DLAlertAction *> *actions;
 @property(strong,nonatomic,readwrite) NSMutableDictionary<NSNumber *,DLAlertActionVisualStyle *> *visualStyles;
+@property (strong, nonatomic, readwrite) NSLayoutConstraint *actionBottomConstraint;
 
 
 @property(assign,nonatomic,readwrite,getter=isViewAppear) BOOL viewAppear;
@@ -116,7 +117,8 @@
                                                                  toItem:alertContentView
                                                               attribute:NSLayoutAttributeBottom
                                                              multiplier:1.0f
-                                                               constant:self.bottomSpacing];
+                                                               constant:_bottomSpacing];
+    [self setActionBottomConstraint:bottom];
     
     NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:actionView
                                                                attribute:NSLayoutAttributeLeading
@@ -180,6 +182,12 @@
     }
 }
 
+- (void)setBottomSpacing:(CGFloat)bottomSpacing{
+    _bottomSpacing = bottomSpacing;
+    if ([self isViewLoaded]){
+        [_actionBottomConstraint setConstant: - bottomSpacing];
+    }
+}
 
 #pragma mark DLActionsCollectionViewDataSource
 
