@@ -43,17 +43,17 @@
         NSLayoutConstraint *titleLabelCenterYCostraint = [NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:0.0f];
         
         
-         NSLayoutConstraint *titleLabelTopCostraint = [NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:contentView attribute:NSLayoutAttributeTop multiplier:1.0f constant:0.0f];
-         NSLayoutConstraint *titleLabelBottomCostraint = [NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationLessThanOrEqual toItem:contentView attribute:NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
-         NSLayoutConstraint *titleLabelLeadingCostraint = [NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:contentView attribute:NSLayoutAttributeLeading multiplier:1.0f constant:0.0f];
-         NSLayoutConstraint *titleLabelTrailingCostraint = [NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationLessThanOrEqual toItem:contentView attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:5.0f];
+        NSLayoutConstraint *titleLabelTopCostraint = [NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:contentView attribute:NSLayoutAttributeTop multiplier:1.0f constant:0.0f];
+        NSLayoutConstraint *titleLabelBottomCostraint = [NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationLessThanOrEqual toItem:contentView attribute:NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
+        NSLayoutConstraint *titleLabelLeadingCostraint = [NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeLeading multiplier:1.0f constant:0.0f];
+        NSLayoutConstraint *titleLabelTrailingCostraint = [NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:5.0f];
         
         
         [contentView addConstraints:@[titleLabelTopCostraint,titleLabelBottomCostraint,titleLabelLeadingCostraint,titleLabelTrailingCostraint,titleLabelCenterXCostraint,titleLabelCenterYCostraint]];
         [titleLabel setTextAlignment:NSTextAlignmentCenter];
         _titleLabel = titleLabel;
-
-    
+        
+        
     }
     
     return self;
