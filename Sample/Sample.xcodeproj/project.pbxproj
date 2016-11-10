@@ -13,26 +13,9 @@
 		8A227F941BF49E5E0093C215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A227F931BF49E5E0093C215 /* Assets.xcassets */; };
 		8A24ED581C5F7CAE003A15A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A24ED561C5F7CAE003A15A6 /* LaunchScreen.storyboard */; };
 		8A24ED591C5F7CAE003A15A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A24ED571C5F7CAE003A15A6 /* Main.storyboard */; };
-		8AA5FE781C5B828A0060CA5A /* DLAlertController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA5FE711C5B81470060CA5A /* DLAlertController.framework */; };
+		8A5D69361DD4D6ED00BB13AE /* DLAlertController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5D69351DD4D6ED00BB13AE /* DLAlertController.framework */; };
 		8AB841861C6BBB5500045A1E /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB841851C6BBB5500045A1E /* View.xib */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		8AA5FE701C5B81470060CA5A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8AA5FE6C1C5B81470060CA5A /* DLAlertController.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8A227F3E1BF49C6A0093C215;
-			remoteInfo = DLAlertController;
-		};
-		8AA5FE791C5B83280060CA5A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8AA5FE6C1C5B81470060CA5A /* DLAlertController.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8A227F3D1BF49C6A0093C215;
-			remoteInfo = DLAlertController;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8A227F841BF49E5E0093C215 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,7 +28,7 @@
 		8A227F981BF49E5E0093C215 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A24ED561C5F7CAE003A15A6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Sample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A24ED571C5F7CAE003A15A6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Sample/Main.storyboard; sourceTree = "<group>"; };
-		8AA5FE6C1C5B81470060CA5A /* DLAlertController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DLAlertController.xcodeproj; path = ../DLAlertController/DLAlertController.xcodeproj; sourceTree = "<group>"; };
+		8A5D69351DD4D6ED00BB13AE /* DLAlertController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DLAlertController.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Sample-cducqkokeihvupbgbjwajzmzztno/Build/Products/Debug-iphoneos/DLAlertController.framework"; sourceTree = "<group>"; };
 		8AB841851C6BBB5500045A1E /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AA5FE781C5B828A0060CA5A /* DLAlertController.framework in Frameworks */,
+				8A5D69361DD4D6ED00BB13AE /* DLAlertController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,9 +49,9 @@
 			children = (
 				8A24ED561C5F7CAE003A15A6 /* LaunchScreen.storyboard */,
 				8A24ED571C5F7CAE003A15A6 /* Main.storyboard */,
-				8AA5FE6C1C5B81470060CA5A /* DLAlertController.xcodeproj */,
 				8A227F861BF49E5E0093C215 /* Sample */,
 				8A227F851BF49E5E0093C215 /* Products */,
+				8A5D69341DD4D6ED00BB13AE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,12 +84,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8AA5FE6D1C5B81470060CA5A /* Products */ = {
+		8A5D69341DD4D6ED00BB13AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8AA5FE711C5B81470060CA5A /* DLAlertController.framework */,
+				8A5D69351DD4D6ED00BB13AE /* DLAlertController.framework */,
 			);
-			name = Products;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		8AF8ACC51BF49F4200FBAC59 /* AppDelegate */ = {
@@ -141,7 +124,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				8AA5FE7A1C5B83280060CA5A /* PBXTargetDependency */,
 			);
 			name = Sample;
 			productName = Sample;
@@ -154,11 +136,12 @@
 		8A227F7C1BF49E5E0093C215 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Dmitry Lizin";
 				TargetAttributes = {
 					8A227F831BF49E5E0093C215 = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = N7KJYZ955Q;
 					};
 				};
 			};
@@ -173,28 +156,12 @@
 			mainGroup = 8A227F7B1BF49E5E0093C215;
 			productRefGroup = 8A227F851BF49E5E0093C215 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 8AA5FE6D1C5B81470060CA5A /* Products */;
-					ProjectRef = 8AA5FE6C1C5B81470060CA5A /* DLAlertController.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				8A227F831BF49E5E0093C215 /* Sample */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		8AA5FE711C5B81470060CA5A /* DLAlertController.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = DLAlertController.framework;
-			remoteRef = 8AA5FE701C5B81470060CA5A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8A227F821BF49E5E0093C215 /* Resources */ = {
@@ -223,14 +190,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		8AA5FE7A1C5B83280060CA5A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DLAlertController;
-			targetProxy = 8AA5FE791C5B83280060CA5A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
 		8A227F991BF49E5E0093C215 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -245,8 +204,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -269,7 +230,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "../**";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -291,8 +252,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -309,7 +272,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "../**";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
@@ -323,6 +286,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				DEVELOPMENT_TEAM = N7KJYZ955Q;
 				INFOPLIST_FILE = Sample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sdkdimon.Sample;
@@ -335,6 +299,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				DEVELOPMENT_TEAM = N7KJYZ955Q;
 				INFOPLIST_FILE = Sample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sdkdimon.Sample;

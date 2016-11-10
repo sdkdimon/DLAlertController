@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "DLAlertActionStyle.h"
+#import <DLAlertController/DLAlertActionStyle.h>
 
 @interface DLAlertAction : NSObject
 

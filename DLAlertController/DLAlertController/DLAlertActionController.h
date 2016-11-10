@@ -20,10 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "DLAlertTitleController.h"
-#import "DLAlertAction.h"
-#import "DLAlertActionVisualStyle.h"
-#import "DLActionsCollectionView.h"
+#import <DLAlertController/DLAlertTitleController.h>
+#import <DLAlertController/DLAlertAction.h>
+#import <DLAlertController/DLAlertActionVisualStyle.h>
+#import <DLAlertController/DLActionsCollectionView.h>
 
 
 @interface DLAlertActionController : DLAlertTitleController

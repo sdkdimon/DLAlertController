@@ -7,38 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A139A831C6B50B4006EFB12 /* DLAlertMessageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A139A811C6B50B4006EFB12 /* DLAlertMessageController.h */; };
+		8A139A831C6B50B4006EFB12 /* DLAlertMessageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A139A811C6B50B4006EFB12 /* DLAlertMessageController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A139A841C6B50B4006EFB12 /* DLAlertMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A139A821C6B50B4006EFB12 /* DLAlertMessageController.m */; };
 		8A227F421BF49C6A0093C215 /* DLAlertActionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F411BF49C6A0093C215 /* DLAlertActionController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8A227F5D1BF49D230093C215 /* DLAlertAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F4A1BF49D230093C215 /* DLAlertAction.h */; };
+		8A227F5D1BF49D230093C215 /* DLAlertAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F4A1BF49D230093C215 /* DLAlertAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A227F5E1BF49D230093C215 /* DLAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F4B1BF49D230093C215 /* DLAlertAction.m */; };
-		8A227F5F1BF49D230093C215 /* DLAlertActionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F4C1BF49D230093C215 /* DLAlertActionCell.h */; };
+		8A227F5F1BF49D230093C215 /* DLAlertActionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F4C1BF49D230093C215 /* DLAlertActionCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A227F601BF49D230093C215 /* DLAlertActionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F4D1BF49D230093C215 /* DLAlertActionCell.m */; };
-		8A227F611BF49D230093C215 /* DLAlertActionCollectionViewLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F4E1BF49D230093C215 /* DLAlertActionCollectionViewLayout.h */; };
+		8A227F611BF49D230093C215 /* DLAlertActionCollectionViewLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F4E1BF49D230093C215 /* DLAlertActionCollectionViewLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A227F621BF49D230093C215 /* DLAlertActionCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F4F1BF49D230093C215 /* DLAlertActionCollectionViewLayout.m */; };
-		8A227F631BF49D230093C215 /* DLAlertActionVisualStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F501BF49D230093C215 /* DLAlertActionVisualStyle.h */; };
+		8A227F631BF49D230093C215 /* DLAlertActionVisualStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F501BF49D230093C215 /* DLAlertActionVisualStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A227F641BF49D230093C215 /* DLAlertActionVisualStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F511BF49D230093C215 /* DLAlertActionVisualStyle.m */; };
 		8A227F651BF49D230093C215 /* DLAlertActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F531BF49D230093C215 /* DLAlertActionController.m */; };
-		8A227F681BF49D230093C215 /* DLAlertAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F571BF49D230093C215 /* DLAlertAnimationController.h */; };
+		8A227F681BF49D230093C215 /* DLAlertAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F571BF49D230093C215 /* DLAlertAnimationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A227F691BF49D230093C215 /* DLAlertAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F581BF49D230093C215 /* DLAlertAnimationController.m */; };
-		8A227F6A1BF49D230093C215 /* DLAlertPresentationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F591BF49D230093C215 /* DLAlertPresentationController.h */; };
+		8A227F6A1BF49D230093C215 /* DLAlertPresentationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F591BF49D230093C215 /* DLAlertPresentationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A227F6B1BF49D230093C215 /* DLAlertPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F5A1BF49D230093C215 /* DLAlertPresentationController.m */; };
-		8A227F6C1BF49D230093C215 /* DLAlertTransitionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F5B1BF49D230093C215 /* DLAlertTransitionController.h */; };
+		8A227F6C1BF49D230093C215 /* DLAlertTransitionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F5B1BF49D230093C215 /* DLAlertTransitionController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A227F6D1BF49D230093C215 /* DLAlertTransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F5C1BF49D230093C215 /* DLAlertTransitionController.m */; };
-		8A227F751BF49DCA0093C215 /* DLActionsCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F731BF49DCA0093C215 /* DLActionsCollectionView.h */; };
+		8A227F751BF49DCA0093C215 /* DLActionsCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A227F731BF49DCA0093C215 /* DLActionsCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A227F761BF49DCA0093C215 /* DLActionsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A227F741BF49DCA0093C215 /* DLActionsCollectionView.m */; };
-		8A24ED541C5F6A09003A15A6 /* DLAlertTitleController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A24ED521C5F6A09003A15A6 /* DLAlertTitleController.h */; };
+		8A24ED541C5F6A09003A15A6 /* DLAlertTitleController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A24ED521C5F6A09003A15A6 /* DLAlertTitleController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A24ED551C5F6A09003A15A6 /* DLAlertTitleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A24ED531C5F6A09003A15A6 /* DLAlertTitleController.m */; };
-		8AA5FE651C5B7DF70060CA5A /* DLAlertControllerBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA5FE631C5B7DF70060CA5A /* DLAlertControllerBase.h */; };
+		8A5D69311DD4988000BB13AE /* DLAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A5D69301DD4988000BB13AE /* DLAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8AA5FE651C5B7DF70060CA5A /* DLAlertControllerBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA5FE631C5B7DF70060CA5A /* DLAlertControllerBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AA5FE661C5B7DF70060CA5A /* DLAlertControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5FE641C5B7DF70060CA5A /* DLAlertControllerBase.m */; };
-		8AA5FE6A1C5B81180060CA5A /* UIViewController+TopViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA5FE681C5B81180060CA5A /* UIViewController+TopViewController.h */; };
+		8AA5FE6A1C5B81180060CA5A /* UIViewController+TopViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA5FE681C5B81180060CA5A /* UIViewController+TopViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AA5FE7B1C5B83500060CA5A /* UIViewController+TopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5FE691C5B81180060CA5A /* UIViewController+TopViewController.m */; };
-		8AA5FE851C5BAE940060CA5A /* DLAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA5FE831C5BAE940060CA5A /* DLAlertView.h */; };
+		8AA5FE851C5BAE940060CA5A /* DLAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA5FE831C5BAE940060CA5A /* DLAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AA5FE861C5BAE940060CA5A /* DLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5FE841C5BAE940060CA5A /* DLAlertView.m */; };
-		8AA5FE891C5BB4290060CA5A /* DLAlertLoaderController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA5FE871C5BB4290060CA5A /* DLAlertLoaderController.h */; };
+		8AA5FE891C5BB4290060CA5A /* DLAlertLoaderController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA5FE871C5BB4290060CA5A /* DLAlertLoaderController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AA5FE8A1C5BB4290060CA5A /* DLAlertLoaderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5FE881C5BB4290060CA5A /* DLAlertLoaderController.m */; };
-		8AC01E291BF4C538009FF122 /* DLAlertActionState.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AC01E271BF4C538009FF122 /* DLAlertActionState.h */; };
-		8AC01E2A1BF4C538009FF122 /* DLAlertActionStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AC01E281BF4C538009FF122 /* DLAlertActionStyle.h */; };
+		8AC01E291BF4C538009FF122 /* DLAlertActionState.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AC01E271BF4C538009FF122 /* DLAlertActionState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8AC01E2A1BF4C538009FF122 /* DLAlertActionStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AC01E281BF4C538009FF122 /* DLAlertActionStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,8 @@
 		8A227F741BF49DCA0093C215 /* DLActionsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DLActionsCollectionView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8A24ED521C5F6A09003A15A6 /* DLAlertTitleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertTitleController.h; sourceTree = "<group>"; };
 		8A24ED531C5F6A09003A15A6 /* DLAlertTitleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertTitleController.m; sourceTree = "<group>"; };
+		8A5D69301DD4988000BB13AE /* DLAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertController.h; sourceTree = "<group>"; };
+		8A5D69321DD49AEE00BB13AE /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		8AA5FE631C5B7DF70060CA5A /* DLAlertControllerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertControllerBase.h; sourceTree = "<group>"; };
 		8AA5FE641C5B7DF70060CA5A /* DLAlertControllerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertControllerBase.m; sourceTree = "<group>"; };
 		8AA5FE681C5B81180060CA5A /* UIViewController+TopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TopViewController.h"; sourceTree = "<group>"; };
@@ -117,6 +120,7 @@
 		8A227F401BF49C6A0093C215 /* DLAlertController */ = {
 			isa = PBXGroup;
 			children = (
+				8A5D69301DD4988000BB13AE /* DLAlertController.h */,
 				8AA5FE831C5BAE940060CA5A /* DLAlertView.h */,
 				8AA5FE841C5BAE940060CA5A /* DLAlertView.m */,
 				8AA5FE801C5BAE5C0060CA5A /* Controllers */,
@@ -213,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				8AC01E241BF4B64C009FF122 /* Info.plist */,
+				8A5D69321DD49AEE00BB13AE /* module.modulemap */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 				8AA5FE6A1C5B81180060CA5A /* UIViewController+TopViewController.h in Headers */,
 				8A139A831C6B50B4006EFB12 /* DLAlertMessageController.h in Headers */,
 				8A227F611BF49D230093C215 /* DLAlertActionCollectionViewLayout.h in Headers */,
+				8A5D69311DD4988000BB13AE /* DLAlertController.h in Headers */,
 				8A227F5F1BF49D230093C215 /* DLAlertActionCell.h in Headers */,
 				8A24ED541C5F6A09003A15A6 /* DLAlertTitleController.h in Headers */,
 				8A227F6C1BF49D230093C215 /* DLAlertTransitionController.h in Headers */,
@@ -271,11 +277,12 @@
 		8A227F351BF49C6A0093C215 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Dmitry Lizin";
 				TargetAttributes = {
 					8A227F3D1BF49C6A0093C215 = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = N7KJYZ955Q;
 					};
 				};
 			};
@@ -345,8 +352,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -369,7 +378,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -392,8 +401,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -410,7 +421,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -423,7 +434,9 @@
 		8A227F471BF49C6A0093C215 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = N7KJYZ955Q;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -431,6 +444,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = $SRCROOT/$PROJECT_NAME/SupportingFiles/module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = org.sdkdimon.DLAlertController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -440,7 +454,9 @@
 		8A227F481BF49C6A0093C215 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = N7KJYZ955Q;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -448,6 +464,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = $SRCROOT/$PROJECT_NAME/SupportingFiles/module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = org.sdkdimon.DLAlertController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

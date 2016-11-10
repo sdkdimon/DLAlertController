@@ -21,9 +21,9 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DLAlertAction.h"
-#import "DLAlertActionCollectionViewLayout.h"
-#import "DLAlertActionVisualStyle.h"
+#import <DLAlertController/DLAlertAction.h>
+#import <DLAlertController/DLAlertActionCollectionViewLayout.h>
+#import <DLAlertController/DLAlertActionVisualStyle.h>
 
 @class DLActionsCollectionView;
 

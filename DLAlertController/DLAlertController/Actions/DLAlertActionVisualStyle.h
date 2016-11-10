@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "DLAlertActionState.h"
+#import <DLAlertController/DLAlertActionState.h>
 
 @interface DLAlertActionVisualStyle : NSObject
 

@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "DLAlertActionController.h"
+#import <DLAlertController/DLAlertActionController.h>
 
 @interface DLAlertMessageController : DLAlertActionController
 

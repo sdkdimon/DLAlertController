@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import "ViewController.h"
-#import "DLAlertMessageController.h"
+#import <DLAlertController/DLAlertController.h>
 
 
 
@@ -70,7 +70,7 @@
         NSLog(@"%@ tapped ",@"Cancel");
     }]];
     
-    DLAlertAction *action = [DLAlertAction actionWithTitle:@"Ok" style:DLAlertActionStyleDefault handler:^{
+    DLAlertAction *action = [DLAlertAction actionWithTitle:@"Okkkkkkkkkkkkkkkkdwdaopjdajojidjawiodjwaodjoawjdjwiodjaiowdjw" style:DLAlertActionStyleDefault handler:^{
         NSLog(@"%@ tapped ",@"Ok");
     }];
     
