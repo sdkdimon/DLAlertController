@@ -33,6 +33,8 @@
 
 @property(strong,nonatomic,readwrite) NSDictionary <NSNumber *, NSLayoutConstraint *> *titleLabelInsetsConstraints;
 
+@property (strong, nonatomic, readwrite) NSLayoutConstraint *contentViewHeightConstraint;
+
 @end
 
 
@@ -53,8 +55,8 @@
 
 - (void)setup{
     [super setup];
-     CGFloat titleInset = 5.0f;
-     _titleInsets = UIEdgeInsetsMake(titleInset, titleInset, titleInset, titleInset);
+    CGFloat titleInset = 5.0f;
+    _titleInsets = UIEdgeInsetsMake(titleInset, titleInset, titleInset, titleInset);
     _titleFont = nil;
     _titleTextColor = nil;
 }
@@ -74,14 +76,14 @@
     
     [alertContentView addSubview:titleContentView];
     
-
+    
     NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:titleContentView
-                                                              attribute:NSLayoutAttributeTop
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:alertContentView
-                                                              attribute:NSLayoutAttributeTop
-                                                             multiplier:1.0f
-                                                               constant:0.0f];
+                                                           attribute:NSLayoutAttributeTop
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:alertContentView
+                                                           attribute:NSLayoutAttributeTop
+                                                          multiplier:1.0f
+                                                            constant:0.0f];
     
     
     NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:titleContentView
@@ -111,7 +113,7 @@
     [alertContentView addConstraints:@[bottom,leading,trailing,top]];
     
     [self setTitleContentView:titleContentView];
-
+    
     
 }
 
@@ -122,26 +124,26 @@
     [contentView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:contentView
-                                                           attribute:NSLayoutAttributeHeight
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:nil
-                                                           attribute:NSLayoutAttributeNotAnAttribute
-                                                          multiplier:1.0f
-                                                            constant:.0f];
+                                                              attribute:NSLayoutAttributeHeight
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:nil
+                                                              attribute:NSLayoutAttributeNotAnAttribute
+                                                             multiplier:1.0f
+                                                               constant:_contentViewMinHeight];
     [height setPriority:UILayoutPriorityDefaultLow];
     [contentView addConstraint:height];
-    
+    _contentViewHeightConstraint = height;
     [alertContentView addSubview:contentView];
     
     
-
+    
     NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:contentView
-                                                              attribute:NSLayoutAttributeTop
-                                                              relatedBy:NSLayoutRelationGreaterThanOrEqual
-                                                                 toItem:alertContentView
-                                                              attribute:NSLayoutAttributeTop
-                                                             multiplier:1.0f
-                                                               constant:0.0f];
+                                                           attribute:NSLayoutAttributeTop
+                                                           relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                              toItem:alertContentView
+                                                           attribute:NSLayoutAttributeTop
+                                                          multiplier:1.0f
+                                                            constant:0.0f];
     
     
     NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:contentView
@@ -169,12 +171,12 @@
                                                                  constant:0.0f];
     
     NSLayoutConstraint *verticalSpace = [NSLayoutConstraint constraintWithItem:contentView
-                                                                attribute:NSLayoutAttributeTop
-                                                                relatedBy:NSLayoutRelationEqual
-                                                                   toItem:_titleContentView
-                                                                attribute:NSLayoutAttributeBottom
-                                                               multiplier:1.0f
-                                                                 constant:0.0f];
+                                                                     attribute:NSLayoutAttributeTop
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:_titleContentView
+                                                                     attribute:NSLayoutAttributeBottom
+                                                                    multiplier:1.0f
+                                                                      constant:0.0f];
     
     [alertContentView addConstraints:@[bottom,leading,trailing,verticalSpace,top]];
     
@@ -201,14 +203,14 @@
     
     
     NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:titleLabel
-                                                           attribute:NSLayoutAttributeBottom
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:titleContentView
-                                                           attribute:NSLayoutAttributeBottom
-                                                          multiplier:1.0f
-                                                            constant: - _titleInsets.bottom];
-
-
+                                                              attribute:NSLayoutAttributeBottom
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:titleContentView
+                                                              attribute:NSLayoutAttributeBottom
+                                                             multiplier:1.0f
+                                                               constant: - _titleInsets.bottom];
+    
+    
     
     NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:titleLabel
                                                                attribute:NSLayoutAttributeLeading
@@ -227,7 +229,7 @@
                                                                  constant: - _titleInsets.right];
     
     NSArray *constraints = @[top,bottom,leading,trailing];
-
+    
     
     
     [titleContentView addConstraints:constraints];
@@ -292,54 +294,13 @@
     }
 }
 
+- (void)setContentViewMinHeight:(CGFloat)contentViewMinHeight
+{
+    _contentViewMinHeight = contentViewMinHeight;
+    if ([self isViewLoaded])
+    {
+        [_contentViewHeightConstraint setConstant:contentViewMinHeight];
+    }
+}
+
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

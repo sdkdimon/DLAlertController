@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <DLAlertController/DLAlertLoaderController.h>
+#import "DLAlertLoaderController.h"
 
 @interface DLAlertTitleController : DLAlertLoaderController
 
@@ -35,5 +35,7 @@
 @property(strong,nonatomic,readwrite) UIColor *titleTextColor;
 @property(strong,nonatomic,readwrite) UIFont *titleFont;
 @property(assign,nonatomic,readwrite) UIEdgeInsets titleInsets;
+
+@property (assign, nonatomic, readwrite) CGFloat contentViewMinHeight;
 
 @end
