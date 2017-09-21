@@ -217,7 +217,7 @@
 - (void)actionCollectionView:(DLActionsCollectionView *)collectionView didExecuteActionAtIndex:(NSUInteger)index{
     [self actionTap:index];
     DLAlertAction *action = _actions[index];
-    void(^actionHandler)() = [action handler];
+    void(^actionHandler)(void) = [action handler];
     if(_dismissableOnActionTap){
         [self dismissAnimated:_dismssAnimationEnabled completion:actionHandler];
         return;

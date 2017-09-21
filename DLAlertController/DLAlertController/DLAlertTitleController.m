@@ -24,8 +24,6 @@
 #import "DLAlertTitleController.h"
 #import "DLAlertView.h"
 
-
-
 @interface DLAlertTitleController ()
 @property(strong,nonatomic,readwrite) UILabel *titleLabel;
 @property(strong,nonatomic,readwrite) UIView *contentView;

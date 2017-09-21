@@ -29,8 +29,8 @@
 @property(strong,nonatomic,readwrite) UITapGestureRecognizer *rootViewTapGesture;
 @property(strong,nonatomic,readwrite) DLAlertTransitionController *transitionController;
 
-@property (copy, nonatomic, readwrite) void (^presentationCompletionBlock)();
-@property (copy, nonatomic, readwrite) void (^dismissalCompletionBlock)();
+@property (copy, nonatomic, readwrite) void (^presentationCompletionBlock)(void);
+@property (copy, nonatomic, readwrite) void (^dismissalCompletionBlock)(void);
 
 @end
 
@@ -116,7 +116,7 @@
 
 @implementation DLAlertControllerBase (Presentation)
 
-- (void)presentAnimated:(BOOL)animated completion:(void (^)())completion{
+- (void)presentAnimated:(BOOL)animated completion:(void (^)(void))completion{
     UIViewController *topViewController = [UIViewController topViewController:nil];
     [self setPresentationCompletionBlock:completion];
     if (animated){
@@ -131,7 +131,7 @@
     
 }
 
-- (void)dismissAnimated:(BOOL)animated completion:(void (^)())completion{
+- (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion{
     [self setDismissalCompletionBlock:completion];
     if (animated){
         [[self presentingViewController] dismissViewControllerAnimated:animated completion:nil];
