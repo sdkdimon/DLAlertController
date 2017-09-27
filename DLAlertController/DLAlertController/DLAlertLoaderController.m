@@ -31,19 +31,21 @@
 
 @implementation DLAlertLoaderController
 
-- (void)setup{
+- (void)setup
+{
     [super setup];
     _alertMinHeight = .0f;
     _alertInsets = UIEdgeInsetsZero;
 }
 
-- (void)loadView{
+- (void)loadView
+{
     [super loadView];
     [self loadAlert];
-    
 }
 
-- (void)loadAlert{
+- (void)loadAlert
+{
     UIView *contentView = [self view];
     
     DLAlertView *alertView = [[DLAlertView alloc] init];
@@ -55,11 +57,10 @@
     
     [self setAlert:alertView];
     [self setupAlertLayoutConstraints];
-
-    
 }
 
-- (void)setupAlertLayoutConstraints{
+- (void)setupAlertLayoutConstraints
+{
 
     UIView *contentView = [self view];
 
@@ -81,12 +82,32 @@
                                     multiplier:1.0f
                                     constant:- _alertInsets.right];
     
+    id safeAreaTop = nil;
+    id safeAreaBottom = nil;
+    NSLayoutAttribute safeAreaTopAttribute = NSLayoutAttributeNotAnAttribute;
+    NSLayoutAttribute safeAreaBottomAttribute = NSLayoutAttributeNotAnAttribute;
+    
+    if (@available(iOS 11.0, *)) {
+        safeAreaTop = contentView.safeAreaLayoutGuide;
+        safeAreaTopAttribute = NSLayoutAttributeTop;
+        safeAreaBottom = contentView.safeAreaLayoutGuide;
+        safeAreaBottomAttribute = NSLayoutAttributeBottom;
+    } else {
+        // Fallback on earlier versions
+        safeAreaTop = self.topLayoutGuide;
+        safeAreaTopAttribute = NSLayoutAttributeBottom;
+        safeAreaBottom = self.bottomLayoutGuide;
+        safeAreaBottomAttribute = NSLayoutAttributeTop;
+    }
+    
+    
+    
     NSLayoutConstraint *top = [NSLayoutConstraint
                                constraintWithItem:_alert
                                attribute:NSLayoutAttributeTop
                                relatedBy:NSLayoutRelationGreaterThanOrEqual
-                               toItem:contentView
-                               attribute:NSLayoutAttributeTop
+                               toItem:safeAreaTop
+                               attribute:safeAreaTopAttribute
                                multiplier:1.0f
                                constant:_alertInsets.top];
     
@@ -96,8 +117,8 @@
                                     constraintWithItem:_alert
                                     attribute:NSLayoutAttributeBottom
                                     relatedBy:NSLayoutRelationEqual
-                                    toItem:contentView
-                                    attribute:NSLayoutAttributeBottom
+                                    toItem:safeAreaBottom
+                                    attribute:safeAreaBottomAttribute
                                     multiplier:1.0f
                                     constant:- _alertInsets.bottom];
     
@@ -113,28 +134,30 @@
                                                                                                    @(NSLayoutAttributeTrailing)]]];
     
     [contentView addConstraints:constraints];
-    
-    
 }
 
-- (void)viewDidLoad{
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setupAlert];
     
 }
 
-- (void)setupAlert{
+- (void)setupAlert
+{
     
 }
 
-- (void)setAlertMinHeight:(CGFloat)alertMinHeight{
+- (void)setAlertMinHeight:(CGFloat)alertMinHeight
+{
     _alertMinHeight = alertMinHeight;
     if([self isViewLoaded]){
         [_alert setContentMinHeight:alertMinHeight];
     }
 }
 
-- (void)setAlertInsets:(UIEdgeInsets)alertInsets{
+- (void)setAlertInsets:(UIEdgeInsets)alertInsets
+{
     _alertInsets = alertInsets;
     if([self isViewLoaded]){
         [[_alertInsetsConstraints objectForKey:@(NSLayoutAttributeTop)] setConstant:alertInsets.top];
@@ -142,7 +165,7 @@
         [[_alertInsetsConstraints objectForKey:@(NSLayoutAttributeLeading)] setConstant:alertInsets.left];
         [[_alertInsetsConstraints objectForKey:@(NSLayoutAttributeTrailing)] setConstant: - alertInsets.right];
     }
-
+    
 }
 
 @end

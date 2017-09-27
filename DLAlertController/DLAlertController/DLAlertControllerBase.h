@@ -30,6 +30,7 @@
 - (void)rootViewGestureTap:(UITapGestureRecognizer *)sender;
 
 - (void)setup;
+- (void)loadSubviews;
 
 - (void)didPresentAnimated:(BOOL)animated;
 - (void)didDismissAnimated:(BOOL)animated;

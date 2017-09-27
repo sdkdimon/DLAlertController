@@ -29,8 +29,8 @@
 @property(strong,nonatomic,readwrite) UITapGestureRecognizer *rootViewTapGesture;
 @property(strong,nonatomic,readwrite) DLAlertTransitionController *transitionController;
 
-@property (copy, nonatomic, readwrite) void (^presentationCompletionBlock)();
-@property (copy, nonatomic, readwrite) void (^dismissalCompletionBlock)();
+@property (copy, nonatomic, readwrite) void (^presentationCompletionBlock)(void);
+@property (copy, nonatomic, readwrite) void (^dismissalCompletionBlock)(void);
 
 @end
 
@@ -38,7 +38,8 @@
 
 #pragma mark Initialization
 
-- (instancetype)init{
+- (instancetype)init
+{
     self = [super init];
     if(self != nil){
         [self setup];
@@ -48,7 +49,8 @@
 
 #pragma mark Setup
 
-- (void)setup{
+- (void)setup
+{
     _transitionController = [[DLAlertTransitionController alloc] init];
     [_transitionController setDelegate:self];
     [self setTransitioningDelegate:_transitionController];
@@ -57,45 +59,59 @@
 
 #pragma mark View load
 
-- (void)loadView{
+- (void)loadView
+{
     UIView *view = [[UIView alloc] init];
     [view setBackgroundColor:[UIColor colorWithWhite:0 alpha:.4f]];
     [view setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
     [self setView:view];
 }
 
-- (void)setupRootViewTapGesture{
+- (void)loadSubviews
+{
+    
+}
+
+- (void)setupRootViewTapGesture
+{
     _rootViewTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rootViewGestureTap:)];
     [_rootViewTapGesture setDelegate:self];
     [[self view] addGestureRecognizer:_rootViewTapGesture];
 }
 
-- (void)viewDidLoad{
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    [self loadSubviews];
     [self setupRootViewTapGesture];
 }
 
 
-- (void)rootViewGestureTap:(UITapGestureRecognizer *)sender{
+- (void)rootViewGestureTap:(UITapGestureRecognizer *)sender
+{
 
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
     return [[touch view] isEqual:[self view]];
 }
 
 
-- (void)alertTransitionController:(DLAlertTransitionController *)controller didEndDismissalTransition:(BOOL)finished{
+- (void)alertTransitionController:(DLAlertTransitionController *)controller didEndDismissalTransition:(BOOL)finished
+{
     [self didDismissAnimated:YES];
     
 }
 
-- (void)alertTransitionController:(DLAlertTransitionController *)controller didEndPresentationTransition:(BOOL)finished{
+- (void)alertTransitionController:(DLAlertTransitionController *)controller didEndPresentationTransition:(BOOL)finished
+{
    [self didPresentAnimated:YES];
 }
 
 
-- (void)didPresentAnimated:(BOOL)animated{
+- (void)didPresentAnimated:(BOOL)animated
+{
     
     if (_presentationCompletionBlock != NULL){
         _presentationCompletionBlock();
@@ -103,8 +119,8 @@
     }
 }
 
-- (void)didDismissAnimated:(BOOL)animated{
-    
+- (void)didDismissAnimated:(BOOL)animated
+{
     if (_dismissalCompletionBlock != NULL){
         _dismissalCompletionBlock();
         _dismissalCompletionBlock = NULL;
@@ -116,7 +132,8 @@
 
 @implementation DLAlertControllerBase (Presentation)
 
-- (void)presentAnimated:(BOOL)animated completion:(void (^)())completion{
+- (void)presentAnimated:(BOOL)animated completion:(void (^)(void))completion
+{
     UIViewController *topViewController = [UIViewController topViewController:nil];
     [self setPresentationCompletionBlock:completion];
     if (animated){
@@ -126,12 +143,10 @@
             [self didPresentAnimated:NO];
         }];
     }
-    
-    
-    
 }
 
-- (void)dismissAnimated:(BOOL)animated completion:(void (^)())completion{
+- (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion
+{
     [self setDismissalCompletionBlock:completion];
     if (animated){
         [[self presentingViewController] dismissViewControllerAnimated:animated completion:nil];
