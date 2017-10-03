@@ -27,7 +27,6 @@
 @property(strong,nonatomic,readonly) UIScrollView *scrollView;
 @property(strong,nonatomic,readonly) UIView *contentView;
 @property(strong,nonatomic,readonly) UIView *actionContentView;
-
 @property(assign,nonatomic,readwrite) CGFloat contentMinHeight;
 
 - (void)setup;

@@ -30,23 +30,25 @@
 
 @end
 
-
 @implementation DLAlertView
 
 #pragma mark Initializers
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder{
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
     self = [super initWithCoder:aDecoder];
-    if(self != nil){
+    if(self != nil)
+    {
         [self setup];
     }
     return self;
 }
 
-
-- (instancetype)initWithFrame:(CGRect)frame{
+- (instancetype)initWithFrame:(CGRect)frame
+{
     self = [super initWithFrame:frame];
-    if(self != nil){
+    if(self != nil)
+    {
         [self setup];
     }
     return self;
@@ -54,13 +56,15 @@
 
 #pragma mark Setup and initialize subviews
 
-- (void)setup{
+- (void)setup
+{
     _contentMinHeight = .0f;
     [self createUI];
     [self setupLayoutConstraints];
 }
 
-- (void)createUI{
+- (void)createUI
+{
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
     [_scrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self addSubview:_scrollView];
@@ -74,20 +78,22 @@
 
 #pragma mark Setup layout constraint
 
-- (void)setupLayoutConstraints{
+- (void)setupLayoutConstraints
+{
     [self setupScrollViewConstraints];
     [self setupContentViewConstraints];
     [self setupActionContentViewConstraints];
 }
 
-
-- (void)prepareLayout{
+- (void)prepareLayout
+{
     [self setupLayoutConstraints];
 }
 
 #pragma mark ScrollView constraints
 
-- (void)setupScrollViewConstraints{
+- (void)setupScrollViewConstraints
+{
     
     NSLayoutConstraint *leading = [NSLayoutConstraint
                                        constraintWithItem:_scrollView
@@ -139,7 +145,8 @@
 
 #pragma mark ContentView constraints
 
-- (void)setupContentViewConstraints{
+- (void)setupContentViewConstraints
+{
     
     _contentMinHeightConstraint = [NSLayoutConstraint
                                    constraintWithItem:_contentView
@@ -216,11 +223,11 @@
                                   bottom,
                                   equalHeight,
                                   equalWidth]];
-    
 }
 
 
-- (void)setupActionContentViewConstraints{
+- (void)setupActionContentViewConstraints
+{
     
     NSLayoutConstraint *leading = [NSLayoutConstraint
                                    constraintWithItem:_actionContentView
@@ -272,7 +279,8 @@
 }
 
 
-- (void)setContentMinHeight:(CGFloat)contentMinHeight{
+- (void)setContentMinHeight:(CGFloat)contentMinHeight
+{
     _contentMinHeight = contentMinHeight;
     [_contentMinHeightConstraint setConstant:contentMinHeight];
 }

@@ -25,8 +25,6 @@
 
 @interface DLAlertActionVisualStyle : NSObject
 
-
-
 @property(strong,nonatomic,readwrite) UIFont *font;
 
 - (void)setBackgroundColor:(UIColor *)color forActionState:(DLAlertActionState)state;
@@ -35,11 +33,10 @@
 - (UIColor *)textColorForActionState:(DLAlertActionState)state;
 @end
 
-
 @interface DLAlertActionVisualStyle (Factory)
 
-+(instancetype)defaultStyle;
-+(instancetype)cancelStyle;
-+(instancetype)destructiveStyle;
++ (instancetype)defaultStyle;
++ (instancetype)cancelStyle;
++ (instancetype)destructiveStyle;
 
 @end

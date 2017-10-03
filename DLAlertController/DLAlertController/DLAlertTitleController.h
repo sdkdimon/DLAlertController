@@ -24,7 +24,7 @@
 
 @interface DLAlertTitleController : DLAlertLoaderController
 
-+(instancetype)controllerWithTitle:(NSString *)title;
++ (instancetype)controllerWithTitle:(NSString *)title;
 - (instancetype)initWithTitle:(NSString *)title;
 
 @property(strong,nonatomic,readonly) UIView *contentView;

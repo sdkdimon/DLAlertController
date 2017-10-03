@@ -21,8 +21,8 @@
 // THE SOFTWARE.
 
 #import <DLAlertController/DLAlertControllerBase.h>
-@class DLAlertView;
 
+@class DLAlertView;
 
 @interface DLAlertLoaderController : DLAlertControllerBase
 
@@ -31,6 +31,5 @@
 @property(assign,nonatomic,readwrite) UIEdgeInsets alertInsets;
 
 - (void)setupAlert;
-
 
 @end

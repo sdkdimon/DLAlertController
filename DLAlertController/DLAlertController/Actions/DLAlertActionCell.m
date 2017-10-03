@@ -26,12 +26,13 @@
 
 @end
 
-
 @implementation DLAlertActionCell
 
-- (instancetype)initWithFrame:(CGRect)frame{
+- (instancetype)initWithFrame:(CGRect)frame
+{
     self = [super initWithFrame:frame];
-    if(self != nil){
+    if(self != nil)
+    {
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         [titleLabel setTextAlignment:NSTextAlignmentCenter];
@@ -44,14 +45,10 @@
         NSLayoutConstraint *titleLabelLeadingCostraint = [NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeLeading multiplier:1.0f constant:5.0f];
         NSLayoutConstraint *titleLabelTrailingCostraint = [NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:-5.0f];
         
-        
         [contentView addConstraints:@[titleLabelTopCostraint,titleLabelBottomCostraint,titleLabelLeadingCostraint,titleLabelTrailingCostraint]];
         [titleLabel setTextAlignment:NSTextAlignmentCenter];
         _titleLabel = titleLabel;
-        
-        
     }
-    
     return self;
 }
 

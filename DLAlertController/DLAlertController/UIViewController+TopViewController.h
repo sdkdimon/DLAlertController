@@ -24,6 +24,6 @@
 
 @interface UIViewController (TopViewController)
 
-+(UIViewController *)topViewController:(UIViewController *)viewController;
++ (UIViewController *)topViewController:(UIViewController *)viewController;
 
 @end

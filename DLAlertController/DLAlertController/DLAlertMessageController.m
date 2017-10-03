@@ -33,7 +33,7 @@
 
 @implementation DLAlertMessageController
 
-+(instancetype)controllerWithTitle:(NSString *)title message:(NSString *)message{
++ (instancetype)controllerWithTitle:(NSString *)title message:(NSString *)message{
     return [[self alloc] initWithTitle:title message:message];
 }
 

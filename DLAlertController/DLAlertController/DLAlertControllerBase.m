@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 #import "DLAlertControllerBase.h"
+
 #import "UIViewController+TopViewController.h"
 #import "DLAlertTransitionController.h"
 
@@ -86,7 +87,6 @@
     [self setupRootViewTapGesture];
 }
 
-
 - (void)rootViewGestureTap:(UITapGestureRecognizer *)sender
 {
 
@@ -96,7 +96,6 @@
 {
     return [[touch view] isEqual:[self view]];
 }
-
 
 - (void)alertTransitionController:(DLAlertTransitionController *)controller didEndDismissalTransition:(BOOL)finished
 {
@@ -108,7 +107,6 @@
 {
    [self didPresentAnimated:YES];
 }
-
 
 - (void)didPresentAnimated:(BOOL)animated
 {
@@ -128,7 +126,6 @@
 }
 
 @end
-
 
 @implementation DLAlertControllerBase (Presentation)
 

@@ -28,19 +28,21 @@ static CGFloat const SPRING_VELOCITY = 0;
 
 @implementation DLAlertAnimationController
 
-- (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext{
+- (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext
+{
     return .202f;
 }
 
-- (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
+- (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext
+{
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
     UIView *fromView = [fromViewController view];
     UIView *toView = [toViewController view];
     
-    
-    if([self isPresentation]){
+    if([self isPresentation])
+    {
         [[transitionContext containerView] addSubview:toView];
     }
     
@@ -48,7 +50,8 @@ static CGFloat const SPRING_VELOCITY = 0;
     UIView *animatingView = [animatingViewController view];
     [animatingView setFrame:[transitionContext finalFrameForViewController:animatingViewController]];
    
-    if([self isPresentation]){
+    if([self isPresentation])
+    {
         [animatingView setTransform:CGAffineTransformMakeScale(INITIAL_SCALE, INITIAL_SCALE)];
         [animatingView setAlpha:0];
         
@@ -60,7 +63,9 @@ static CGFloat const SPRING_VELOCITY = 0;
         }];
         
         
-    } else{
+    }
+    else
+    {
         [self animate:^{
             [animatingView setAlpha:0];
         } inContext:transitionContext withCompletion:^(BOOL finished) {
@@ -70,13 +75,15 @@ static CGFloat const SPRING_VELOCITY = 0;
     }
 }
 
-- (void)animationEnded:(BOOL)transitionCompleted{
+- (void)animationEnded:(BOOL)transitionCompleted
+{
     if (_delegate != nil && [_delegate respondsToSelector:@selector(animationConroller:didEndAnimation:)]){
         [_delegate animationConroller:self didEndAnimation:transitionCompleted];
     }
 }
 
-- (void)animate:(void(^)())animations inContext:(id <UIViewControllerContextTransitioning>)context withCompletion:(void(^)(BOOL finished))completion{
+- (void)animate:(void(^)())animations inContext:(id <UIViewControllerContextTransitioning>)context withCompletion:(void(^)(BOOL finished))completion
+{
     [UIView animateWithDuration:[self transitionDuration:context] delay:0 usingSpringWithDamping:SPRING_DAMPING initialSpringVelocity:SPRING_VELOCITY options:0 animations:animations completion:completion];
 }
 

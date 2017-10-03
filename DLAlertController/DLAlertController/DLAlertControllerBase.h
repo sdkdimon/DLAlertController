@@ -22,7 +22,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface DLAlertControllerBase : UIViewController <UIGestureRecognizerDelegate>
 
 @property(strong,nonatomic,readonly) UITapGestureRecognizer *rootViewTapGesture;
@@ -35,10 +34,11 @@
 - (void)didPresentAnimated:(BOOL)animated;
 - (void)didDismissAnimated:(BOOL)animated;
 
-
 @end
 
 @interface DLAlertControllerBase (Presentation)
-- (void)presentAnimated:(BOOL)animated completion:(void(^)())completion;
-- (void)dismissAnimated:(BOOL)animated completion:(void(^)())completion;
+
+- (void)presentAnimated:(BOOL)animated completion:(void(^)(void))completion;
+- (void)dismissAnimated:(BOOL)animated completion:(void(^)(void))completion;
+
 @end

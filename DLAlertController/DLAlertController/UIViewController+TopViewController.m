@@ -23,32 +23,13 @@
 #import "UIViewController+TopViewController.h"
 
 @implementation UIViewController (TopViewController)
-//extension UIViewController {
-//
-//    static func topViewController(viewController: UIViewController? = nil) -> UIViewController? {
-//        let viewController = viewController ?? UIApplication.sharedApplication().keyWindow?.rootViewController
-//
-//        if let navigationController = viewController as? UINavigationController
-//            where !navigationController.viewControllers.isEmpty
-//        {
-//            return self.topViewController(navigationController.viewControllers.last)
-//        } else if let tabBarController = viewController as? UITabBarController,
-//            selectedController = tabBarController.selectedViewController
-//        {
-//            return self.topViewController(selectedController)
-//        } else if let presentedController = viewController?.presentedViewController {
-//            return self.topViewController(presentedController)
-//        }
-//
-//        return viewController
-//    }
-//}
 
-+(UIViewController *)topViewController:(UIViewController *)viewController{
-    
++ (UIViewController *)topViewController:(UIViewController *)viewController
+{
     viewController = viewController != nil ? viewController : [[[UIApplication sharedApplication] keyWindow] rootViewController];
     
-    if([viewController isKindOfClass:[UINavigationController class]]){
+    if([viewController isKindOfClass:[UINavigationController class]])
+    {
         UINavigationController *navigationController = (UINavigationController *)viewController;
         NSArray <UIViewController *> *viewControllers = [navigationController viewControllers];
         NSInteger viewControllerLastIdx = [viewControllers count] - 1;
@@ -56,14 +37,21 @@
         {
             return [self topViewController:[viewControllers objectAtIndex:viewControllerLastIdx]];
         }
-    }else if([viewController isKindOfClass:[UITabBarController class]])
+    }
+    else
     {
-        UITabBarController *tabBarController = (UITabBarController *)viewController;
-        return [self topViewController:[tabBarController selectedViewController]];
-    } else {
-        UIViewController *presentedViewController = [viewController presentedViewController];
-        if(presentedViewController != nil){
-            return [self topViewController:presentedViewController];
+        if([viewController isKindOfClass:[UITabBarController class]])
+        {
+            UITabBarController *tabBarController = (UITabBarController *)viewController;
+            return [self topViewController:[tabBarController selectedViewController]];
+        }
+        else
+        {
+            UIViewController *presentedViewController = [viewController presentedViewController];
+            if(presentedViewController != nil)
+            {
+                return [self topViewController:presentedViewController];
+            }
         }
     }
     return viewController;

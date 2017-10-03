@@ -31,6 +31,8 @@
 @end
 
 @interface DLAlertAnimationController : NSObject <UIViewControllerAnimatedTransitioning>
+
 @property (assign, nonatomic, readwrite, getter=isPresentation) BOOL presentation;
 @property (weak, nonatomic, readwrite) id <DLAlertAnimationControllerDelegate> delegate;
+
 @end

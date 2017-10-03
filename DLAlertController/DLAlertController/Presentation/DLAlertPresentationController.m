@@ -28,12 +28,15 @@
 
 @end
 
-
 @implementation DLAlertPresentationController
 
-- (instancetype)initWithPresentedViewController:(UIViewController *)presentedViewController presentingViewController:(UIViewController *)presentingViewController{
-    self = [super initWithPresentedViewController:presentedViewController presentingViewController:presentingViewController];
-    if(self != nil){
+- (instancetype)initWithPresentedViewController:(UIViewController *)presentedViewController
+                       presentingViewController:(UIViewController *)presentingViewController
+{
+    self = [super initWithPresentedViewController:presentedViewController
+                         presentingViewController:presentingViewController];
+    if(self != nil)
+    {
         _dimmingView = [[UIView alloc] init];
         [_dimmingView setBackgroundColor:[UIColor colorWithWhite:0 alpha:.4f]];
     }
@@ -41,7 +44,8 @@
     return self;
 }
 
-- (void)presentationTransitionWillBegin{
+- (void)presentationTransitionWillBegin
+{
     [super presentationTransitionWillBegin];
     [[[self presentingViewController] view] setTintAdjustmentMode:UIViewTintAdjustmentModeDimmed];
     [[self dimmingView] setAlpha:0];
@@ -52,7 +56,8 @@
     } completion:nil];
 }
 
-- (void)dismissalTransitionWillBegin{
+- (void)dismissalTransitionWillBegin
+{
     [super dismissalTransitionWillBegin];
     [[[self presentingViewController] view] setTintAdjustmentMode:UIViewTintAdjustmentModeAutomatic];
     id <UIViewControllerTransitionCoordinator> coordinator =  [[self presentingViewController] transitionCoordinator];
@@ -61,8 +66,8 @@
     } completion:nil];
 }
 
-
-- (void)containerViewWillLayoutSubviews{
+- (void)containerViewWillLayoutSubviews
+{
     [super containerViewWillLayoutSubviews];
     UIView *containerView = [self containerView];
     [[self dimmingView] setFrame:[containerView frame]];
