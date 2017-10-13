@@ -29,6 +29,7 @@
 @property(strong,nonatomic,readwrite) NSMutableArray<DLAlertAction *> *actions;
 @property(strong,nonatomic,readwrite) NSMutableDictionary<NSNumber *,DLAlertActionVisualStyle *> *visualStyles;
 @property (strong, nonatomic, readwrite) NSLayoutConstraint *actionBottomConstraint;
+@property (strong, nonatomic, readwrite) NSLayoutConstraint *actionTopConstraint;
 @property(assign,nonatomic,readwrite,getter=isViewAppear) BOOL viewAppear;
 
 @end
@@ -104,7 +105,7 @@
                                                               toItem:alertContentView
                                                            attribute:NSLayoutAttributeTop
                                                           multiplier:1.0f
-                                                            constant:0.0f];
+                                                            constant:_actionTopSpacing];
     
     NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:actionView
                                                               attribute:NSLayoutAttributeBottom
@@ -112,7 +113,8 @@
                                                                  toItem:alertContentView
                                                               attribute:NSLayoutAttributeBottom
                                                              multiplier:1.0f
-                                                               constant:_bottomSpacing];
+                                                               constant: - _actionBottomSpacing];
+    [self setActionTopConstraint:top];
     [self setActionBottomConstraint:bottom];
     
     NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:actionView
@@ -182,11 +184,19 @@
     }
 }
 
-- (void)setBottomSpacing:(CGFloat)bottomSpacing
+- (void)setActionBottomSpacing:(CGFloat)actionBottomSpacing
 {
-    _bottomSpacing = bottomSpacing;
+    _actionBottomSpacing = actionBottomSpacing;
     if ([self isViewLoaded]){
-        [_actionBottomConstraint setConstant: - bottomSpacing];
+        [_actionBottomConstraint setConstant: - actionBottomSpacing];
+    }
+}
+
+- (void)setActionTopSpacing:(CGFloat)actionTopSpacing
+{
+    _actionTopSpacing = actionTopSpacing;
+    if ([self isViewLoaded]){
+        [_actionTopConstraint setConstant:actionTopSpacing];
     }
 }
 

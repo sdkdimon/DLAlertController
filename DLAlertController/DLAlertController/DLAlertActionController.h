@@ -36,7 +36,8 @@
 
 @property(assign,nonatomic,readwrite) CGFloat actionHeight;
 @property(assign,nonatomic,readwrite) CGFloat interActionSpacing;
-@property(assign,nonatomic,readwrite) CGFloat bottomSpacing;
+@property(assign,nonatomic,readwrite) CGFloat actionTopSpacing;
+@property(assign,nonatomic,readwrite) CGFloat actionBottomSpacing;
 @property(assign,nonatomic,readwrite) DLAlertActionItemLayout actionItemLayout;
 
 - (void)addAction:(DLAlertAction *)action;
