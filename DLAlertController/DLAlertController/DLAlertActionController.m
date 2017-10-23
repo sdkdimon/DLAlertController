@@ -169,6 +169,7 @@
 {
     [_actions addObject:action];
     [action addObserver:self forKeyPath:@"enabled" options:NSKeyValueObservingOptionNew context:nil];
+    [action addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
     if([self isViewLoaded])
     {
         NSInteger itemCount = [_actions count];

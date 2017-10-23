@@ -29,7 +29,7 @@
 + (instancetype)actionWithTitle:(NSString *)title style:(DLAlertActionStyle)style handler:(void(^)(void))handler;
 - (instancetype)initWithTitle:(NSString *)title style:(DLAlertActionStyle)style handler:(void(^)(void))handler;
 
-@property(copy,nonatomic,readonly) NSString *title;
+@property(copy,nonatomic,readwrite) NSString *title;
 @property(assign,nonatomic,readonly) DLAlertActionStyle style;
 @property(copy,nonatomic,readonly) void(^handler)(void);
 @property(assign,nonatomic,readwrite,getter=isEnabled) BOOL enabled;
