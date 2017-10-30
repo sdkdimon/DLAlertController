@@ -272,6 +272,7 @@
     for(DLAlertAction *action in _actions)
     {
         [action removeObserver:self forKeyPath:@"enabled"];
+        [action removeObserver:self forKeyPath:@"title"];
     }
 }
 
