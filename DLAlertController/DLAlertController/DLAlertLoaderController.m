@@ -123,6 +123,8 @@
                                     multiplier:1.0f
                                     constant:- _alertInsets.bottom];
     
+    bottom.priority = UILayoutPriorityDefaultHigh;
+    
     
     NSArray <NSLayoutConstraint *> *constraints = @[top,bottom,leading,trailing,];
     
