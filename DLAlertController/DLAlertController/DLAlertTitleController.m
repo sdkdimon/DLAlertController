@@ -24,6 +24,7 @@
 #import "DLAlertTitleController.h"
 
 #import "DLAlertView.h"
+#import "DLAlertAccessibilityIdentifier.h"
 
 @interface DLAlertTitleController ()
 
@@ -190,6 +191,7 @@
     UIView *titleContentView = [self titleContentView];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    titleLabel.accessibilityIdentifier = DLAlertTitleLabel;
     [titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     [titleContentView addSubview:titleLabel];

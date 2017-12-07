@@ -21,7 +21,9 @@
 // THE SOFTWARE.
 
 #import "DLActionsCollectionView.h"
+
 #import "DLAlertActionCell.h"
+#import "DLAlertAccessibilityIdentifier.h"
 
 static NSString *const ACTION_CELL_REUSE_ID = @"ActionCell";
 
@@ -146,6 +148,9 @@ static NSString *const ACTION_CELL_REUSE_ID = @"ActionCell";
     
     UILabel *label = [actionCell titleLabel];
     UIView *contentView = [actionCell contentView];
+    NSNumber *accessibilityIdentifierIndex = @(indexPath.item);
+    contentView.accessibilityIdentifier = [NSString stringWithFormat:DLAlertActionCellContentView, accessibilityIdentifierIndex];
+    label.accessibilityIdentifier = [NSString stringWithFormat:DLAlertActionCellLabel, accessibilityIdentifierIndex];
     
     [[label layer] addAnimation:[self transitionAnimationWithDuration:animationDuration] forKey:nil];
     [[contentView layer] addAnimation:[self transitionAnimationWithDuration:animationDuration] forKey:nil];

@@ -22,6 +22,8 @@
 
 #import "DLAlertMessageController.h"
 
+#import "DLAlertAccessibilityIdentifier.h"
+
 @interface DLAlertMessageController ()
 
 @property(strong,nonatomic,readwrite) UILabel *messageLabel;
@@ -63,6 +65,7 @@
     UIView *contentView  = [self contentView];
     
     UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    messageLabel.accessibilityIdentifier = DLAlertMessageLabel;
     [messageLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     [contentView addSubview:messageLabel];
