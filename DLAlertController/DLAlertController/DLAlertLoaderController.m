@@ -39,9 +39,9 @@
     _alertInsets = UIEdgeInsetsZero;
 }
 
-- (void)loadView
+- (void)loadSubviews
 {
-    [super loadView];
+    [super loadSubviews];
     [self loadAlert];
 }
 

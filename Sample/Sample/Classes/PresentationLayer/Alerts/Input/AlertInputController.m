@@ -21,8 +21,8 @@
 // THE SOFTWARE.
 
 #import "AlertInputController.h"
-#import "DLAlertView.h"
 
+#import "DLAlertView.h"
 
 @interface AlertInputController()
 
@@ -31,27 +31,28 @@
 @property(strong,nonatomic,readwrite) UILabel *messageLabel;
 @property(strong,nonatomic,readwrite) NSNotificationCenter *notificationCenter;
 
-
 @end
-
 
 @implementation AlertInputController
 
--(void)setup{
+- (void)setup
+{
     [super setup];
     _contentControlsInsets = UIEdgeInsetsMake(25, 10, 25, 10);
     _textFieldInsets = UIEdgeInsetsMake(25, 10, 25, 10);
     _notificationCenter = [NSNotificationCenter defaultCenter];
 }
 
--(void)loadView{
-    [super loadView];
+- (void)loadSubviews
+{
+    [super loadSubviews];
     [self loadMessageLabel];
     [self loadTextField];
 }
 
 
--(void)loadMessageLabel{
+- (void)loadMessageLabel
+{
     UIView *contentView = [self contentView];
     
     UILabel *messageLabel = [[UILabel alloc] init];
@@ -95,7 +96,8 @@
 
 }
 
--(void)loadTextField{
+- (void)loadTextField
+{
     UIView *contentView = [self contentView];
     
     UITextField *textField = [[UITextField alloc] initWithFrame:CGRectZero];
@@ -186,43 +188,38 @@
     
     NSArray *borderViewConstraints = @[borderViewTop,borderViewLeading,borderViewTrailing];
     
-     [contentView addConstraints:borderViewConstraints];
-    
-    
-//    UIViewBorderConfig *borderConfig = [[UIViewBorderConfig alloc] init];
-//    [borderConfig setColor:[UIColor lightGrayColor]];
-//    [borderConfig setSize:1.0f];
-//    
-//    [textField addBorderWithConfig:borderConfig edge:UIRectEdgeBottom];
-    
+    [contentView addConstraints:borderViewConstraints];
     [self setTextField:textField];
-    
-    
 }
 
-- (void)setupMessageLabel{
+- (void)setupMessageLabel
+{
     [_messageLabel setNumberOfLines:0];
     [_messageLabel setTextAlignment:NSTextAlignmentCenter];
     [_messageLabel setText:_message];
 }
 
-- (void)setMessage:(NSString *)message{
+- (void)setMessage:(NSString *)message
+{
     _message = message;
     if([self isViewLoaded]){
         [_messageLabel setText:message];
     }
 }
 
-- (void)setupTextField{
+- (void)setupTextField
+{
     
 }
 
--(void)rootViewGestureTap:(UITapGestureRecognizer *)sender{
+- (void)rootViewGestureTap:(UITapGestureRecognizer *)sender
+{
     [super rootViewGestureTap:sender];
     [[self view] endEditing:YES];
 }
 
-- (void)viewDidLoad{
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setupMessageLabel];
     [self setupTextField];
@@ -231,41 +228,49 @@
     }
 }
 
-- (void)actionTap:(NSUInteger)actionIdx{
+- (void)actionTap:(NSUInteger)actionIdx
+{
      [[self view] endEditing:YES];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     [self registerKeyboardNotifications];
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
+- (void)viewWillDisappear:(BOOL)animated
+{
     [super viewWillDisappear:animated];
     [self unregisterKeyboardNotifications];
    
     
 }
-- (void)unregisterKeyboardNotifications {
+- (void)unregisterKeyboardNotifications
+{
     [_notificationCenter removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [_notificationCenter removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
--(void)registerKeyboardNotifications {
+- (void)registerKeyboardNotifications
+{
     [_notificationCenter addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [_notificationCenter addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 
-- (void)keyboardWillHide:(NSNotification *)notification {
+- (void)keyboardWillHide:(NSNotification *)notification
+{
     [self animateKeyboardAppearanceWithUserInfo:[notification userInfo]];
 }
 
-- (void)keyboardWillShow:(NSNotification *)notification {
+- (void)keyboardWillShow:(NSNotification *)notification
+{
     [self animateKeyboardAppearanceWithUserInfo:[notification userInfo]];
 }
 
-- (void)animateKeyboardAppearanceWithUserInfo:(NSDictionary *)userInfo{
+- (void)animateKeyboardAppearanceWithUserInfo:(NSDictionary *)userInfo
+{
     CGFloat duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
     UIViewAnimationOptions animationCurve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
     

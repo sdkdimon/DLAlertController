@@ -83,9 +83,9 @@
     [self setupActionView];
 }
 
-- (void)loadView
+- (void)loadSubviews
 {
-    [super loadView];
+    [super loadSubviews];
     [self loadActionView];
 }
 

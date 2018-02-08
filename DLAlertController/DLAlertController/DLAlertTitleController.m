@@ -63,9 +63,9 @@
     _titleTextColor = nil;
 }
 
-- (void)loadView
+- (void)loadSubviews
 {
-    [super loadView];
+    [super loadSubviews];
     [self loadTitleContentView];
     [self loadContentView];
     [self loadTitleLabel];
