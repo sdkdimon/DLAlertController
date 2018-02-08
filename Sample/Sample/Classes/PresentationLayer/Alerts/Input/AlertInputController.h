@@ -1,5 +1,5 @@
 //
-// AppDelegate.h
+// AlertInputController.h
 // Copyright (c) 2015 Dmitry Lizin (sdkdimon@gmail.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,12 +20,24 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#import <DLAlertController/DLAlertActionController.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+//AbstractClass
+@interface AlertInputController : DLAlertActionController
 
-@property (strong, nonatomic) UIWindow *window;
+@property(assign,nonatomic,readwrite) UIEdgeInsets contentControlsInsets;
+@property(assign,nonatomic,readwrite) UIEdgeInsets textFieldInsets;
+
+@property(strong,nonatomic,readonly) UITextField *textField;
+@property(strong,nonatomic,readonly) UILabel *messageLabel;
+@property(strong,nonatomic,readwrite) NSString *message;
+
+@property (copy, nonatomic, readwrite) void (^viewDidLoadBlodk)(AlertInputController *);
+
+//Override to do additional controls setup;
+- (void)setupMessageLabel;
+- (void)setupTextField;
+
 
 
 @end
-

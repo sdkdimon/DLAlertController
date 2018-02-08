@@ -47,7 +47,6 @@ FOUNDATION_EXPORT const unsigned char DLAlertControllerVersionString[];
 #import <DLAlertController/UIViewController+TopViewController.h>
 
 #import <DLAlertController/DLAlertAnimationController.h>
-#import <DLAlertController/DLAlertPresentationController.h>
 #import <DLAlertController/DLAlertTransitionController.h>
 
 #import <DLAlertController/DLAlertView.h>
