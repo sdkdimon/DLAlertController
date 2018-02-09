@@ -129,6 +129,7 @@
     [alert view];
     [alert addAction:action];
    
+    //[alert presentAnimated:YES completion:nil];
     [self presentViewController:alert animated:YES completion:nil];
 }
 

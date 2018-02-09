@@ -50,24 +50,20 @@ static CGFloat const SPRING_VELOCITY = 0;
         [transitionContext.containerView addSubview:toView];
         [animatingView setTransform:CGAffineTransformMakeScale(INITIAL_SCALE, INITIAL_SCALE)];
         [animatingView setAlpha:0];
-        [fromViewController beginAppearanceTransition:NO animated:YES];
         [self animate:^{
             [animatingView setTransform:CGAffineTransformMakeScale(1, 1)];
             [animatingView setAlpha:1];
         } inContext:transitionContext withCompletion:^(BOOL finished) {
             [transitionContext completeTransition:finished];
-            [fromViewController endAppearanceTransition];
         }];
     }
     else
     {
-        [toViewController beginAppearanceTransition:YES animated:YES];
         [self animate:^{
             [animatingView setAlpha:0];
         } inContext:transitionContext withCompletion:^(BOOL finished) {
             [fromView removeFromSuperview];
             [transitionContext completeTransition:finished];
-            [toViewController endAppearanceTransition];
         }];
     }
 }
@@ -81,8 +77,12 @@ static CGFloat const SPRING_VELOCITY = 0;
 
 - (void)animate:(void(^)(void))animations inContext:(id <UIViewControllerContextTransitioning>)context withCompletion:(void(^)(BOOL finished))completion
 {
-    [UIView animateWithDuration:[self transitionDuration:context] delay:0 usingSpringWithDamping:SPRING_DAMPING initialSpringVelocity:SPRING_VELOCITY options:0 animations:animations completion:completion];
+    [UIView animateWithDuration:[self transitionDuration:context]
+                          delay:0 usingSpringWithDamping:SPRING_DAMPING
+          initialSpringVelocity:SPRING_VELOCITY
+                        options:0
+                     animations:animations
+                     completion:completion];
 }
-
 
 @end

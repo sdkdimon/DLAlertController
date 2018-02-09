@@ -27,11 +27,10 @@
 
 @interface DLAlertControllerBase () <DLAlertTransitionControllerDelegate>
 
-@property(strong,nonatomic,readwrite) UITapGestureRecognizer *rootViewTapGesture;
-@property(strong,nonatomic,readwrite) DLAlertTransitionController *transitionController;
-
+@property (strong, nonatomic, readwrite) UITapGestureRecognizer *rootViewTapGesture;
 @property (copy, nonatomic, readwrite) void (^presentationCompletionBlock)(void);
 @property (copy, nonatomic, readwrite) void (^dismissalCompletionBlock)(void);
+@property (strong, nonatomic, readwrite) DLAlertTransitionController *transitionController;
 
 @end
 
@@ -50,12 +49,14 @@
 
 #pragma mark Setup
 
+static void *PersonAccountBalanceContext = &PersonAccountBalanceContext;
+
 - (void)setup
 {
     _transitionController = [[DLAlertTransitionController alloc] init];
-    [_transitionController setDelegate:self];
-    [self setTransitioningDelegate:_transitionController];
-    [self setModalPresentationStyle:UIModalPresentationCustom];
+    _transitionController.delegate = self;
+    self.transitioningDelegate = _transitionController;
+    self.modalPresentationStyle = UIModalPresentationCustom;
 }
 
 #pragma mark View load
@@ -100,7 +101,6 @@
 - (void)alertTransitionController:(DLAlertTransitionController *)controller didEndDismissalTransition:(BOOL)finished
 {
     [self didDismissAnimated:YES];
-    
 }
 
 - (void)alertTransitionController:(DLAlertTransitionController *)controller didEndPresentationTransition:(BOOL)finished
@@ -110,7 +110,6 @@
 
 - (void)didPresentAnimated:(BOOL)animated
 {
-    
     if (_presentationCompletionBlock != NULL){
         _presentationCompletionBlock();
         _presentationCompletionBlock = NULL;
@@ -155,5 +154,3 @@
 }
 
 @end
-
-
