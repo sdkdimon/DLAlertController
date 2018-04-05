@@ -26,22 +26,30 @@
 
 - (void)presentationTransitionWillBegin
 {
-    [self.presentingViewController beginAppearanceTransition:NO animated:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.presentingViewController beginAppearanceTransition:NO animated:NO];
+    });
 }
 
 - (void)presentationTransitionDidEnd:(BOOL)completed
 {
-    [self.presentingViewController endAppearanceTransition];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.presentingViewController endAppearanceTransition];
+    });
 }
 
 - (void)dismissalTransitionWillBegin
 {
-    [self.presentingViewController beginAppearanceTransition:YES animated:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.presentingViewController beginAppearanceTransition:YES animated:NO];
+    });
 }
 
 - (void)dismissalTransitionDidEnd:(BOOL)completed
 {
-    [self.presentingViewController endAppearanceTransition];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.presentingViewController endAppearanceTransition];
+    });
 }
 
 @end

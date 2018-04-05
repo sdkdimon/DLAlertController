@@ -25,7 +25,7 @@
 #import "UIViewController+TopViewController.h"
 #import "DLAlertTransitionController.h"
 
-@interface DLAlertControllerBase () <DLAlertTransitionControllerDelegate>
+@interface DLAlertControllerBase ()
 
 @property (strong, nonatomic, readwrite) UITapGestureRecognizer *rootViewTapGesture;
 @property (copy, nonatomic, readwrite) void (^presentationCompletionBlock)(void);
@@ -49,12 +49,9 @@
 
 #pragma mark Setup
 
-static void *PersonAccountBalanceContext = &PersonAccountBalanceContext;
-
 - (void)setup
 {
     _transitionController = [[DLAlertTransitionController alloc] init];
-    _transitionController.delegate = self;
     self.transitioningDelegate = _transitionController;
     self.modalPresentationStyle = UIModalPresentationCustom;
 }
@@ -98,32 +95,6 @@ static void *PersonAccountBalanceContext = &PersonAccountBalanceContext;
     return [[touch view] isEqual:[self view]];
 }
 
-- (void)alertTransitionController:(DLAlertTransitionController *)controller didEndDismissalTransition:(BOOL)finished
-{
-    [self didDismissAnimated:YES];
-}
-
-- (void)alertTransitionController:(DLAlertTransitionController *)controller didEndPresentationTransition:(BOOL)finished
-{
-   [self didPresentAnimated:YES];
-}
-
-- (void)didPresentAnimated:(BOOL)animated
-{
-    if (_presentationCompletionBlock != NULL){
-        _presentationCompletionBlock();
-        _presentationCompletionBlock = NULL;
-    }
-}
-
-- (void)didDismissAnimated:(BOOL)animated
-{
-    if (_dismissalCompletionBlock != NULL){
-        _dismissalCompletionBlock();
-        _dismissalCompletionBlock = NULL;
-    }
-}
-
 @end
 
 @implementation DLAlertControllerBase (Presentation)
@@ -131,26 +102,12 @@ static void *PersonAccountBalanceContext = &PersonAccountBalanceContext;
 - (void)presentAnimated:(BOOL)animated completion:(void (^)(void))completion
 {
     UIViewController *topViewController = [UIViewController topViewController:nil];
-    [self setPresentationCompletionBlock:completion];
-    if (animated){
-        [topViewController presentViewController:self animated:animated completion:nil];
-    } else {
-        [topViewController presentViewController:self animated:animated completion:^{
-            [self didPresentAnimated:NO];
-        }];
-    }
+    [topViewController presentViewController:self animated:animated completion:completion];
 }
 
 - (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion
 {
-    [self setDismissalCompletionBlock:completion];
-    if (animated){
-        [[self presentingViewController] dismissViewControllerAnimated:animated completion:nil];
-    } else {
-        [[self presentingViewController] dismissViewControllerAnimated:animated completion:^{
-            [self didDismissAnimated:NO];
-        }];
-    }
+    [self.presentingViewController dismissViewControllerAnimated:animated completion:completion];
 }
 
 @end

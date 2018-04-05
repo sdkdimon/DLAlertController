@@ -31,8 +31,8 @@
 - (void)setup;
 - (void)loadSubviews;
 
-- (void)didPresentAnimated:(BOOL)animated;
-- (void)didDismissAnimated:(BOOL)animated;
+//- (void)didPresentAnimated:(BOOL)animated;
+//- (void)didDismissAnimated:(BOOL)animated;
 
 @end
 

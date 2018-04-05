@@ -25,6 +25,55 @@
 #import <DLAlertController/DLAlertController.h>
 #import "AlertInputController.h"
 
+@interface TestViewController : UIViewController
+
+@end
+
+@implementation TestViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.view.backgroundColor = UIColor.whiteColor;
+    [self loadSubviews];
+}
+
+- (void)loadSubviews
+{
+    UIButton *dismissButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    dismissButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [dismissButton setTitle:@"Dismiss" forState:UIControlStateNormal];
+    [dismissButton addTarget:self action:@selector(dismissButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:dismissButton];
+    
+    NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:dismissButton
+                                                               attribute:NSLayoutAttributeCenterX
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self.view
+                                                               attribute:NSLayoutAttributeCenterX
+                                                              multiplier:1.0f
+                                                                constant:.0f];
+    
+    NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:dismissButton
+                                                               attribute:NSLayoutAttributeCenterY
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self.view
+                                                               attribute:NSLayoutAttributeCenterY
+                                                              multiplier:1.0f
+                                                                constant:.0f];
+    [self.view addConstraints:@[centerX, centerY]];
+    
+    
+}
+
+- (void)dismissButtonTap:(UIButton *)sender
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+@end
+
+
 @interface ViewController ()
 
 @end
@@ -89,7 +138,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,7 +156,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self showInputAlert];
+        if (indexPath.row == 0)
+        {
+          [self showInputAlert];
+        }
+        else
+        {
+            TestViewController *tv = [[TestViewController alloc] init];
+            [self presentViewController:tv animated:YES completion:NULL];
+        }
+        
     });
 }
 
@@ -133,28 +191,28 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    NSLog(@"viewWillDisappear");
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    NSLog(@"viewDidDisappear");
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
-    NSLog(@"viewWillAppear");
+   [super viewWillAppear:animated];
+    NSLog(@"viewWillAppearAnimated %@", animated ? @"YES" : @"NO");
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    NSLog(@"viewDidAppear");
+    NSLog(@"viewDidAppearAnimated %@", animated ? @"YES" : @"NO");
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    NSLog(@"viewWillDisappearAnimated %@", animated ? @"YES" : @"NO");
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    NSLog(@"viewDidDisappearAnimated %@", animated ? @"YES" : @"NO");
 }
 
 @end

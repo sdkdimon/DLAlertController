@@ -51,26 +51,14 @@
 
 - (void)animationConroller:(DLAlertAnimationController *)controller didEndAnimation:(BOOL)finished
 {
-    if ([controller isPresentation])
-    {
-        if (_delegate != nil && [_delegate respondsToSelector:@selector(alertTransitionController:didEndPresentationTransition:)])
-        {
-            [_delegate alertTransitionController:self didEndPresentationTransition:finished];
-        }
-    }
-    else
-    {
-        if (_delegate != nil && [_delegate respondsToSelector:@selector(alertTransitionController:didEndDismissalTransition:)])
-        {
-            [_delegate alertTransitionController:self didEndDismissalTransition:finished];
-        }
-    }
+    
 }
 
 - (UIPresentationController*)presentationControllerForPresentedViewController:(UIViewController *)presented
                                                      presentingViewController:(UIViewController *)presenting
                                                          sourceViewController:(UIViewController *)source
 {
+    
     return [[DLAlertPresentationController alloc] initWithPresentedViewController:presented presentingViewController:presenting];
 }
 
