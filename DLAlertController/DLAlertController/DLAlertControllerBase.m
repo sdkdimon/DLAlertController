@@ -107,7 +107,14 @@
 
 - (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion
 {
-    [self.presentingViewController dismissViewControllerAnimated:animated completion:completion];
+    [self.presentingViewController dismissViewControllerAnimated:animated completion:^{
+        if (completion != NULL)
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion();
+            });
+        }
+    }];
 }
 
 @end
