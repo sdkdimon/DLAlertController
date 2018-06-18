@@ -52,6 +52,8 @@
 - (void)setup
 {
     _transitionController = [[DLAlertTransitionController alloc] init];
+    _rootViewTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rootViewGestureTap:)];
+    _rootViewTapGesture.delegate = self;
     self.transitioningDelegate = _transitionController;
     self.modalPresentationStyle = UIModalPresentationCustom;
 }
@@ -71,18 +73,11 @@
     
 }
 
-- (void)setupRootViewTapGesture
-{
-    _rootViewTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rootViewGestureTap:)];
-    [_rootViewTapGesture setDelegate:self];
-    [[self view] addGestureRecognizer:_rootViewTapGesture];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self loadSubviews];
-    [self setupRootViewTapGesture];
+    [self.view addGestureRecognizer:self.rootViewTapGesture];
 }
 
 - (void)rootViewGestureTap:(UITapGestureRecognizer *)sender
@@ -105,18 +100,24 @@
     [topViewController presentViewController:self animated:animated completion:completion];
 }
 
+//- (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion
+//{
+//    __block DLAlertControllerBase *instance = self;
+//    [self.presentingViewController dismissViewControllerAnimated:animated completion:^{
+//        if (completion != NULL)
+//        {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                completion();
+//                instance = nil;
+//            });
+//        }
+//    }];
+//}
+
 - (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion
 {
-    __block DLAlertControllerBase *instance = self;
-    [self.presentingViewController dismissViewControllerAnimated:animated completion:^{
-        if (completion != NULL)
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion();
-                instance = nil;
-            });
-        }
-    }];
+    [self.presentingViewController dismissViewControllerAnimated:animated completion:completion];
 }
+
 
 @end
