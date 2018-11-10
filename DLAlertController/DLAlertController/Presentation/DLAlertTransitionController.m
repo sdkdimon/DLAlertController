@@ -23,11 +23,6 @@
 #import "DLAlertTransitionController.h"
 
 #import "DLAlertAnimationController.h"
-#import "DLAlertPresentationController.h"
-
-@interface DLAlertTransitionController () <DLAlertAnimationControllerDelegate>
-
-@end
 
 @implementation DLAlertTransitionController
 
@@ -36,30 +31,15 @@
                                                                        sourceController:(UIViewController *)source
 {
     DLAlertAnimationController *animationController = [[DLAlertAnimationController alloc] init];
-    [animationController setPresentation:YES];
-    [animationController setDelegate:self];
+    animationController.presentation = YES;
     return animationController;
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
 {
     DLAlertAnimationController *animationController = [[DLAlertAnimationController alloc] init];
-    [animationController setPresentation:NO];
-    [animationController setDelegate:self];
+    animationController.presentation = NO;
     return animationController;
-}
-
-- (void)animationConroller:(DLAlertAnimationController *)controller didEndAnimation:(BOOL)finished
-{
-    
-}
-
-- (UIPresentationController*)presentationControllerForPresentedViewController:(UIViewController *)presented
-                                                     presentingViewController:(UIViewController *)presenting
-                                                         sourceViewController:(UIViewController *)source
-{
-    
-    return [[DLAlertPresentationController alloc] initWithPresentedViewController:presented presentingViewController:presenting];
 }
 
 @end

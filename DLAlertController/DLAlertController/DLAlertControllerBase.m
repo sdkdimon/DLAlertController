@@ -100,20 +100,6 @@
     [topViewController presentViewController:self animated:animated completion:completion];
 }
 
-//- (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion
-//{
-//    __block DLAlertControllerBase *instance = self;
-//    [self.presentingViewController dismissViewControllerAnimated:animated completion:^{
-//        if (completion != NULL)
-//        {
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                completion();
-//                instance = nil;
-//            });
-//        }
-//    }];
-//}
-
 - (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion
 {
     [self.presentingViewController dismissViewControllerAnimated:animated completion:completion];
