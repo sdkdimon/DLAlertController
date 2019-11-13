@@ -185,6 +185,29 @@
     }
 }
 
+- (void)removeAction:(DLAlertAction *)action
+{
+    if ([self.actions containsObject:action])
+    {
+        NSUInteger inexOfAction = [self.actions indexOfObject:action];
+        [self.actions removeObjectAtIndex:inexOfAction];
+        [action removeObserver:self forKeyPath:@"enabled"];
+        [action removeObserver:self forKeyPath:@"title"];
+        if([self isViewLoaded])
+        {
+           NSInteger itemCount = [_actions count];
+           DLAlertActionItemLayout itemLayout =  itemCount > 2 ? DLAlertActionItemLayoutVertical : DLAlertActionItemLayoutHorizontal;
+           [[_actionView collectionViewLayout] setItemLayout:itemLayout];
+           if([self isViewAppear])
+           {
+               [UIView performWithoutAnimation:^{
+                   [self.actionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:inexOfAction inSection:0]]];
+               }];
+           }
+        }
+    }
+}
+
 - (void)setActionBottomSpacing:(CGFloat)actionBottomSpacing
 {
     _actionBottomSpacing = actionBottomSpacing;

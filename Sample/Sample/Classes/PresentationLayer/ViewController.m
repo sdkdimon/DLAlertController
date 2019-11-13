@@ -173,7 +173,7 @@
 {
     AlertInputController *alert = [[AlertInputController alloc] init];
     
-    [alert setDismissableOnActionTap:YES];
+    [alert setDismissableOnActionTap:NO];
     [alert setDismssAnimationEnabled:YES];
     [alert setTitle:@"Message"];
     [alert setMessage:@"Message"];
@@ -184,8 +184,22 @@
     DLAlertAction *action = [DLAlertAction actionWithTitle:@"AAAA" style:DLAlertActionStyleCancel handler:^{
         
     }];
+    
+    DLAlertAction *action2 = [DLAlertAction actionWithTitle:@"BBB" style:DLAlertActionStyleCancel handler:^{
+        
+    }];
+    
     [alert view];
     [alert addAction:action];
+    [alert addAction:action2];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [alert removeAction:action];
+        DLAlertAction *action3 = [DLAlertAction actionWithTitle:@"CCC" style:DLAlertActionStyleCancel handler:^{
+            
+        }];
+        [alert addAction:action3];
+    });
    
     //[alert presentAnimated:YES completion:nil];
     [self presentViewController:alert animated:YES completion:nil];

@@ -43,6 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(assign,nonatomic,readwrite) DLAlertActionItemLayout actionItemLayout;
 
 - (void)addAction:(DLAlertAction *)action;
+- (void)removeAction:(DLAlertAction *)action;
 - (void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle;
 - (DLAlertActionVisualStyle *)actionVisualStyleForActionStyle:(DLAlertActionStyle)actionStyle;
 - (void)actionTap:(NSUInteger)actionIdx;
