@@ -27,6 +27,8 @@
 
 @class DLActionsCollectionView;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol DLActionsCollectionViewDelegate <NSObject>
 
 - (void)actionCollectionView:(DLActionsCollectionView *)collectionView didExecuteActionAtIndex:(NSUInteger)index;
@@ -48,3 +50,5 @@
 @property(strong,nonatomic,readwrite) DLAlertActionCollectionViewLayout *collectionViewLayout;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -23,6 +23,8 @@
 #import <UIKit/UIKit.h>
 #import <DLAlertController/DLAlertActionItemLayout.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DLAlertActionCollectionViewLayout : UICollectionViewLayout
 
 @property (assign,nonatomic,readwrite) DLAlertActionItemLayout itemLayout;
@@ -30,3 +32,5 @@
 @property(assign,nonatomic,readwrite) CGFloat itemHeight;
 
 @end
+
+NS_ASSUME_NONNULL_END

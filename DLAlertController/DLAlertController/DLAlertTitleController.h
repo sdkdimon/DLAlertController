@@ -22,6 +22,8 @@
 
 #import "DLAlertLoaderController.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DLAlertTitleController : DLAlertLoaderController
 
 + (instancetype)controllerWithTitle:(NSString *)title;
@@ -39,3 +41,5 @@
 @property (assign, nonatomic, readwrite) CGFloat contentViewMinHeight;
 
 @end
+
+NS_ASSUME_NONNULL_END

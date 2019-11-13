@@ -24,6 +24,8 @@
 
 @class DLAlertView;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DLAlertLoaderController : DLAlertControllerBase
 
 @property(strong,nonatomic,readonly) DLAlertView *alert;
@@ -33,3 +35,5 @@
 - (void)setupAlert;
 
 @end
+
+NS_ASSUME_NONNULL_END

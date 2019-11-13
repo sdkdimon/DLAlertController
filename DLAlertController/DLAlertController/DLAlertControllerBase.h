@@ -22,6 +22,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DLAlertControllerBase : UIViewController <UIGestureRecognizerDelegate>
 
 @property(strong,nonatomic,readonly) UITapGestureRecognizer *rootViewTapGesture;
@@ -39,3 +41,5 @@
 - (void)dismissAnimated:(BOOL)animated completion:(void(^)(void))completion;
 
 @end
+
+NS_ASSUME_NONNULL_END

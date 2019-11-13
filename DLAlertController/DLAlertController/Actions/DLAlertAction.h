@@ -24,6 +24,8 @@
 
 #import <DLAlertController/DLAlertActionStyle.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DLAlertAction : NSObject
 
 + (instancetype)actionWithTitle:(NSString *)title style:(DLAlertActionStyle)style handler:(void(^)(void))handler;
@@ -35,3 +37,5 @@
 @property(assign,nonatomic,readwrite,getter=isEnabled) BOOL enabled;
 
 @end
+
+NS_ASSUME_NONNULL_END

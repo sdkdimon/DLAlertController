@@ -22,6 +22,10 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DLAlertTransitionController : NSObject <UIViewControllerTransitioningDelegate>
 
 @end
+
+NS_ASSUME_NONNULL_END

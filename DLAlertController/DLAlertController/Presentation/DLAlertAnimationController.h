@@ -22,8 +22,12 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DLAlertAnimationController : NSObject <UIViewControllerAnimatedTransitioning>
 
 @property (assign, nonatomic, readwrite, getter=isPresentation) BOOL presentation;
 
 @end
+
+NS_ASSUME_NONNULL_END

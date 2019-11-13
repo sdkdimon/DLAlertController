@@ -30,8 +30,6 @@
 		8A5D69311DD4988000BB13AE /* DLAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A5D69301DD4988000BB13AE /* DLAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A65C4B91FD9561000F2E16F /* DLAlertAccessibilityIdentifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A65C4B81FD9561000F2E16F /* DLAlertAccessibilityIdentifier.h */; };
 		8A9C7E941FA8A838005F40DA /* DLAlertActionItemLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A9C7E931FA8A838005F40DA /* DLAlertActionItemLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8AA572A9202DB5C9006C8307 /* DLAlertPresentationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA572A7202DB5C9006C8307 /* DLAlertPresentationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8AA572AA202DB5C9006C8307 /* DLAlertPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA572A8202DB5C9006C8307 /* DLAlertPresentationController.m */; };
 		8AA5FE651C5B7DF70060CA5A /* DLAlertControllerBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA5FE631C5B7DF70060CA5A /* DLAlertControllerBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AA5FE661C5B7DF70060CA5A /* DLAlertControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5FE641C5B7DF70060CA5A /* DLAlertControllerBase.m */; };
 		8AA5FE6A1C5B81180060CA5A /* UIViewController+TopViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA5FE681C5B81180060CA5A /* UIViewController+TopViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -70,8 +68,6 @@
 		8A5D69321DD49AEE00BB13AE /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		8A65C4B81FD9561000F2E16F /* DLAlertAccessibilityIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertAccessibilityIdentifier.h; sourceTree = "<group>"; };
 		8A9C7E931FA8A838005F40DA /* DLAlertActionItemLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLAlertActionItemLayout.h; sourceTree = "<group>"; };
-		8AA572A7202DB5C9006C8307 /* DLAlertPresentationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLAlertPresentationController.h; sourceTree = "<group>"; };
-		8AA572A8202DB5C9006C8307 /* DLAlertPresentationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLAlertPresentationController.m; sourceTree = "<group>"; };
 		8AA5FE631C5B7DF70060CA5A /* DLAlertControllerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlertControllerBase.h; sourceTree = "<group>"; };
 		8AA5FE641C5B7DF70060CA5A /* DLAlertControllerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlertControllerBase.m; sourceTree = "<group>"; };
 		8AA5FE681C5B81180060CA5A /* UIViewController+TopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TopViewController.h"; sourceTree = "<group>"; };
@@ -165,8 +161,6 @@
 				8A227F581BF49D230093C215 /* DLAlertAnimationController.m */,
 				8A227F5B1BF49D230093C215 /* DLAlertTransitionController.h */,
 				8A227F5C1BF49D230093C215 /* DLAlertTransitionController.m */,
-				8AA572A7202DB5C9006C8307 /* DLAlertPresentationController.h */,
-				8AA572A8202DB5C9006C8307 /* DLAlertPresentationController.m */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -252,7 +246,6 @@
 				8AA5FE851C5BAE940060CA5A /* DLAlertView.h in Headers */,
 				8A227F5D1BF49D230093C215 /* DLAlertAction.h in Headers */,
 				8AC01E2A1BF4C538009FF122 /* DLAlertActionStyle.h in Headers */,
-				8AA572A9202DB5C9006C8307 /* DLAlertPresentationController.h in Headers */,
 				8A65C4B91FD9561000F2E16F /* DLAlertAccessibilityIdentifier.h in Headers */,
 				8A227F631BF49D230093C215 /* DLAlertActionVisualStyle.h in Headers */,
 			);
@@ -285,7 +278,7 @@
 		8A227F351BF49C6A0093C215 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Dmitry Lizin";
 				TargetAttributes = {
 					8A227F3D1BF49C6A0093C215 = {
@@ -299,6 +292,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 8A227F341BF49C6A0093C215;
@@ -338,7 +332,6 @@
 				8A227F601BF49D230093C215 /* DLAlertActionCell.m in Sources */,
 				8A227F5E1BF49D230093C215 /* DLAlertAction.m in Sources */,
 				8AA5FE861C5BAE940060CA5A /* DLAlertView.m in Sources */,
-				8AA572AA202DB5C9006C8307 /* DLAlertPresentationController.m in Sources */,
 				8A227F6D1BF49D230093C215 /* DLAlertTransitionController.m in Sources */,
 				8A227F621BF49D230093C215 /* DLAlertActionCollectionViewLayout.m in Sources */,
 			);
@@ -351,6 +344,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -408,6 +402,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;

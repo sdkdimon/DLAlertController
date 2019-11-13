@@ -22,6 +22,8 @@
 
 #import <DLAlertController/DLAlertActionController.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DLAlertMessageController : DLAlertActionController
 
 + (instancetype)controllerWithTitle:(NSString *)title message:(NSString *)message;
@@ -35,3 +37,5 @@
 @property(assign,nonatomic,readwrite) UIEdgeInsets messageInsets;
 
 @end
+
+NS_ASSUME_NONNULL_END

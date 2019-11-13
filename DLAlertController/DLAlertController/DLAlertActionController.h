@@ -26,6 +26,8 @@
 #import <DLAlertController/DLAlertActionVisualStyle.h>
 #import <DLAlertController/DLActionsCollectionView.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DLAlertActionController : DLAlertTitleController
 
 @property(assign,nonatomic,readwrite,getter=isDismissableOnActionTap) BOOL dismissableOnActionTap;
@@ -47,6 +49,7 @@
 
 @end
 
+NS_ASSUME_NONNULL_END
 
 
 
