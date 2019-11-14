@@ -173,7 +173,7 @@
 {
     AlertInputController *alert = [[AlertInputController alloc] init];
     
-    [alert setDismissableOnActionTap:NO];
+    [alert setDismissableOnActionTap:YES];
     [alert setDismssAnimationEnabled:YES];
     [alert setTitle:@"Message"];
     [alert setMessage:@"Message"];
@@ -198,7 +198,7 @@
         DLAlertAction *action3 = [DLAlertAction actionWithTitle:@"CCC" style:DLAlertActionStyleCancel handler:^{
             
         }];
-        [alert addAction:action3];
+        [alert insertActon:action3 atIndex:0];
     });
    
     //[alert presentAnimated:YES completion:nil];

@@ -165,9 +165,9 @@
     }
 }
 
-- (void)addAction:(DLAlertAction *)action
+- (void)insertActon:(DLAlertAction *)action atIndex:(NSUInteger)index
 {
-    [_actions addObject:action];
+    [_actions insertObject:action atIndex:index];
     [action addObserver:self forKeyPath:@"enabled" options:NSKeyValueObservingOptionNew context:nil];
     [action addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
     if([self isViewLoaded])
@@ -177,12 +177,18 @@
         [[_actionView collectionViewLayout] setItemLayout:itemLayout];
         if([self isViewAppear])
         {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:(itemCount - 1) inSection:0];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
             [UIView performWithoutAnimation:^{
-                [[self actionView] insertItemsAtIndexPaths:@[indexPath]];
+                [self.actionView insertItemsAtIndexPaths:@[indexPath]];
             }];
         }
     }
+    
+}
+
+- (void)addAction:(DLAlertAction *)action
+{
+    [self insertActon:action atIndex:self.actions.count];
 }
 
 - (void)removeAction:(DLAlertAction *)action
