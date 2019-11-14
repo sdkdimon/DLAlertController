@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(assign,nonatomic,readwrite) CGFloat actionBottomSpacing;
 @property(assign,nonatomic,readwrite) DLAlertActionItemLayout actionItemLayout;
 
-- (void)insertActon:(DLAlertAction *)action atIndex:(NSUInteger)index;
+- (void)insertAction:(DLAlertAction *)action atIndex:(NSUInteger)index;
 - (void)addAction:(DLAlertAction *)action;
 - (void)removeAction:(DLAlertAction *)action;
 - (void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle;

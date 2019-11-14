@@ -198,7 +198,7 @@
         DLAlertAction *action3 = [DLAlertAction actionWithTitle:@"CCC" style:DLAlertActionStyleCancel handler:^{
             
         }];
-        [alert insertActon:action3 atIndex:0];
+        [alert insertAction:action3 atIndex:0];
     });
    
     //[alert presentAnimated:YES completion:nil];

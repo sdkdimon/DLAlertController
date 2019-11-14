@@ -165,7 +165,7 @@
     }
 }
 
-- (void)insertActon:(DLAlertAction *)action atIndex:(NSUInteger)index
+- (void)insertAction:(DLAlertAction *)action atIndex:(NSUInteger)index
 {
     [_actions insertObject:action atIndex:index];
     [action addObserver:self forKeyPath:@"enabled" options:NSKeyValueObservingOptionNew context:nil];
@@ -188,7 +188,7 @@
 
 - (void)addAction:(DLAlertAction *)action
 {
-    [self insertActon:action atIndex:self.actions.count];
+    [self insertAction:action atIndex:self.actions.count];
 }
 
 - (void)removeAction:(DLAlertAction *)action
