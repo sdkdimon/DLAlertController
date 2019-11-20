@@ -194,11 +194,11 @@
     [alert addAction:action2];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [alert removeAction:action];
+
         DLAlertAction *action3 = [DLAlertAction actionWithTitle:@"CCC" style:DLAlertActionStyleCancel handler:^{
             
         }];
-        [alert insertAction:action3 atIndex:0];
+        [alert replaceAction:action2 withAction:action3];
     });
    
     //[alert presentAnimated:YES completion:nil];

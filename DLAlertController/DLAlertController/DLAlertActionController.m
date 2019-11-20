@@ -219,6 +219,16 @@
     return [self.alertActions containsObject:action];
 }
 
+- (void)replaceAction:(DLAlertAction *)actionToReplace withAction:(DLAlertAction *)action
+{
+    if ([self containsAction:actionToReplace])
+    {
+        NSUInteger insertionIndex = [self.alertActions indexOfObject:actionToReplace];
+        [self removeAction:actionToReplace];
+        [self insertAction:action atIndex:insertionIndex];
+    }
+}
+
 - (void)setActionBottomSpacing:(CGFloat)actionBottomSpacing
 {
     _actionBottomSpacing = actionBottomSpacing;
