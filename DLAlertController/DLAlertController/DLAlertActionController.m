@@ -26,7 +26,7 @@
 
 @interface DLAlertActionController () <DLActionsCollectionViewDataSource,DLActionsCollectionViewDelegate>
 
-@property(strong,nonatomic,readwrite) NSMutableArray<DLAlertAction *> *actions;
+@property(strong,nonatomic,readonly) NSMutableArray<DLAlertAction *> *alertActions;
 @property(strong,nonatomic,readwrite) NSMutableDictionary<NSNumber *,DLAlertActionVisualStyle *> *visualStyles;
 @property (strong, nonatomic, readwrite) NSLayoutConstraint *actionBottomConstraint;
 @property (strong, nonatomic, readwrite) NSLayoutConstraint *actionTopConstraint;
@@ -43,7 +43,7 @@
     _dismssAnimationEnabled = NO;
     _actionHeight = 40.0f;
     _interActionSpacing = 8.0f;
-    _actions = [[NSMutableArray alloc] initWithCapacity:0];
+    _alertActions = [[NSMutableArray alloc] initWithCapacity:0];
     _visualStyles = [@{@(DLAlertActionStyleDefault) : [DLAlertActionVisualStyle defaultStyle],
                        @(DLAlertActionStyleCancel) : [DLAlertActionVisualStyle cancelStyle],
                        @(DLAlertActionStyleDestructive) : [DLAlertActionVisualStyle destructiveStyle]} mutableCopy];
@@ -167,12 +167,12 @@
 
 - (void)insertAction:(DLAlertAction *)action atIndex:(NSUInteger)index
 {
-    [_actions insertObject:action atIndex:index];
+    [_alertActions insertObject:action atIndex:index];
     [action addObserver:self forKeyPath:@"enabled" options:NSKeyValueObservingOptionNew context:nil];
     [action addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
     if([self isViewLoaded])
     {
-        NSInteger itemCount = [_actions count];
+        NSInteger itemCount = [_alertActions count];
         DLAlertActionItemLayout itemLayout =  itemCount > 2 ? DLAlertActionItemLayoutVertical : DLAlertActionItemLayoutHorizontal;
         [[_actionView collectionViewLayout] setItemLayout:itemLayout];
         if([self isViewAppear])
@@ -188,20 +188,20 @@
 
 - (void)addAction:(DLAlertAction *)action
 {
-    [self insertAction:action atIndex:self.actions.count];
+    [self insertAction:action atIndex:self.alertActions.count];
 }
 
 - (void)removeAction:(DLAlertAction *)action
 {
-    if ([self.actions containsObject:action])
+    if ([self containsAction:action])
     {
-        NSUInteger inexOfAction = [self.actions indexOfObject:action];
-        [self.actions removeObjectAtIndex:inexOfAction];
+        NSUInteger inexOfAction = [self.alertActions indexOfObject:action];
+        [self.alertActions removeObjectAtIndex:inexOfAction];
         [action removeObserver:self forKeyPath:@"enabled"];
         [action removeObserver:self forKeyPath:@"title"];
         if([self isViewLoaded])
         {
-           NSInteger itemCount = [_actions count];
+           NSInteger itemCount = [_alertActions count];
            DLAlertActionItemLayout itemLayout =  itemCount > 2 ? DLAlertActionItemLayoutVertical : DLAlertActionItemLayoutHorizontal;
            [[_actionView collectionViewLayout] setItemLayout:itemLayout];
            if([self isViewAppear])
@@ -212,6 +212,11 @@
            }
         }
     }
+}
+
+- (BOOL)containsAction:(DLAlertAction *)action
+{
+    return [self.alertActions containsObject:action];
 }
 
 - (void)setActionBottomSpacing:(CGFloat)actionBottomSpacing
@@ -234,7 +239,7 @@
 
 - (DLAlertAction *)actionCollectionView:(DLActionsCollectionView *)collectionView actionAtIndex:(NSUInteger)index
 {
-    return _actions[index];
+    return _alertActions[index];
 }
 
 - (DLAlertActionVisualStyle *)actionCollectionView:(DLActionsCollectionView *)collectionView actionVisualStyle:(DLAlertActionStyle)style
@@ -243,7 +248,7 @@
 }
 
 - (NSInteger)numberOfActionsInActionCollectionView:(DLActionsCollectionView *)collectionView{
-    return [_actions count];
+    return [_alertActions count];
 }
 
 #pragma mark Action Observing
@@ -252,7 +257,7 @@
 {
     if ([self isViewAppear])
     {
-        NSUInteger actionIdx = [_actions indexOfObject:object];
+        NSUInteger actionIdx = [_alertActions indexOfObject:object];
         [UIView performWithoutAnimation:^{
             [[self actionView] reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:actionIdx inSection:0]]];
         }];
@@ -264,7 +269,7 @@
 - (void)actionCollectionView:(DLActionsCollectionView *)collectionView didExecuteActionAtIndex:(NSUInteger)index
 {
     [self actionTap:index];
-    DLAlertAction *action = _actions[index];
+    DLAlertAction *action = _alertActions[index];
     void(^actionHandler)(void) = [action handler];
     if(_dismissableOnActionTap)
     {
@@ -298,7 +303,7 @@
 
 - (void)dealloc
 {
-    for(DLAlertAction *action in _actions)
+    for(DLAlertAction *action in _alertActions)
     {
         [action removeObserver:self forKeyPath:@"enabled"];
         [action removeObserver:self forKeyPath:@"title"];

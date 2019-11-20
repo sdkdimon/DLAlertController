@@ -45,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)insertAction:(DLAlertAction *)action atIndex:(NSUInteger)index;
 - (void)addAction:(DLAlertAction *)action;
 - (void)removeAction:(DLAlertAction *)action;
+- (BOOL)containsAction:(DLAlertAction *)action;
 - (void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle;
 - (DLAlertActionVisualStyle *)actionVisualStyleForActionStyle:(DLAlertActionStyle)actionStyle;
 - (void)actionTap:(NSUInteger)actionIdx;
