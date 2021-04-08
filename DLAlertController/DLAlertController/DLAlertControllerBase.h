@@ -22,6 +22,7 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface DLAlertControllerBase : UIViewController <UIGestureRecognizerDelegate>
 
@@ -30,14 +31,15 @@
 - (void)rootViewGestureTap:(UITapGestureRecognizer *)sender;
 
 - (void)setup;
-
-- (void)didPresentAnimated:(BOOL)animated;
-- (void)didDismissAnimated:(BOOL)animated;
-
+- (void)loadSubviews;
 
 @end
 
 @interface DLAlertControllerBase (Presentation)
-- (void)presentAnimated:(BOOL)animated completion:(void(^)(void))completion;
-- (void)dismissAnimated:(BOOL)animated completion:(void(^)(void))completion;
+
+- (void)presentAnimated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
+- (void)dismissAnimated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
+
 @end
+
+NS_ASSUME_NONNULL_END

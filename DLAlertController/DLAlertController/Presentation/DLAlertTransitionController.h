@@ -22,17 +22,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class DLAlertTransitionController;
-
-@protocol DLAlertTransitionControllerDelegate <NSObject>
-
-- (void)alertTransitionController:(DLAlertTransitionController *)controller didEndPresentationTransition:(BOOL)finished;
-- (void)alertTransitionController:(DLAlertTransitionController *)controller didEndDismissalTransition:(BOOL)finished;
-
-@end
+NS_ASSUME_NONNULL_BEGIN
 
 @interface DLAlertTransitionController : NSObject <UIViewControllerTransitioningDelegate>
 
-@property (weak, nonatomic, readwrite) id <DLAlertTransitionControllerDelegate> delegate;
-
 @end
+
+NS_ASSUME_NONNULL_END

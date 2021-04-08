@@ -21,46 +21,25 @@
 // THE SOFTWARE.
 
 #import "DLAlertTransitionController.h"
-#import "DLAlertPresentationController.h"
+
 #import "DLAlertAnimationController.h"
-
-@interface DLAlertTransitionController () <DLAlertAnimationControllerDelegate>
-
-@end
-
 
 @implementation DLAlertTransitionController
 
-//- (UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(UIViewController *)presenting sourceViewController:(UIViewController *)source{
-//    return [[DLAlertPresentationController alloc] initWithPresentedViewController:presented presentingViewController:presenting];
-//}
-
-
-- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                   presentingController:(UIViewController *)presenting
+                                                                       sourceController:(UIViewController *)source
+{
     DLAlertAnimationController *animationController = [[DLAlertAnimationController alloc] init];
-    [animationController setPresentation:YES];
-    [animationController setDelegate:self];
+    animationController.presentation = YES;
     return animationController;
 }
 
-- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
     DLAlertAnimationController *animationController = [[DLAlertAnimationController alloc] init];
-    [animationController setPresentation:NO];
-    [animationController setDelegate:self];
+    animationController.presentation = NO;
     return animationController;
-}
-
-
-- (void)animationConroller:(DLAlertAnimationController *)controller didEndAnimation:(BOOL)finished{
-    if ([controller isPresentation]){
-        if (_delegate != nil && [_delegate respondsToSelector:@selector(alertTransitionController:didEndPresentationTransition:)]){
-            [_delegate alertTransitionController:self didEndPresentationTransition:finished];
-        }
-    } else {
-        if (_delegate != nil && [_delegate respondsToSelector:@selector(alertTransitionController:didEndDismissalTransition:)]){
-            [_delegate alertTransitionController:self didEndDismissalTransition:finished];
-        }
-    }
 }
 
 @end

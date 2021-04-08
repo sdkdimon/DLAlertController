@@ -32,39 +32,43 @@
 - (instancetype)init
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         [self setup];
     }
-    
     return self;
 }
 
-- (void)setup{
+- (void)setup
+{
     _itemLayout = DLAlertActionItemLayoutVertical;
     _interItemSpacing = 2.0f;
     _itemHeight = 50.0f;
     _layoutInfo = [[NSMutableDictionary alloc] initWithCapacity:0];
 }
 
-
-
-- (void)prepareLayout{
+- (void)prepareLayout
+{
     [self prepareLayoutForActionItemLayout:_itemLayout];
 }
 
-- (void)prepareLayoutForActionItemLayout:(DLAlertActionItemLayout)itemLayout{
+- (void)prepareLayoutForActionItemLayout:(DLAlertActionItemLayout)itemLayout
+{
     NSInteger itemCount = [self.collectionView numberOfItemsInSection:0];
     if(itemCount == 0) return;
     [_layoutInfo removeAllObjects];
 
     CGSize collectionViewSize = [[self collectionView] bounds].size;
     
-    switch (itemLayout) {
-        case DLAlertActionItemLayoutHorizontal:{
+    switch (itemLayout)
+    {
+        case DLAlertActionItemLayoutHorizontal:
+        {
             CGFloat totalSpacingWidth = _interItemSpacing * (itemCount - 1);
             CGFloat width = (collectionViewSize.width - totalSpacingWidth)/itemCount;
             CGRect itemFrame = CGRectMake(0, 0, width, collectionViewSize.height);
-            for (NSInteger item = 0; item < itemCount; item++) {
+            for (NSInteger item = 0; item < itemCount; item++)
+            {
                 NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:0];
                 UICollectionViewLayoutAttributes *itemAttributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
                 [itemAttributes setFrame:itemFrame];
@@ -73,11 +77,11 @@
             }
             break;
         }
-            
-            
-        case DLAlertActionItemLayoutVertical:{
+        case DLAlertActionItemLayoutVertical:
+        {
             CGRect itemFrame = CGRectMake(0, 0, collectionViewSize.width, _itemHeight);
-            for (NSInteger item = 0; item < itemCount; item++) {
+            for (NSInteger item = 0; item < itemCount; item++)
+            {
                 NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:0];
                 UICollectionViewLayoutAttributes *itemAttributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
                 [itemAttributes setFrame:itemFrame];
@@ -86,52 +90,54 @@
             }
             break;
         }
-            
     }
     
 }
 
-
-- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect{
+- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
+{
    return [_layoutInfo allValues];
     
 }
 
-- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     return self.layoutInfo[indexPath];
 }
 
-- (CGSize)collectionViewContentSize{
+- (CGSize)collectionViewContentSize
+{
     return [self collectionViewContentSizeForActionItemLayout:_itemLayout];
 }
 
-- (CGSize)collectionViewContentSizeForActionItemLayout:(DLAlertActionItemLayout)itemLayout{
+- (CGSize)collectionViewContentSizeForActionItemLayout:(DLAlertActionItemLayout)itemLayout
+{
     NSInteger itemCount = [self.collectionView numberOfItemsInSection:0];
     CGSize collectionViewSize = [[self collectionView] bounds].size;
     
-    switch (itemLayout) {
-        case DLAlertActionItemLayoutHorizontal:{
+    switch (itemLayout)
+    {
+        case DLAlertActionItemLayoutHorizontal:
+        {
             return CGSizeMake(collectionViewSize.width, _itemHeight);
         }
-            
-        case DLAlertActionItemLayoutVertical:{
+        case DLAlertActionItemLayoutVertical:
+        {
             CGFloat height = itemCount * _itemHeight + ((itemCount-1)%(itemCount+1))*_interItemSpacing;
             return  CGSizeMake(collectionViewSize.width,height);
-           
-        }
-            
+       }
     }
-    
 }
 
-- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds{
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
+{
     return YES;
 }
 
-- (void)setItemHeight:(CGFloat)itemHeight{
+- (void)setItemHeight:(CGFloat)itemHeight
+{
     _itemHeight = itemHeight;
     [self invalidateLayout];
 }
-
 
 @end

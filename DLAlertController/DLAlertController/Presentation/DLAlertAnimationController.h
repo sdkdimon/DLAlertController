@@ -22,15 +22,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class DLAlertAnimationController;
-
-@protocol DLAlertAnimationControllerDelegate <NSObject>
-
-- (void)animationConroller:(DLAlertAnimationController *)controller didEndAnimation:(BOOL)finished;
-
-@end
+NS_ASSUME_NONNULL_BEGIN
 
 @interface DLAlertAnimationController : NSObject <UIViewControllerAnimatedTransitioning>
+
 @property (assign, nonatomic, readwrite, getter=isPresentation) BOOL presentation;
-@property (weak, nonatomic, readwrite) id <DLAlertAnimationControllerDelegate> delegate;
+
 @end
+
+NS_ASSUME_NONNULL_END

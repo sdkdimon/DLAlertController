@@ -21,10 +21,12 @@
 // THE SOFTWARE.
 
 #import <DLAlertController/DLAlertTitleController.h>
+
 #import <DLAlertController/DLAlertAction.h>
 #import <DLAlertController/DLAlertActionVisualStyle.h>
 #import <DLAlertController/DLActionsCollectionView.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface DLAlertActionController : DLAlertTitleController
 
@@ -36,16 +38,22 @@
 
 @property(assign,nonatomic,readwrite) CGFloat actionHeight;
 @property(assign,nonatomic,readwrite) CGFloat interActionSpacing;
-@property(assign,nonatomic,readwrite) CGFloat bottomSpacing;
+@property(assign,nonatomic,readwrite) CGFloat actionTopSpacing;
+@property(assign,nonatomic,readwrite) CGFloat actionBottomSpacing;
 @property(assign,nonatomic,readwrite) DLAlertActionItemLayout actionItemLayout;
 
+- (void)insertAction:(DLAlertAction *)action atIndex:(NSUInteger)index;
 - (void)addAction:(DLAlertAction *)action;
+- (void)removeAction:(DLAlertAction *)action;
+- (BOOL)containsAction:(DLAlertAction *)action;
+- (void)replaceAction:(DLAlertAction *)actionToReplace withAction:(DLAlertAction *)action;
 - (void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle;
 - (DLAlertActionVisualStyle *)actionVisualStyleForActionStyle:(DLAlertActionStyle)actionStyle;
 - (void)actionTap:(NSUInteger)actionIdx;
 
 @end
 
+NS_ASSUME_NONNULL_END
 
 
 

@@ -1,5 +1,5 @@
 //
-// DLAlertMessageController.h
+// DLAlertAccessibilityIdentifier.h
 // Copyright (c) 2015 Dmitry Lizin (sdkdimon@gmail.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,22 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <DLAlertController/DLAlertActionController.h>
+#ifndef DLAlertAccessibilityIdentifier_h
+#define DLAlertAccessibilityIdentifier_h
 
-NS_ASSUME_NONNULL_BEGIN
+#define DLAlertTitleLabel @"AlertTitleLabel"
+#define DLAlertMessageLabel @"AlertMessageLabel"
+#define DLAlertActionCellContentView @"AlertActionCellContentView_%@"
+#define DLAlertActionCellLabel @"AlertActionCellLabel_%@"
 
-@interface DLAlertMessageController : DLAlertActionController
-
-+ (instancetype)controllerWithTitle:(NSString *)title message:(NSString *)message;
-- (instancetype)initWithTitle:(NSString *)title message:(NSString *)message;
-
-@property(strong,nonatomic,readonly) UILabel *messageLabel;
-@property(copy,nonatomic,readwrite) NSString *message;
-@property(strong,nonatomic,readwrite) UIFont *messageFont;
-@property(strong,nonatomic,readwrite) UIColor *messageTextColor;
-@property(assign,nonatomic,readwrite) NSTextAlignment messageTextAlignment;
-@property(assign,nonatomic,readwrite) UIEdgeInsets messageInsets;
-
-@end
-
-NS_ASSUME_NONNULL_END
+#endif /* DLAlertAccessibilityIdentifier_h */

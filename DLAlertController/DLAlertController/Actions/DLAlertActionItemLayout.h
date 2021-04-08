@@ -1,5 +1,5 @@
 //
-// ViewController.h
+// DLAlertActionItemLayout.h
 // Copyright (c) 2015 Dmitry Lizin (sdkdimon@gmail.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,10 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#ifndef DLAlertActionItemLayout_h
+#define DLAlertActionItemLayout_h
 
-@interface ViewController : UIViewController
+typedef NS_ENUM(NSInteger,DLAlertActionItemLayout) {
+    DLAlertActionItemLayoutHorizontal = 0,
+    DLAlertActionItemLayoutVertical
+};
 
-
-@end
-
+#endif /* DLAlertActionItemLayout_h */

@@ -31,7 +31,8 @@
 
 @implementation DLAlertActionVisualStyleItem
 
-- (id)copyWithZone:(NSZone *)zone{
+- (id)copyWithZone:(NSZone *)zone
+{
     DLAlertActionVisualStyleItem *copy = [[DLAlertActionVisualStyleItem alloc] init];
     [copy setBackgroundColor:[_backgroundColor copy]];
     [copy setTextColor:[_textColor copy]];
@@ -46,33 +47,36 @@
 
 @end
 
-
 @implementation DLAlertActionVisualStyle
 
-- (void)setBackgroundColor:(UIColor *)color forActionState:(DLAlertActionState)state{
+- (void)setBackgroundColor:(UIColor *)color forActionState:(DLAlertActionState)state
+{
     [_styleItems[@(state)] setBackgroundColor:color];
 }
 
-- (UIColor *)backgroundColorForActionState:(DLAlertActionState)state{
+- (UIColor *)backgroundColorForActionState:(DLAlertActionState)state
+{
     
     return [_styleItems[@(state)] backgroundColor];
 }
 
-- (void)setTextColor:(UIColor *)color forActionState:(DLAlertActionState)state{
+- (void)setTextColor:(UIColor *)color forActionState:(DLAlertActionState)state
+{
     [_styleItems[@(state)] setTextColor:color];
 }
 
-- (UIColor *)textColorForActionState:(DLAlertActionState)state{
+- (UIColor *)textColorForActionState:(DLAlertActionState)state
+{
     return [_styleItems[@(state)] textColor];
 }
-
 
 @end
 
 
 @implementation DLAlertActionVisualStyle (Factory)
 
-+(instancetype)defaultStyle{
++ (instancetype)defaultStyle
+{
     
     UIColor *backgroundMainColor = [UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f];
     UIColor *textMainColor = [UIColor colorWithRed:68.0f/255.0f green:69.0f/255.0f blue:81.0f/255.0f alpha:1.0f];
@@ -97,11 +101,13 @@
     return defaultStyle;
 }
 
-+(instancetype)cancelStyle{
++ (instancetype)cancelStyle
+{
     return [self defaultStyle];
 }
 
-+(instancetype)destructiveStyle{
++ (instancetype)destructiveStyle
+{
     
     UIColor *backgroundMainColor = [UIColor colorWithRed:254.0f/255.0f green:67.0f/255.0f blue:40.0f/255.0f alpha:1.0f];
     UIColor *textMainColor = [UIColor colorWithRed:240.0f/255.0f green:240.0f/255.0f blue:240.0f/255.0f alpha:1.0f];
@@ -125,10 +131,6 @@
     
     return destructiveStyle;
 }
-
-
-
-
 
 @end
 

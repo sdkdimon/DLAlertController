@@ -22,79 +22,75 @@
 
 #import "DLAlertActionController.h"
 
-
 #import "DLAlertView.h"
 
 @interface DLAlertActionController () <DLActionsCollectionViewDataSource,DLActionsCollectionViewDelegate>
 
-@property(strong,nonatomic,readwrite) NSMutableArray<DLAlertAction *> *actions;
+@property(strong,nonatomic,readonly) NSMutableArray<DLAlertAction *> *alertActions;
 @property(strong,nonatomic,readwrite) NSMutableDictionary<NSNumber *,DLAlertActionVisualStyle *> *visualStyles;
 @property (strong, nonatomic, readwrite) NSLayoutConstraint *actionBottomConstraint;
-
-
+@property (strong, nonatomic, readwrite) NSLayoutConstraint *actionTopConstraint;
 @property(assign,nonatomic,readwrite,getter=isViewAppear) BOOL viewAppear;
-
-
 
 @end
 
 @implementation DLAlertActionController
 
-- (void)setup{
+- (void)setup
+{
     [super setup];
     _dismissableOnActionTap = NO;
     _dismssAnimationEnabled = NO;
     _actionHeight = 40.0f;
     _interActionSpacing = 8.0f;
-    _actions = [[NSMutableArray alloc] initWithCapacity:0];
+    _alertActions = [[NSMutableArray alloc] initWithCapacity:0];
     _visualStyles = [@{@(DLAlertActionStyleDefault) : [DLAlertActionVisualStyle defaultStyle],
                        @(DLAlertActionStyleCancel) : [DLAlertActionVisualStyle cancelStyle],
                        @(DLAlertActionStyleDestructive) : [DLAlertActionVisualStyle destructiveStyle]} mutableCopy];
-    
     _actionItemLayout = DLAlertActionItemLayoutHorizontal;
-    
 }
 
-- (void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle{
+- (void)setActionVisualStyle:(DLAlertActionVisualStyle *)visualStyle forActionStyle:(DLAlertActionStyle)actionStyle
+{
     [_visualStyles setObject:visualStyle forKey:@(actionStyle)];
 }
 
-- (DLAlertActionVisualStyle *)actionVisualStyleForActionStyle:(DLAlertActionStyle)actionStyle{
+- (DLAlertActionVisualStyle *)actionVisualStyleForActionStyle:(DLAlertActionStyle)actionStyle
+{
     return [_visualStyles objectForKey:@(actionStyle)];
 }
 
-
-- (void)setupAlert{
+- (void)setupAlert
+{
     [super setupAlert];
     DLAlertView *alert = [self alert];
     [[alert actionContentView] setBackgroundColor:[UIColor whiteColor]];
 }
 
-- (void)setupActionView{
+- (void)setupActionView
+{
     DLAlertActionCollectionViewLayout *layout = [_actionView collectionViewLayout];
     [layout setItemHeight:_actionHeight];
     [layout setInterItemSpacing:_interActionSpacing];
     [layout setItemLayout:_actionItemLayout];
-    
     [_actionView setActionDataSource:self];
     [_actionView setActionDelegate:self];
 }
 
-
-
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setupActionView];
-    
 }
 
-
-- (void)loadView{
-    [super loadView];
+- (void)loadSubviews
+{
+    [super loadSubviews];
     [self loadActionView];
 }
 
-- (void)loadActionView{
+- (void)loadActionView
+{
     UIView *alertContentView = [[self alert] actionContentView];
     
     DLActionsCollectionView *actionView = [[DLActionsCollectionView alloc] init];
@@ -109,7 +105,7 @@
                                                               toItem:alertContentView
                                                            attribute:NSLayoutAttributeTop
                                                           multiplier:1.0f
-                                                            constant:0.0f];
+                                                            constant:_actionTopSpacing];
     
     NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:actionView
                                                               attribute:NSLayoutAttributeBottom
@@ -117,7 +113,8 @@
                                                                  toItem:alertContentView
                                                               attribute:NSLayoutAttributeBottom
                                                              multiplier:1.0f
-                                                               constant:_bottomSpacing];
+                                                               constant: - _actionBottomSpacing];
+    [self setActionTopConstraint:top];
     [self setActionBottomConstraint:bottom];
     
     NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:actionView
@@ -139,113 +136,187 @@
     [alertContentView addConstraints:@[top,bottom,leading,trailing]];
     
     [self setActionView:actionView];
-    
-    
-    
 }
 
-- (void)setActionHeight:(CGFloat)actionHeight{
+- (void)setActionHeight:(CGFloat)actionHeight
+{
     _actionHeight = actionHeight;
-    if([self isViewLoaded]){
+    if([self isViewLoaded])
+    {
         [[_actionView collectionViewLayout] setItemHeight:actionHeight];
     }
 }
 
-- (void)setInterActionSpacing:(CGFloat)interActionSpacing{
+- (void)setInterActionSpacing:(CGFloat)interActionSpacing
+{
     _interActionSpacing = interActionSpacing;
-    if([self isViewLoaded]){
+    if([self isViewLoaded])
+    {
         [[_actionView collectionViewLayout] setInterItemSpacing:interActionSpacing];
     }
 }
 
-- (void)setActionItemLayout:(DLAlertActionItemLayout)actionItemLayout{
+- (void)setActionItemLayout:(DLAlertActionItemLayout)actionItemLayout
+{
     _actionItemLayout = actionItemLayout;
-    if([self isViewLoaded]){
+    if([self isViewLoaded])
+    {
         [[_actionView collectionViewLayout] setItemLayout:actionItemLayout];
     }
 }
 
-- (void)addAction:(DLAlertAction *)action{
-    [_actions addObject:action];
+- (void)insertAction:(DLAlertAction *)action atIndex:(NSUInteger)index
+{
+    [_alertActions insertObject:action atIndex:index];
     [action addObserver:self forKeyPath:@"enabled" options:NSKeyValueObservingOptionNew context:nil];
-    if([self isViewLoaded]){
-        NSInteger itemCount = [_actions count];
+    [action addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
+    if([self isViewLoaded])
+    {
+        NSInteger itemCount = [_alertActions count];
         DLAlertActionItemLayout itemLayout =  itemCount > 2 ? DLAlertActionItemLayoutVertical : DLAlertActionItemLayoutHorizontal;
         [[_actionView collectionViewLayout] setItemLayout:itemLayout];
-        if([self isViewAppear]){
-            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:(itemCount - 1) inSection:0];
+        if([self isViewAppear])
+        {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
             [UIView performWithoutAnimation:^{
-                [[self actionView] insertItemsAtIndexPaths:@[indexPath]];
+                [self.actionView insertItemsAtIndexPaths:@[indexPath]];
             }];
-            
+        }
+    }
+    
+}
+
+- (void)addAction:(DLAlertAction *)action
+{
+    [self insertAction:action atIndex:self.alertActions.count];
+}
+
+- (void)removeAction:(DLAlertAction *)action
+{
+    if ([self containsAction:action])
+    {
+        NSUInteger inexOfAction = [self.alertActions indexOfObject:action];
+        [self.alertActions removeObjectAtIndex:inexOfAction];
+        [action removeObserver:self forKeyPath:@"enabled"];
+        [action removeObserver:self forKeyPath:@"title"];
+        if([self isViewLoaded])
+        {
+           NSInteger itemCount = [_alertActions count];
+           DLAlertActionItemLayout itemLayout =  itemCount > 2 ? DLAlertActionItemLayoutVertical : DLAlertActionItemLayoutHorizontal;
+           [[_actionView collectionViewLayout] setItemLayout:itemLayout];
+           if([self isViewAppear])
+           {
+               [UIView performWithoutAnimation:^{
+                   [self.actionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:inexOfAction inSection:0]]];
+               }];
+           }
         }
     }
 }
 
-- (void)setBottomSpacing:(CGFloat)bottomSpacing{
-    _bottomSpacing = bottomSpacing;
+- (BOOL)containsAction:(DLAlertAction *)action
+{
+    return [self.alertActions containsObject:action];
+}
+
+- (void)replaceAction:(DLAlertAction *)actionToReplace withAction:(DLAlertAction *)action
+{
+    if ([self containsAction:actionToReplace])
+    {
+        NSUInteger insertionIndex = [self.alertActions indexOfObject:actionToReplace];
+        [self removeAction:actionToReplace];
+        [self insertAction:action atIndex:insertionIndex];
+    }
+}
+
+- (void)setActionBottomSpacing:(CGFloat)actionBottomSpacing
+{
+    _actionBottomSpacing = actionBottomSpacing;
     if ([self isViewLoaded]){
-        [_actionBottomConstraint setConstant: - bottomSpacing];
+        [_actionBottomConstraint setConstant: - actionBottomSpacing];
+    }
+}
+
+- (void)setActionTopSpacing:(CGFloat)actionTopSpacing
+{
+    _actionTopSpacing = actionTopSpacing;
+    if ([self isViewLoaded]){
+        [_actionTopConstraint setConstant:actionTopSpacing];
     }
 }
 
 #pragma mark DLActionsCollectionViewDataSource
 
-- (DLAlertAction *)actionCollectionView:(DLActionsCollectionView *)collectionView actionAtIndex:(NSUInteger)index{
-    return _actions[index];
+- (DLAlertAction *)actionCollectionView:(DLActionsCollectionView *)collectionView actionAtIndex:(NSUInteger)index
+{
+    return _alertActions[index];
 }
 
-- (DLAlertActionVisualStyle *)actionCollectionView:(DLActionsCollectionView *)collectionView actionVisualStyle:(DLAlertActionStyle)style{
+- (DLAlertActionVisualStyle *)actionCollectionView:(DLActionsCollectionView *)collectionView actionVisualStyle:(DLAlertActionStyle)style
+{
     return _visualStyles[@(style)];
 }
 
 - (NSInteger)numberOfActionsInActionCollectionView:(DLActionsCollectionView *)collectionView{
-    return [_actions count];
+    return [_alertActions count];
 }
 
 #pragma mark Action Observing
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
-    NSUInteger actionIdx = [_actions indexOfObject:object];
-    [UIView performWithoutAnimation:^{
-        [[self actionView] reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:actionIdx inSection:0]]];
-    }];
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    if ([self isViewAppear])
+    {
+        NSUInteger actionIdx = [_alertActions indexOfObject:object];
+        [UIView performWithoutAnimation:^{
+            [[self actionView] reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:actionIdx inSection:0]]];
+        }];
+    }
 }
 
 #pragma mark DLActionsCollectionViewDelegate
 
-- (void)actionCollectionView:(DLActionsCollectionView *)collectionView didExecuteActionAtIndex:(NSUInteger)index{
+- (void)actionCollectionView:(DLActionsCollectionView *)collectionView didExecuteActionAtIndex:(NSUInteger)index
+{
     [self actionTap:index];
-    DLAlertAction *action = _actions[index];
+    DLAlertAction *action = _alertActions[index];
     void(^actionHandler)(void) = [action handler];
-    if(_dismissableOnActionTap){
+    if(_dismissableOnActionTap)
+    {
         [self dismissAnimated:_dismssAnimationEnabled completion:actionHandler];
         return;
     }
-    if(actionHandler != NULL){
+    if(actionHandler != NULL)
+    {
         actionHandler();
     }
 }
 
-- (void)actionTap:(NSUInteger)actionIdx{
+- (void)actionTap:(NSUInteger)actionIdx
+{
     
 }
 
 #pragma mark ViewAppearance
 
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
     [self setViewAppear:YES];
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
+- (void)viewDidDisappear:(BOOL)animated
+{
     [super viewDidDisappear:animated];
     [self setViewAppear:NO];
 }
 
-- (void)dealloc{
-    for(DLAlertAction *action in _actions){
+- (void)dealloc
+{
+    for(DLAlertAction *action in _alertActions)
+    {
         [action removeObserver:self forKeyPath:@"enabled"];
+        [action removeObserver:self forKeyPath:@"title"];
     }
 }
 

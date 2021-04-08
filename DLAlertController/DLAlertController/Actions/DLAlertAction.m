@@ -24,20 +24,21 @@
 
 @implementation DLAlertAction
 
-+(instancetype)actionWithTitle:(NSString *)title style:(DLAlertActionStyle)style handler:(void(^)(void))handler{
++ (instancetype)actionWithTitle:(NSString *)title style:(DLAlertActionStyle)style handler:(void(^)(void))handler
+{
     return [[self alloc] initWithTitle:title style:style handler:handler];
 }
-- (instancetype)initWithTitle:(NSString *)title style:(DLAlertActionStyle)style handler:(void(^)(void))handler{
+- (instancetype)initWithTitle:(NSString *)title style:(DLAlertActionStyle)style handler:(void(^)(void))handler
+{
     self = [super init];
-    if(self != nil){
+    if(self != nil)
+    {
         _title = [title copy];
         _style = style;
         _handler = [handler copy];
         _enabled = YES;
     }
-    
     return self;
 }
-
 
 @end

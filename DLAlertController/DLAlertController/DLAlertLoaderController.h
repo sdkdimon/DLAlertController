@@ -21,8 +21,10 @@
 // THE SOFTWARE.
 
 #import <DLAlertController/DLAlertControllerBase.h>
+
 @class DLAlertView;
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface DLAlertLoaderController : DLAlertControllerBase
 
@@ -32,5 +34,6 @@
 
 - (void)setupAlert;
 
-
 @end
+
+NS_ASSUME_NONNULL_END

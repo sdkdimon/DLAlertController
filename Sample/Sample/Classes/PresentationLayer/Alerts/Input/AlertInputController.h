@@ -1,5 +1,5 @@
 //
-// DLAlertMessageController.h
+// AlertInputController.h
 // Copyright (c) 2015 Dmitry Lizin (sdkdimon@gmail.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,20 +22,22 @@
 
 #import <DLAlertController/DLAlertActionController.h>
 
-NS_ASSUME_NONNULL_BEGIN
+//AbstractClass
+@interface AlertInputController : DLAlertActionController
 
-@interface DLAlertMessageController : DLAlertActionController
+@property(assign,nonatomic,readwrite) UIEdgeInsets contentControlsInsets;
+@property(assign,nonatomic,readwrite) UIEdgeInsets textFieldInsets;
 
-+ (instancetype)controllerWithTitle:(NSString *)title message:(NSString *)message;
-- (instancetype)initWithTitle:(NSString *)title message:(NSString *)message;
-
+@property(strong,nonatomic,readonly) UITextField *textField;
 @property(strong,nonatomic,readonly) UILabel *messageLabel;
-@property(copy,nonatomic,readwrite) NSString *message;
-@property(strong,nonatomic,readwrite) UIFont *messageFont;
-@property(strong,nonatomic,readwrite) UIColor *messageTextColor;
-@property(assign,nonatomic,readwrite) NSTextAlignment messageTextAlignment;
-@property(assign,nonatomic,readwrite) UIEdgeInsets messageInsets;
+@property(strong,nonatomic,readwrite) NSString *message;
+
+@property (copy, nonatomic, readwrite) void (^viewDidLoadBlodk)(AlertInputController *);
+
+//Override to do additional controls setup;
+- (void)setupMessageLabel;
+- (void)setupTextField;
+
+
 
 @end
-
-NS_ASSUME_NONNULL_END

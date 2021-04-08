@@ -21,16 +21,16 @@
 // THE SOFTWARE.
 
 #import "DLAlertControllerBase.h"
+
 #import "UIViewController+TopViewController.h"
 #import "DLAlertTransitionController.h"
 
-@interface DLAlertControllerBase () <DLAlertTransitionControllerDelegate>
+@interface DLAlertControllerBase ()
 
-@property(strong,nonatomic,readwrite) UITapGestureRecognizer *rootViewTapGesture;
-@property(strong,nonatomic,readwrite) DLAlertTransitionController *transitionController;
-
+@property (strong, nonatomic, readwrite) UITapGestureRecognizer *rootViewTapGesture;
 @property (copy, nonatomic, readwrite) void (^presentationCompletionBlock)(void);
 @property (copy, nonatomic, readwrite) void (^dismissalCompletionBlock)(void);
+@property (strong, nonatomic, readwrite) DLAlertTransitionController *transitionController;
 
 @end
 
@@ -38,7 +38,8 @@
 
 #pragma mark Initialization
 
-- (instancetype)init{
+- (instancetype)init
+{
     self = [super init];
     if(self != nil){
         [self setup];
@@ -48,100 +49,61 @@
 
 #pragma mark Setup
 
-- (void)setup{
+- (void)setup
+{
     _transitionController = [[DLAlertTransitionController alloc] init];
-    [_transitionController setDelegate:self];
-    [self setTransitioningDelegate:_transitionController];
-    [self setModalPresentationStyle:UIModalPresentationCustom];
+    _rootViewTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rootViewGestureTap:)];
+    _rootViewTapGesture.delegate = self;
+    self.transitioningDelegate = _transitionController;
+    self.modalPresentationStyle = UIModalPresentationCustom;
 }
 
 #pragma mark View load
 
-- (void)loadView{
+- (void)loadView
+{
     UIView *view = [[UIView alloc] init];
     [view setBackgroundColor:[UIColor colorWithWhite:0 alpha:.4f]];
     [view setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
     [self setView:view];
 }
 
-- (void)setupRootViewTapGesture{
-    _rootViewTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rootViewGestureTap:)];
-    [_rootViewTapGesture setDelegate:self];
-    [[self view] addGestureRecognizer:_rootViewTapGesture];
+- (void)loadSubviews
+{
+    
 }
 
-- (void)viewDidLoad{
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    [self setupRootViewTapGesture];
+    [self loadSubviews];
+    [self.view addGestureRecognizer:self.rootViewTapGesture];
 }
 
-
-- (void)rootViewGestureTap:(UITapGestureRecognizer *)sender{
+- (void)rootViewGestureTap:(UITapGestureRecognizer *)sender
+{
 
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
     return [[touch view] isEqual:[self view]];
 }
 
-
-- (void)alertTransitionController:(DLAlertTransitionController *)controller didEndDismissalTransition:(BOOL)finished{
-    [self didDismissAnimated:YES];
-    
-}
-
-- (void)alertTransitionController:(DLAlertTransitionController *)controller didEndPresentationTransition:(BOOL)finished{
-   [self didPresentAnimated:YES];
-}
-
-
-- (void)didPresentAnimated:(BOOL)animated{
-    
-    if (_presentationCompletionBlock != NULL){
-        _presentationCompletionBlock();
-        _presentationCompletionBlock = NULL;
-    }
-}
-
-- (void)didDismissAnimated:(BOOL)animated{
-    
-    if (_dismissalCompletionBlock != NULL){
-        _dismissalCompletionBlock();
-        _dismissalCompletionBlock = NULL;
-    }
-}
-
 @end
-
 
 @implementation DLAlertControllerBase (Presentation)
 
-- (void)presentAnimated:(BOOL)animated completion:(void (^)(void))completion{
+- (void)presentAnimated:(BOOL)animated completion:(void (^)(void))completion
+{
     UIViewController *topViewController = [UIViewController topViewController:nil];
-    [self setPresentationCompletionBlock:completion];
-    if (animated){
-        [topViewController presentViewController:self animated:animated completion:nil];
-    } else {
-        [topViewController presentViewController:self animated:animated completion:^{
-            [self didPresentAnimated:NO];
-        }];
-    }
-    
-    
-    
+    [topViewController presentViewController:self animated:animated completion:completion];
 }
 
-- (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion{
-    [self setDismissalCompletionBlock:completion];
-    if (animated){
-        [[self presentingViewController] dismissViewControllerAnimated:animated completion:nil];
-    } else {
-        [[self presentingViewController] dismissViewControllerAnimated:animated completion:^{
-            [self didDismissAnimated:NO];
-        }];
-    }
+- (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion
+{
+    [self.presentingViewController dismissViewControllerAnimated:animated completion:completion];
 }
+
 
 @end
-
-

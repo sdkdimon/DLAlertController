@@ -23,9 +23,9 @@
 #import <UIKit/UIKit.h>
 #import <DLAlertController/DLAlertActionState.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DLAlertActionVisualStyle : NSObject
-
-
 
 @property(strong,nonatomic,readwrite) UIFont *font;
 
@@ -35,11 +35,12 @@
 - (UIColor *)textColorForActionState:(DLAlertActionState)state;
 @end
 
-
 @interface DLAlertActionVisualStyle (Factory)
 
-+(instancetype)defaultStyle;
-+(instancetype)cancelStyle;
-+(instancetype)destructiveStyle;
++ (instancetype)defaultStyle;
++ (instancetype)cancelStyle;
++ (instancetype)destructiveStyle;
 
 @end
+
+NS_ASSUME_NONNULL_END

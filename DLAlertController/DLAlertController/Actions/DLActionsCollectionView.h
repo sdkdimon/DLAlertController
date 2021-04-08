@@ -27,13 +27,13 @@
 
 @class DLActionsCollectionView;
 
+NS_ASSUME_NONNULL_BEGIN
 
 @protocol DLActionsCollectionViewDelegate <NSObject>
 
 - (void)actionCollectionView:(DLActionsCollectionView *)collectionView didExecuteActionAtIndex:(NSUInteger)index;
 
 @end
-
 
 @protocol DLActionsCollectionViewDataSource <NSObject>
 
@@ -43,15 +43,12 @@
 
 @end
 
-
 @interface DLActionsCollectionView : UICollectionView
 
 @property(weak,nonatomic,readwrite) id <DLActionsCollectionViewDataSource> actionDataSource;
 @property(weak,nonatomic,readwrite) id <DLActionsCollectionViewDelegate> actionDelegate;
-
 @property(strong,nonatomic,readwrite) DLAlertActionCollectionViewLayout *collectionViewLayout;
 
-//- (void)setEnabled:(BOOL)enabled actionAtIndex:()
-
-
 @end
+
+NS_ASSUME_NONNULL_END

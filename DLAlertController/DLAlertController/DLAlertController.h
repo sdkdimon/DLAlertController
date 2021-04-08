@@ -1,4 +1,5 @@
 //
+// DLAlertController.h
 // Copyright (c) 2015 Dmitry Lizin (sdkdimon@gmail.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,10 +48,7 @@ FOUNDATION_EXPORT const unsigned char DLAlertControllerVersionString[];
 #import <DLAlertController/UIViewController+TopViewController.h>
 
 #import <DLAlertController/DLAlertAnimationController.h>
-#import <DLAlertController/DLAlertPresentationController.h>
 #import <DLAlertController/DLAlertTransitionController.h>
 
 #import <DLAlertController/DLAlertView.h>
-
-
-
+#import <DLAlertController/DLAlertAccessibilityIdentifier.h>

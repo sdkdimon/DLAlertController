@@ -21,11 +21,9 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
+#import <DLAlertController/DLAlertActionItemLayout.h>
 
-typedef NS_ENUM(NSInteger,DLAlertActionItemLayout) {
-    DLAlertActionItemLayoutHorizontal = 0,
-    DLAlertActionItemLayoutVertical
-};
+NS_ASSUME_NONNULL_BEGIN
 
 @interface DLAlertActionCollectionViewLayout : UICollectionViewLayout
 
@@ -34,3 +32,5 @@ typedef NS_ENUM(NSInteger,DLAlertActionItemLayout) {
 @property(assign,nonatomic,readwrite) CGFloat itemHeight;
 
 @end
+
+NS_ASSUME_NONNULL_END

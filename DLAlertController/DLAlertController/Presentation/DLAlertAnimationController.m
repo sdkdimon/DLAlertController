@@ -28,57 +28,50 @@ static CGFloat const SPRING_VELOCITY = 0;
 
 @implementation DLAlertAnimationController
 
-- (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext{
+- (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext
+{
     return .202f;
 }
 
-- (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
+- (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext
+{
+    
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    
-    UIView *fromView = [fromViewController view];
-    UIView *toView = [toViewController view];
-    
-    
-    if([self isPresentation]){
-        [[transitionContext containerView] addSubview:toView];
-    }
-    
     UIViewController *animatingViewController = [self isPresentation] ? toViewController : fromViewController;
     UIView *animatingView = [animatingViewController view];
-    [animatingView setFrame:[transitionContext finalFrameForViewController:animatingViewController]];
-   
-    if([self isPresentation]){
+
+    if([self isPresentation])
+    {
+        [animatingView setFrame:[transitionContext finalFrameForViewController:animatingViewController]];
+        [transitionContext.containerView addSubview:animatingView];
         [animatingView setTransform:CGAffineTransformMakeScale(INITIAL_SCALE, INITIAL_SCALE)];
         [animatingView setAlpha:0];
-        
         [self animate:^{
             [animatingView setTransform:CGAffineTransformMakeScale(1, 1)];
             [animatingView setAlpha:1];
         } inContext:transitionContext withCompletion:^(BOOL finished) {
-            [transitionContext completeTransition:finished];
+            [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
         }];
-        
-        
-    } else{
+    }
+    else
+    {
         [self animate:^{
             [animatingView setAlpha:0];
         } inContext:transitionContext withCompletion:^(BOOL finished) {
-            [fromView removeFromSuperview];
-            [transitionContext completeTransition:finished];
+            [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
         }];
     }
 }
 
-- (void)animationEnded:(BOOL)transitionCompleted{
-    if (_delegate != nil && [_delegate respondsToSelector:@selector(animationConroller:didEndAnimation:)]){
-        [_delegate animationConroller:self didEndAnimation:transitionCompleted];
-    }
+- (void)animate:(void(^)(void))animations inContext:(id <UIViewControllerContextTransitioning>)context withCompletion:(void(^)(BOOL finished))completion
+{
+    [UIView animateWithDuration:[self transitionDuration:context]
+                          delay:0 usingSpringWithDamping:SPRING_DAMPING
+          initialSpringVelocity:SPRING_VELOCITY
+                        options:0
+                     animations:animations
+                     completion:completion];
 }
-
-- (void)animate:(void(^)(void))animations inContext:(id <UIViewControllerContextTransitioning>)context withCompletion:(void(^)(BOOL finished))completion{
-    [UIView animateWithDuration:[self transitionDuration:context] delay:0 usingSpringWithDamping:SPRING_DAMPING initialSpringVelocity:SPRING_VELOCITY options:0 animations:animations completion:completion];
-}
-
 
 @end

@@ -20,11 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "DLAlertLoaderController.h"
+
+#import <DLAlertController/DLAlertLoaderController.h>
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface DLAlertTitleController : DLAlertLoaderController
 
-+(instancetype)controllerWithTitle:(NSString *)title;
++ (instancetype)controllerWithTitle:(NSString *)title;
 - (instancetype)initWithTitle:(NSString *)title;
 
 @property(strong,nonatomic,readonly) UIView *contentView;
@@ -39,3 +42,5 @@
 @property (assign, nonatomic, readwrite) CGFloat contentViewMinHeight;
 
 @end
+
+NS_ASSUME_NONNULL_END
