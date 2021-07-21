@@ -95,10 +95,13 @@
         safeAreaBottomAttribute = NSLayoutAttributeBottom;
     } else {
         // Fallback on earlier versions
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         safeAreaTop = self.topLayoutGuide;
         safeAreaTopAttribute = NSLayoutAttributeBottom;
         safeAreaBottom = self.bottomLayoutGuide;
         safeAreaBottomAttribute = NSLayoutAttributeTop;
+#pragma clang diagnostic pop
     }
     
     
